@@ -47,6 +47,12 @@ module.exports = {
         loaders: ['babel-loader']
       },
       {
+        test: /\.jsx?$/,
+        // loader: 'babel',
+        loaders: ['babel'],
+        exclude: /node_modules(?!\/(vue-form-2))/
+      },
+      {
         test: /\.(ico|jpg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
         loader: 'file-loader',
         query: {

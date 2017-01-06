@@ -7,10 +7,9 @@
             <p class="lead">
               La mejor manera de encontrar u ofrecer trabajo a la comunidad hispana
             </p>
-
-            <a href="#" class="btn btn-info">
-                Publicar anuncio
-            </a>
+            <router-link to="/publicar-anuncio" class="btn btn-info">
+              Publicar anuncio
+            </router-link>
           </div>
           <div class="col-md-4">
               video
@@ -18,41 +17,9 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <form action="" class="search-comp">
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="job-input">Palabra clave</label>
-                  <input type="text" name="job-input" value="" class="form-control" placeholder="Jardinero, ingeniero, etc.">
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label for="cat-selector">Palabra clave</label>
-                  <select class="form-control" name="cat-selector">
-                    <option value="">opciones</option>
-                    <option value="">opciones</option>
-                    <option value="">opciones</option>
-                    <option value="">opciones</option>
-                    <option value="">opciones</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label for="cat-selector">Estado</label>
-                  <select class="form-control" name="cat-selector">
-                    <option value="">estado</option>
-                    <option value="">estado</option>
-                    <option value="">estado</option>
-                    <option value="">estado</option>
-                    <option value="">estado</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <a href="#" class="btn btn-success">Buscar</a>
-              </div>
-            </form>
+
+            <SearchForm>
+            </SearchForm>
           </div>
         </div>
       </div>
@@ -61,11 +28,14 @@
 </template>
 
 <script>
+import SearchForm from 'components/SearchForm'
 export default {
-  computed: {
-    count() {
-      return this.$store.state.count
-    }
+  data() {
+		return{
+		}
+	},
+  components: {
+    SearchForm
   }
 }
 </script>

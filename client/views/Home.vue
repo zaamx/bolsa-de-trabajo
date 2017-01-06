@@ -2,8 +2,8 @@
   <div class="page">
     <Search>
     </Search>
-    <indexFeed>
-    </indexFeed>
+    <!-- <indexFeed>
+    </indexFeed> -->
 
   </div>
 </template>
