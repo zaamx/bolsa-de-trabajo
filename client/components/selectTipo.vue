@@ -11,11 +11,12 @@
 
     <div class="form-group" v-if="tipoTrabajo">
       <label for="cat-selector">Tipo de trabajo</label>
-      <select class="form-control" name="cat-selector">
+      <select class="form-control" name="cat-selector" v-model="selectedTipo">
         <option :value=" tipoTrabajo._id "  v-for="tipoTrabajo in this.tipoTrabajo">
           {{ tipoTrabajo.titulo }}
         </option>
       </select>
+      {{ selectedTipo }}
     </div>
 
   </div>
@@ -27,7 +28,8 @@ export default {
 		return{
 			loading: true,
       error: null,
-      tipoTrabajo: null
+      tipoTrabajo: null,
+      selectedTipo: null
       // estados: null
 		}
 	},
@@ -35,6 +37,9 @@ export default {
     // count() {
     //   return this.$store.state.count
     // }
+  },
+  watch: {
+    selectedTipo: 'pushTipoStore'
   },
   created () {
     this.getTipoTrabajo()
@@ -45,7 +50,7 @@ export default {
 
       // Cambiar para
       if (this.tipoTrabajo === null) {
-        this.tipoTrabajo = this.$store.state.tipotrabajo.data
+        this.tipoTrabajo = this.$store.state.tipotrabajo
         this.loading = false
       }
 
@@ -59,6 +64,10 @@ export default {
       // }, (response) => {
       //   this.error = err.toString()
       // });
+    },
+    pushTipoStore () {
+      this.$store.commit('ACTUALIZATIPO', this.selectedTipo)
+      console.log('Tipo en store =', this.$store.state.search.selectedTipo)
     }
   }
 }

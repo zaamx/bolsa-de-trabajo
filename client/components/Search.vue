@@ -10,6 +10,10 @@
             <router-link to="/publicar-anuncio" class="btn btn-info">
               Publicar anuncio
             </router-link>
+
+            <router-link to="/trabajos" class="btn btn-info">
+              ver trabajos
+            </router-link>
           </div>
           <div class="col-md-4">
               video

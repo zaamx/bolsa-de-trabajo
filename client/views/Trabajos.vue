@@ -1,16 +1,19 @@
 <template>
   <div class="page">
-    <Search>
-    </Search>
-    <indexFeed>
-    </indexFeed>
-
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <indexFeed>
+          </indexFeed>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Search from 'components/Search'
 import indexFeed from 'components/indexFeed'
+
 export default {
 	data() {
 		return{
@@ -18,7 +21,6 @@ export default {
 		}
 	},
   components: {
-    Search,
     indexFeed
   }
 }

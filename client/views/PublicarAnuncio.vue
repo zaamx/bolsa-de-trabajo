@@ -11,13 +11,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueForm from 'vue-form-2'
-
-Vue.use(VueForm, {
-  layout:'form-horizontal'
-})
-
 export default {
 	data() {
 		return{

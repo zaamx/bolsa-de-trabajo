@@ -11,11 +11,13 @@
 
     <div class="form-group" v-if="categorias">
       <label for="cat-selector">Categorias</label>
-      <select class="form-control" name="cat-selector">
+      <select class="form-control" name="cat-selector" v-model="selectedCat">
+        <option value="">Categoria</option>
         <option :value=" categoria.id "  v-for="categoria in this.categorias">
           {{ categoria.titulo }}
         </option>
       </select>
+      {{ selectedCat }}
     </div>
 
   </div>
@@ -27,7 +29,8 @@ export default {
 		return{
 			loading: true,
       error: null,
-      categorias: null
+      categorias: null,
+      selectedCat: null
       // estados: null
 		}
 	},
@@ -39,13 +42,16 @@ export default {
   created () {
     this.getCategorias()
   },
+  watch: {
+    selectedCat: 'pushCatStore'
+  },
   methods: {
     getCategorias () {
       this.error = this.categorias = null
 
       // Cambiar para
       if (this.categorias === null) {
-        this.categorias = this.$store.state.categorias.data
+        this.categorias = this.$store.state.categorias
         this.loading = false
       }
 
@@ -59,6 +65,10 @@ export default {
       // }, (response) => {
       //   this.error = err.toString()
       // });
+    },
+    pushCatStore () {
+      this.$store.commit('ACTUALIZACATEGORIA', this.selectedCat)
+      console.log('Cat en estore =', this.$store.state.search.selectedCategoria)
     }
   }
 }

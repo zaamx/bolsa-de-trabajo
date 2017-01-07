@@ -11,11 +11,15 @@
 
     <div class="form-group" v-if="estados">
       <label for="cat-selector">Estados</label>
-      <select class="form-control" name="cat-selector">
+      <select class="form-control" name="cat-selector" v-model="selectedEdo">
+        <option value="">
+          Estado
+        </option>
         <option :value=" estado._id "  v-for="estado in this.estados">
           {{ estado.codigo }} -  {{ estado.nombre }}
         </option>
       </select>
+      {{ selectedEdo }}
     </div>
 
   </div>
@@ -27,7 +31,8 @@ export default {
 		return{
 			loading: true,
       error: null,
-      estados: null
+      estados: null,
+      selectedEdo: null
       // estados: null
 		}
 	},
@@ -39,13 +44,16 @@ export default {
   created () {
     this.getEstados()
   },
+  watch: {
+    selectedEdo: 'pushEdoStore'
+  },
   methods: {
     getEstados () {
       this.error = this.estados = null
 
       // Cambiar para
       if (this.estados === null) {
-        this.estados = this.$store.state.estados.data
+        this.estados = this.$store.state.estados
         this.loading = false
       }
 
@@ -59,6 +67,10 @@ export default {
       // }, (response) => {
       //   this.error = err.toString()
       // });
+    },
+    pushEdoStore () {
+      this.$store.commit('ACTUALIZAESTADO', this.selectedEdo)
+      console.log('Edo en store =', this.$store.state.search.selectedEstado)
     }
   }
 }

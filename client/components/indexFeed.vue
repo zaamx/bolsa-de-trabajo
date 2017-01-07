@@ -9,19 +9,18 @@
             {{ error }}
         </div>
 
-        <div class="feed-jobs" v-if="categorias">
-          <h1 v-for="categoria in this.categorias">
-            {{ categoria.titulo }}
-          </h1>
-          <!-- <div class="card">
+        <div class="feed-jobs" v-if="jobs">
+          <div class="card" v-for="job in this.jobs">
             <div class="card-image">
               <img src="http://placehold.it/400x400" alt="">
             </div>
-            <h4>Titulo</h4>
+            <h4>{{ job.titulo }}</h4>
             <p>Lorem ipsum dolor sit.</p>
-          </div> -->
+            <router-link :to=" '/trabajos/' + job.id" class="btn btn-info">
+              Ver anuncio
+            </router-link>
+          </div>
         </div>
-
 
       </div>
     </div>
@@ -33,7 +32,7 @@ export default {
   data() {
 		return{
 			loading: true,
-      categorias: null,
+      jobs: null,
       error: null
 		}
 	},
@@ -45,26 +44,31 @@ export default {
   created () {
     // fetch the data when the view is created and the data is
     // already being observed
-    this.getPosts()
+    this.getJobs()
   },
   methods: {
-    getPosts () {
-      this.error = this.categorias = null
+    getJobs () {
+      this.error = this.jobs = null
       // this.loading = true
-      console.log(this.$http.options.root)
-      // GET /someUrl
-      this.$http.get('categoria').then((response) => {
-        this.categorias = response.body.data
+
+      // Cambiar para
+      if (this.jobs === null) {
+        this.jobs = this.$store.state.jobs
         this.loading = false
-        console.log('la respuesta es -->', response)
-        console.log('en categorias', this.categorias)
-      }, (response) => {
-        // error callback
-        this.error = err.toString()
-      });
+      }
+
+      // GET /someUrl
+      // this.$http.get('jobs').then((response) => {
+      //   this.jobs = response.body.data
+      //   this.loading = false
+      //   console.log('chambas', this.jobs)
+      // }, (response) => {
+      //   // error callback
+      //   this.error = err.toString()
+      // });
+
     }
   }
-
 
 }
 </script>

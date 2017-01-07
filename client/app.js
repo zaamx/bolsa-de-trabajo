@@ -7,7 +7,7 @@ import VueResource from 'vue-resource'
 
 
 sync(store, router)
-
+Vue.config.devtools = true
 Vue.use(VueResource);
 
 
