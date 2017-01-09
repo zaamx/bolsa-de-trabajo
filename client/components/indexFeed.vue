@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import stamplay from 'store/stamplay'
 export default {
   data() {
 		return{
@@ -45,6 +46,7 @@ export default {
     // fetch the data when the view is created and the data is
     // already being observed
     this.getJobs()
+    // this.getStamplay()
   },
   methods: {
     getJobs () {
