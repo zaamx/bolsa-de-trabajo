@@ -78,28 +78,26 @@ export default {
   created () {
   },
   watch: {
-    // titulo: 'searchFn'
+     //titulo: 'searchFn'
   },
   methods: {
     searchFn () {
-      if (this.titulo) {
-        this.where = {
-          "$and" : [
-              {"titulo": { "$regex": "*"+ this.titulo +"*", "$options":"i"} }
 
-          ]
-        }
+      this.where = { $or : [] };
 
-        console.log('el titulo', this.where)
+      if(this.titulo) {
+        this.where.$or.push({ titulo: { "$regex" : "^"+ this.titulo, "$options" :"i" } } )
       }
+
       if (this.selectedCategoria) {
-        this.where.$and.push({rel_categoria: {$in: [this.selectedCategoria]}})
+        console.log("this.selectedCategoria",this.where.$or);
+        this.where.$or.push({rel_categoria: {"$in": [this.selectedCategoria]}})
       }
       if (this.selectedEstado) {
-        this.where.$and.push({rel_estado: {$in: [this.selectedEstado]} })
+        this.where.$or.push({rel_estado: {"$in": [this.selectedEstado]} })
       }
       if (this.selectedTipo) {
-        this.where.$and.push({rel_tipotrabajo: {$in: [this.selectedTipo]} })
+        this.where.$or.push({rel_tipotrabajo: {"$in": [this.selectedTipo]} })
       }
 
       this.where = JSON.stringify(this.where)
@@ -109,7 +107,9 @@ export default {
       // GET /someUrl
       this.$http.get('jobs',{ params: {where: this.where}}).then((response) => {
         console.log('la respuesta', response)
-        this.searchResults = response.body.data
+        this.searchResults = response.body.data;
+        console.log();
+
         // this.loading = false
         console.log('chambas', this.searchResults)
       }, (response) => {
@@ -117,6 +117,10 @@ export default {
         console.log('el error -->', err.toString())
         this.error = err.toString()
       });
+
+
+      
+
 
       // "rel_categoria" : {
       //         "$in" : "586d736906e9a48305c34a42"
