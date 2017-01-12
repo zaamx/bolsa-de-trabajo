@@ -16,7 +16,6 @@
           {{ tipoTrabajo.titulo }}
         </option>
       </select>
-      {{ selectedTipo }}
     </div>
 
   </div>

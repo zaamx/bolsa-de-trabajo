@@ -19,7 +19,6 @@
           {{ estado.codigo }} -  {{ estado.nombre }}
         </option>
       </select>
-      {{ selectedEdo }}
     </div>
 
   </div>

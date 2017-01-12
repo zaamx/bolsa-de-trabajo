@@ -39,15 +39,18 @@
             <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="titulo" name="titulo" @blur="$v.titulo.$touch()">
           </div>
           <span class="form-group__message" v-if="!$v.titulo.required">Field is required</span>
-          <span class="form-group__message" v-if="!$v.titulo.minLength">Name must be longer than 3 letters.</span>
+          <span class="form-group__message" v-if="!$v.titulo.minLength">Name must be longer than 3 let1ters.</span>
 
           <div class="clearfix"></div>
 
-          <div class="form-group" v-bind:class="{ 'form-group--error': $v.anunciante.$error }">
+          <div class="form-group" v-bind:class="{ 'form-group--error': $v.nuevoanuncio.anunciante.$error }">
             <label for="anunciante">Nombre del anunciante</label>
-            <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="anunciante" name="anunciante" @blur="$v.anunciante.$touch()">
+            <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.anunciante" name="anunciante" @blur="$v.nuevoanuncio.anunciante.$touch()">
           </div>
-          <span class="form-group__message" v-if="!$v.anunciante.required">Field is required</span>
+          <span class="form-group__message" v-if="!$v.nuevoanuncio.anunciante.required">Field is required</span>
+          <span class="form-group__message" v-if="!$v.nuevoanuncio.anunciante.minLength">Name must be longer than 8 let1ters.</span>
+
+          {{ nuevoanuncio.anunciante }}
 
           <div class="row">
             <div class="col-md-4">
@@ -182,6 +185,9 @@ export default {
       jobsList: null,
       estList: null,
       payList: null,
+      nuevoanuncio: {
+        anunciante: ''
+      },
       anunciante: '',
       area_code: '',
       descripcion: '',
@@ -198,6 +204,12 @@ export default {
 		}
 	},
   validations: {
+    nuevoanuncio: {
+      anunciante: {
+        required,
+        minLength: minLength(8)
+      }
+    },
     anunciante: {
       required
     },
@@ -275,8 +287,10 @@ export default {
       if (this.payList === null) {
         this.payList = this.$store.state.tipopago
       }
-    }
+    },
+    serializeForm () {
 
+    }
   },
   components: {
   }

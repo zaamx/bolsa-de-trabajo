@@ -17,7 +17,6 @@
           {{ categoria.titulo }}
         </option>
       </select>
-      {{ selectedCat }}
     </div>
 
   </div>

@@ -12,6 +12,7 @@
   "author": "Alonso Avila <aavila@hispanocard.com>",
   "license": "MIT",
   "dependencies": {
+    "bootstrap-vue": "^0.4.1",
     "promise-polyfill": "^6.0.2",
     "stamplay": "^1.0.8",
     "stamplay-sdk": "^2.1.3",

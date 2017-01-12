@@ -4,7 +4,6 @@
     </Search>
     <indexFeed>
     </indexFeed>
-
   </div>
 </template>
 

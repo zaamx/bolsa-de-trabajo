@@ -9,16 +9,24 @@
             {{ error }}
         </div>
 
-        <div class="feed-jobs" v-if="jobs">
-          <div class="card" v-for="job in this.jobs">
-            <div class="card-image">
-              <img src="http://placehold.it/400x400" alt="">
+        <div class="row" v-if="jobs">
+          <div class="col-12 col-sm-6 col-md-4  col-lg-3" v-for="job in this.jobs">
+            <div class="card margin-s-top">
+              <router-link :to=" '/trabajos/' + job.id">
+                <img class="card-img-top img-fluid"  src="http://placehold.it/400x400" alt="Card image cap">
+              </router-link>
+
+              <div class="card-block">
+                <h4 class="card-title">{{ job.titulo }}</h4>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+              <div class="card-footer">
+                <router-link :to=" '/trabajos/' + job.id" class="btn btn-info">
+                  Ver anuncio
+                </router-link>
+                <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
+              </div>
             </div>
-            <h4>{{ job.titulo }}</h4>
-            <p>Lorem ipsum dolor sit.</p>
-            <router-link :to=" '/trabajos/' + job.id" class="btn btn-info">
-              Ver anuncio
-            </router-link>
           </div>
         </div>
 

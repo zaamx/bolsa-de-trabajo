@@ -275,6 +275,86 @@ const state = {
   ],
   jobs: [
     {
+      "_id": "586fd3a12db6c92956a22711",
+      "anunciante": "Juan Perez",
+      // "area_code": 6030,
+      "area_code": "586fd3a12db6c92956a22713",
+      "descripcion": "Un trabajo muy aburrido...",
+      "monto": 3000,
+      "phone_number": 5539902887,
+      "rel_categoria": [
+        "586d73e98d0b347e058a13b8"
+      ],
+      "rel_estado": [
+        "586d736906e9a48305c34a42"
+      ],
+      "rel_tipotrabajo": [
+        "586d7492506ad98d05a5b0a8"
+      ],
+      "titulo": "Un trabajo X store",
+      "imagen": "https://hispanojobs.stamplayapp.com/upload/cobject/jobs/1483723680680_captura_de_pantalla_2016-12-21_a_la(s)_12.40.17_p.m..png",
+      "appId": "hispanojobs",
+      "cobjectId": "jobs",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-06T17:28:01.327Z",
+      "dt_create": "2017-01-06T17:28:01.327Z",
+      "__v": 0,
+      "id": "586fd3a12db6c92956a22711"
+    },
+    {
+      "_id": "586fd3a12db6c92956a22712",
+      "anunciante": "Juan Perez",
+      // "area_code": 6030,
+      "area_code": "586fd3a12db6c92956a22713",
+      "descripcion": "Un trabajo muy aburrido...",
+      "monto": 3000,
+      "phone_number": 5539902887,
+      "rel_categoria": [
+        "586d73e98d0b347e058a13b8"
+      ],
+      "rel_estado": [
+        "586d736906e9a48305c34a42"
+      ],
+      "rel_tipotrabajo": [
+        "586d7492506ad98d05a5b0a8"
+      ],
+      "titulo": "Un trabajo X store",
+      "imagen": "https://hispanojobs.stamplayapp.com/upload/cobject/jobs/1483723680680_captura_de_pantalla_2016-12-21_a_la(s)_12.40.17_p.m..png",
+      "appId": "hispanojobs",
+      "cobjectId": "jobs",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-06T17:28:01.327Z",
+      "dt_create": "2017-01-06T17:28:01.327Z",
+      "__v": 0,
+      "id": "586fd3a12db6c92956a22712"
+    },
+    {
       "_id": "586fd3a12db6c92956a22713",
       "anunciante": "Juan Perez",
       // "area_code": 6030,
@@ -313,6 +393,87 @@ const state = {
       "dt_create": "2017-01-06T17:28:01.327Z",
       "__v": 0,
       "id": "586fd3a12db6c92956a22713"
+    },
+    {
+      "_id": "586fd3a12db6c92956a22714",
+      "anunciante": "Juan Perez",
+      // "area_code": 6030,
+      "area_code": "586fd3a12db6c92956a22713",
+      "descripcion": "Un trabajo muy aburrido...",
+      "monto": 3000,
+      "phone_number": 5539902887,
+      "rel_categoria": [
+        "586d73e98d0b347e058a13b8"
+      ],
+      "rel_estado": [
+        "586d736906e9a48305c34a42"
+      ],
+      "rel_tipotrabajo": [
+        "586d7492506ad98d05a5b0a8"
+      ],
+      "titulo": "Un trabajo X store",
+      "imagen": "https://hispanojobs.stamplayapp.com/upload/cobject/jobs/1483723680680_captura_de_pantalla_2016-12-21_a_la(s)_12.40.17_p.m..png",
+      "appId": "hispanojobs",
+      "cobjectId": "jobs",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-06T17:28:01.327Z",
+      "dt_create": "2017-01-06T17:28:01.327Z",
+      "__v": 0,
+      "id": "586fd3a12db6c92956a22714"
+    }
+    ,
+    {
+      "_id": "586fd3a12db6c92956a22715",
+      "anunciante": "Juan Perez",
+      // "area_code": 6030,
+      "area_code": "586fd3a12db6c92956a22713",
+      "descripcion": "Un trabajo muy aburrido...",
+      "monto": 3000,
+      "phone_number": 5539902887,
+      "rel_categoria": [
+        "586d73e98d0b347e058a13b8"
+      ],
+      "rel_estado": [
+        "586d736906e9a48305c34a42"
+      ],
+      "rel_tipotrabajo": [
+        "586d7492506ad98d05a5b0a8"
+      ],
+      "titulo": "Un trabajo X store",
+      "imagen": "https://hispanojobs.stamplayapp.com/upload/cobject/jobs/1483723680680_captura_de_pantalla_2016-12-21_a_la(s)_12.40.17_p.m..png",
+      "appId": "hispanojobs",
+      "cobjectId": "jobs",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-06T17:28:01.327Z",
+      "dt_create": "2017-01-06T17:28:01.327Z",
+      "__v": 0,
+      "id": "586fd3a12db6c92956a22715"
     }
   ]
 }
@@ -338,13 +499,12 @@ const mutations = {
 const getters = {
   currentJob: state => {
     var url = state.route.params.id // return url
-    console.log('ahi va', state.jobs)
     return state.jobs.filter(job => job.id === url)
   },
-  currentProduct: state => {
-    var url = state.route.params.producto // return url
-    return state.features.filter(feature => feature.mainroute === url)
+  jobCat: (state, idCat) => {
+    return state.categorias.filter(cat => cat.id === idCat)
   },
+
   currentUrl: state => state.route.params.producto
 }
 

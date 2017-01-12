@@ -1,13 +1,14 @@
 <template>
-  <div class="search-wrapper">
+  <div class="search-wrapper padding-l margin-l-bottom">
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <h1>Bolsa de trabajo</h1>
+            <h1 class="display-4">Bolsa de trabajo</h1>
             <p class="lead">
               La mejor manera de encontrar u ofrecer trabajo a la comunidad hispana
             </p>
-            <router-link to="/publicar-anuncio" class="btn btn-info">
+
+            <router-link to="/publicar-anuncio" class="btn btn-outline-info col-6 margin-xs">
               Publicar anuncio
             </router-link>
 
@@ -50,19 +51,23 @@ export default {
     display: block;
     width: 100%;
     min-height: 200px;
-    background: silver;
-}
-// @import '../stylesheets/mixins/_spacing.scss';
+    // background: silver;
+    // opacity: 0.63;
+    background-image: url('https://static.pexels.com/photos/289704/pexels-photo-289704.jpeg');
+    background-size: cover;
+    position: relative;
+    // z-index: -1;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.63;
+      background-image: linear-gradient(-266deg, #3023AE 0%, #53A0FD 47%, #B4EC51 99%);
+      z-index: 0;
+    }
 
-.counter {
-  margin: 100px auto;
-  border-radius: 3px;
-  width: 200px;
-  height: 200px;
-  text-align: center;
-  line-height: 200px;
-  font-size: 5rem;
-  background-color: #f0f0f0;
-  user-select: none;
 }
 </style>
