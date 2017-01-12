@@ -1,20 +1,23 @@
 <template>
   <div class="form---">
+    <pre>
+      form : {{ $v}}
+    </pre>
     <div class="card">
       <div class="card-block">
         <form class="" action="index.html" method="post">
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.rel_categoria.$error }">
-                  <label class="form-control-label"  for="rel_categoria">Categoría del aviso</label>
-                  <select class="form-control" name="rel_categoria" v-model="rel_categoria" @blur="$v.rel_categoria.$touch()">
+                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.rel_categoria.$error }">
+                  <label class="form-control-label"  for="nuevoanuncio.rel_categoria">Categoría del aviso</label>
+                  <select class="form-control" name="nuevoanuncio.rel_categoria" v-model="nuevoanuncio.rel_categoria" @blur="$v.nuevoanuncio.rel_categoria.$touch()">
                     <option disabled> -- select an option -- </option>
                     <option :value=" categoria._id "  v-for="categoria in this.catList">
                       {{ categoria.titulo }}
                     </option>
                   </select>
-                  <span class="form-control-feedback" v-if="!$v.rel_categoria.required">El campo es requerido</span>
+                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.rel_categoria.required">El campo es requerido</span>
                 </div>
 
 
@@ -22,52 +25,59 @@
               </div>
 
               <div class="col-md-6">
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.rel_tipotrabajo.$error }">
-                  <label class="form-control-label"  for="rel_tipotrabajo">Tipo del aviso</label>
-                  <select class="form-control" name="rel_tipotrabajo" v-model="rel_tipotrabajo" @blur="$v.rel_tipotrabajo.$touch()">
+                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.rel_tipotrabajo.$error }">
+                  <label class="form-control-label"  for="nuevoanuncio.rel_tipotrabajo">Tipo del aviso</label>
+                  <select class="form-control" name="nuevoanuncio.rel_tipotrabajo" v-model="nuevoanuncio.rel_tipotrabajo" @blur="$v.nuevoanuncio.rel_tipotrabajo.$touch()">
                     <option disabled> -- select an option -- </option>
                     <option :value=" job._id "  v-for="job in this.jobsList">
                       {{ job.titulo }}
                     </option>
                   </select>
-                  <span class="form-control-feedback" v-if="!$v.rel_tipotrabajo.required">El campo es requerido</span>
+                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.rel_tipotrabajo.required">El campo es requerido</span>
                 </div>
 
               </div>
             </div>
 
-            <div class="form-group" v-bind:class="{ 'has-danger': $v.titulo.$error }">
-              <label class="form-control-label"  for="titulo">Titulo del anuncio</label>
-              <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="titulo" name="titulo" @blur="$v.titulo.$touch()">
-              <span class="form-control-feedback" v-if="!$v.titulo.required">El campo es requerido</span>
-              <span class="form-control-feedback" v-if="!$v.titulo.minLength">Name must be longer than 3 let1ters.</span>
+            <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.titulo.$error }">
+              <label class="form-control-label"  for="nuevoanuncio.titulo">Titulo del anuncio</label>
+              <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.titulo" name="nuevoanuncio.titulo" @blur="$v.nuevoanuncio.titulo.$touch()">
+              <span class="form-control-feedback" v-if="!$v.nuevoanuncio.titulo.required">El campo es requerido</span>
+              <!-- <span class="form-control-feedback" v-if="!$v.nuevoanuncio.titulo.minLength">Name must be longer than 3 let1ters.</span> -->
             </div>
 
             <div class="clearfix"></div>
 
             <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.anunciante.$error }">
-              <label class="form-control-label"  for="anunciante">Nombre del anunciante</label>
-              <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.anunciante" name="anunciante" @blur="$v.nuevoanuncio.anunciante.$touch()">
+              <label class="form-control-label"  for="nuevoanuncio.anunciante">Nombre del anunciante</label>
+              <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.anunciante" name="nuevoanuncio.anunciante" @blur="$v.nuevoanuncio.anunciante.$touch()">
               <span class="form-control-feedback" v-if="!$v.nuevoanuncio.anunciante.required">El campo es requerido</span>
-              <span class="form-control-feedback" v-if="!$v.nuevoanuncio.anunciante.minLength">Name must be longer than 8 let1ters.</span>
+              <!-- <span class="form-control-feedback" v-if="!$v.nuevoanuncio.anunciante.minLength">Name must be longer than 8 let1ters.</span> -->
+            </div>
+
+            <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.email.$error }">
+              <label class="form-control-label"  for="nuevoanuncio.email">Correo electrónico</label>
+              <input type="email" class="form-control" placeholder="5555 5555" v-model="nuevoanuncio.email" name="nuevoanuncio.email" @blur="$v.nuevoanuncio.email.$touch()">
+              <span class="form-control-feedback" v-if="!$v.nuevoanuncio.email.required">El campo es requerido</span>
+              <span class="form-control-feedback" v-if="!$v.nuevoanuncio.email.email">Ingresa un correo electrónico valido</span>
             </div>
 
             <div class="row">
               <div class="col-md-4">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.area_code.$error }">
-                  <label class="form-control-label"  for="area_code">Area code</label>
-                  <input type="text" class="form-control" placeholder="Ej. Juan Perez" v-model="area_code" name="area_code" @blur="$v.area_code.$touch()">
-                  <span class="form-control-feedback" v-if="!$v.area_code.required">El campo es requerido</span>
+                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.area_code.$error }">
+                  <label class="form-control-label"  for="nuevoanuncio.area_code">Area code</label>
+                  <input type="number" class="form-control" placeholder="Ej. Juan Perez" v-model="nuevoanuncio.area_code" name="nuevoanuncio.area_code" @blur="$v.nuevoanuncio.area_code.$touch()">
+                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.area_code.required">El campo es requerido</span>
                 </div>
 
               </div>
               <div class="col-md-8">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.phone_number.$error }">
-                  <label class="form-control-label"  for="phone_number">Teléfono</label>
-                  <input type="text" class="form-control" placeholder="5555 5555" v-model="phone_number" name="phone_number" @blur="$v.phone_number.$touch()">
-                  <span class="form-control-feedback" v-if="!$v.phone_number.required">El campo es requerido</span>
+                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.phone_number.$error }">
+                  <label class="form-control-label"  for="nuevoanuncio.phone_number">Teléfono</label>
+                  <input type="number" class="form-control" placeholder="5555 5555" v-model="nuevoanuncio.phone_number" name="nuevoanuncio.phone_number" @blur="$v.nuevoanuncio.phone_number.$touch()">
+                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.phone_number.required">El campo es requerido</span>
                 </div>
 
               </div>
@@ -75,24 +85,24 @@
             <div class="row">
               <div class="col-md-6">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.rel_estado.$error }">
-                  <label class="form-control-label"  for="rel_estado">Estado</label>
-                  <select class="form-control" name="rel_estado" v-model="rel_estado" @blur="$v.rel_estado.$touch()">
+                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.rel_estado.$error }">
+                  <label class="form-control-label"  for="nuevoanuncio.rel_estado">Estado</label>
+                  <select class="form-control" name="nuevoanuncio.rel_estado" v-model="nuevoanuncio.rel_estado" @blur="$v.nuevoanuncio.rel_estado.$touch()">
                     <option disabled> -- select an option -- </option>
                     <option :value=" state._id "  v-for="state in this.estList">
                       {{ state.codigo }} -  {{ state.nombre }}
                     </option>
                   </select>
-                  <span class="form-control-feedback" v-if="!$v.rel_estado.required">El campo es requerido</span>
+                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.rel_estado.required">El campo es requerido</span>
                 </div>
 
               </div>
               <div class="col-md-6">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.ciudad.$error }">
-                  <label class="form-control-label"  for="ciudad">Ciudad</label>
-                  <input type="text" class="form-control" placeholder="Ej. Houston" v-model="ciudad" name="ciudad" @blur="$v.ciudad.$touch()">
-                  <span class="form-control-feedback" v-if="!$v.ciudad.required">El campo es requerido</span>
+                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.ciudad.$error }">
+                  <label class="form-control-label"  for="nuevoanuncio.ciudad">Ciudad</label>
+                  <input type="text" class="form-control" placeholder="Ej. Houston" v-model="nuevoanuncio.ciudad" name="nuevoanuncio.ciudad" @blur="$v.nuevoanuncio.ciudad.$touch()">
+                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.ciudad.required">El campo es requerido</span>
                 </div>
 
               </div>
@@ -100,35 +110,35 @@
             <div class="row">
               <div class="col-md-6">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.monto.$error }">
-                  <label class="form-control-label"  for="">Monto ofrecido</label>
-                  <input type="text" class="form-control" placeholder="Ej. Houston" v-model="monto" name="monto" @blur="$v.monto.$touch()">
-                  <span class="form-control-feedback" v-if="!$v.monto.required">El campo es requerido</span>
+                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.monto.$error }">
+                  <label class="form-control-label"  for="">Monto ofrecido USD</label>
+                  <input type="number" class="form-control" placeholder="Ej. Houston" v-model="nuevoanuncio.monto" name="monto" @blur="$v.nuevoanuncio.monto.$touch()">
+                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.monto.required">El campo es requerido</span>
                 </div>
 
               </div>
               <div class="col-md-6">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.rel_tipopago.$error }">
-                  <label class="form-control-label"  for="rel_tipopago">Tipo de Pago</label>
-                  <select class="form-control" name="rel_tipopago" v-model="rel_tipopago" @blur="$v.rel_tipopago.$touch()">
+                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.rel_tipopago.$error }">
+                  <label class="form-control-label"  for="nuevoanuncio.rel_tipopago">Tipo de Pago</label>
+                  <select class="form-control" name="nuevoanuncio.rel_tipopago" v-model="nuevoanuncio.rel_tipopago" @blur="$v.nuevoanuncio.rel_tipopago.$touch()">
                     <option disabled> -- select an option -- </option>
                     <option :value=" payform._id "  v-for="payform in this.payList">
                       {{ payform.titulo }}
                     </option>
                   </select>
-                  <span class="form-control-feedback" v-if="!$v.rel_tipopago.required">El campo es requerido</span>
+                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.rel_tipopago.required">El campo es requerido</span>
                 </div>
 
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.descripcion.$error }">
-                  <label class="form-control-label"  for="descripcion">Descripción</label>
-                  <textarea name="descripcion" rows="8" cols="80" placeholder="Descripcion del puesto" class="form-control" v-model="descripcion" @blur="$v.descripcion.$touch()"></textarea>
+                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.descripcion.$error }">
+                  <label class="form-control-label"  for="nuevoanuncio.descripcion">Descripción</label>
+                  <textarea name="descripcion" rows="8" cols="80" placeholder="Descripcion del puesto" class="form-control" v-model="nuevoanuncio.descripcion" @blur="$v.nuevoanuncio.descripcion.$touch()"></textarea>
 
-                  <span class="form-control-feedback" v-if="!$v.descripcion.required">El campo es requerido</span>
+                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.descripcion.required">El campo es requerido</span>
                 </div>
               </div>
             </div>
@@ -139,7 +149,7 @@
               </div>
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-12">
                 <div class="form-group" v-bind:class="{ 'has-danger': $v.terminos.$error }">
                   <div class="checkbox">
@@ -151,14 +161,14 @@
                   <span class="form-control-feedback" v-if="!$v.terminos.required">El campo es requerido</span>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="row">
               <div class="col-md-12 text-right" >
                 <button type="button" name="button" class="btn btn-link">
                   Cancelar
                 </button>
-                <button type="button" name="button" class="btn btn-outline-info" @click="validateForm">
+                <button type="button" :disabled="$v.nuevoanuncio.$invalid"  name="button" class="btn btn-outline-info" @click="validateForm">
                   Publicar anuncio
                 </button>
               </div>
@@ -166,6 +176,7 @@
 
           </div>
         </form>
+
 
       </div>
     </div>
@@ -175,7 +186,7 @@
 <script>
 // import Vue from 'vue'import Vuelidate from 'vuelidate'
 
-import { required, minLength, between } from 'vuelidate/lib/validators'
+import { required, minLength, between, maxLength, alpha, alphaNum, email } from 'vuelidate/lib/validators'
 // Vue.use(Vuelidate)
 
 
@@ -187,70 +198,79 @@ export default {
       estList: null,
       payList: null,
       nuevoanuncio: {
-        anunciante: ''
+        anunciante: '',
+        area_code: '',
+        descripcion: '',
+        monto: '',
+        phone_number: '',
+        rel_categoria: [],
+        rel_estado: [],
+        rel_tipotrabajo: [],
+        rel_tipopago: [],
+        titulo: '',
+        email: '',
+        ciudad: '',
+        imagen: ''
       },
-      anunciante: '',
-      area_code: '',
-      descripcion: '',
-      monto: '',
-      phone_number: '',
-      rel_categoria: [],
-      rel_estado: [],
-      rel_tipotrabajo: [],
-      rel_tipopago: [],
-      titulo: '',
-      ciudad: '',
-      imagen: '',
       terminos: ''
 		}
 	},
   validations: {
     nuevoanuncio: {
       anunciante: {
+        required
+        // ,
+        // minLength: minLength(5)
+      },
+      area_code: {
+        required
+        // ,
+        // between: between(0,99999)
+      },
+      descripcion: {
+        required
+      },
+      monto: {
+        required
+      },
+      phone_number: {
+        required
+      },
+      rel_categoria: {
+        required
+      },
+      rel_estado: {
+        required
+      },
+      rel_tipotrabajo: {
+        required
+      },
+      rel_tipopago: {
+        required
+      },
+      titulo: {
+        required
+        // ,
+        // minLength: minLength(4)
+      },
+      ciudad: {
+        required
+      },
+      email: {
         required,
-        minLength: minLength(8)
+        email
+      },
+      imagen: {
+        required
       }
     },
-    anunciante: {
-      required
-    },
-    area_code: {
-      required
-    },
-    descripcion: {
-      required
-    },
-    monto: {
-      required
-    },
-    phone_number: {
-      required
-    },
-    rel_categoria: {
-      required
-    },
-    rel_estado: {
-      required
-    },
-    rel_tipotrabajo: {
-      required
-    },
-    rel_tipopago: {
-      required
-    },
-    titulo: {
-      required,
-      minLength: minLength(4)
-    },
-    ciudad: {
-      required
-    },
-    imagen: {
-      required
-    },
-    terminos: {
-      required
-    }
+
+    // terminos: {
+    //   required
+    // }
+  },
+  watch: {
+    // 'nuevoanuncio.rel_categoria': 'viewFormObject'
   },
   created () {
     this.getCategorias()
@@ -259,11 +279,18 @@ export default {
     this.getPayForm()
   },
   methods: {
+    viewFormObject () {
+      console.log('pelame')
+      console.log('el form -->', this.nuevoanuncio.rel_categoria)
+    },
     resetForm () {
       this.$v.$reset()
     },
     validateForm () {
       this.$v.$touch()
+
+      console.log('es valido ->', this.$v)
+      // this.publishForm();
     },
     getCategorias () {
       // Cambiar para
@@ -289,7 +316,19 @@ export default {
         this.payList = this.$store.state.tipopago
       }
     },
-    serializeForm () {
+    publishForm () {
+      // var query = JSON.stringify(this.nuevoanuncio)
+      var query = this.nuevoanuncio
+
+      console.log('el json para la pub ->', query)
+
+      Stamplay.Object('jobs').save(query).then(function(res) {
+        console.log('se publico ->', res)
+
+      }, function(err) {
+        console.log('st error ->', err)
+
+      })
 
     }
   },
