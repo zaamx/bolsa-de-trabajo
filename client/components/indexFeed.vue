@@ -13,19 +13,18 @@
           <div class="col-12 col-sm-6 col-md-4  col-lg-3" v-for="job in this.jobs">
             <div class="card margin-s-top">
               <router-link :to=" '/trabajos/' + job.id">
-                <img class="card-img-top img-fluid"  src="http://placehold.it/400x400" alt="Card image cap">
+                <img  :src="job.imagen" class="img-fluid img-thumbnail" alt="" v-if="job.imagen">
+                <img src="http://placehold.it/400x400" alt="" class="card-img-top img-fluid" v-else>
               </router-link>
 
               <div class="card-block">
                 <h4 class="card-title">{{ job.titulo }}</h4>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
-              <div class="card-footer">
-                <router-link :to=" '/trabajos/' + job.id" class="btn btn-info">
+                <router-link :to=" '/trabajos/' + job.id" class="btn btn-outline-info">
                   Ver anuncio
                 </router-link>
-                <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
               </div>
+
             </div>
           </div>
         </div>
@@ -54,7 +53,7 @@ export default {
     // fetch the data when the view is created and the data is
     // already being observed
     this.getJobs()
-    // this.getStamplay()
+    this.getStamplay()
   },
   methods: {
     getJobs () {
@@ -77,6 +76,18 @@ export default {
       //   this.error = err.toString()
       // });
 
+    }
+    ,
+    getStamplay() {
+      // console.log('stamplay ->', Stamplay)
+      stamplay.Object('jobs').get({})
+     .then(function(res) {
+       // success
+       console.log('st get', res)
+     }, function(err) {
+       // error
+       console.log('st error', err)
+     })
     }
   }
 

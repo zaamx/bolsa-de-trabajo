@@ -3,21 +3,19 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <h1 class="display-4">Bolsa de trabajo</h1>
-            <p class="lead">
+            <h1 class="display-4 text-white">Bolsa de trabajo</h1>
+            <p class="lead text-white">
               La mejor manera de encontrar u ofrecer trabajo a la comunidad hispana
             </p>
 
-            <router-link to="/publicar-anuncio" class="btn btn-outline-info col-6 margin-xs">
+            <router-link to="/publicar-anuncio" class="btn btn-info col-6 margin-xs">
               Publicar anuncio
-            </router-link>
-
-            <router-link to="/trabajos" class="btn btn-info">
-              ver trabajos
             </router-link>
           </div>
           <div class="col-md-4">
-              video
+            <div class="embed-responsive embed-responsive-16by9">
+              <!-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UxxvsZ6EDPo" allowfullscreen></iframe> -->
+            </div>
           </div>
         </div>
         <div class="row">

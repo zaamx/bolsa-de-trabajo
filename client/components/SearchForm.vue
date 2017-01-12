@@ -1,6 +1,5 @@
 <template>
-  <div class="col-md-12">
-    <hr>
+  <div class="col-md-12 margin-l-top">
     <!-- <div class="feed-jobs" v-if="comps"> -->
     <div class="search-box padding-xs-bottom padding-xs-left padding-xs-right" >
 
@@ -11,7 +10,7 @@
 
               <div class="col-12 col-sm-12 col-lg-4">
                 <div class="form-group">
-                  <label for="job-input">Palabra claveSS  das</label>
+                  <label for="job-input">Palabra clave</label>
                   <input type="text" name="job-input" value="" class="form-control" placeholder="Jardinero, ingeniero, etc." v-model="titulo">
                   <!-- {{  selectedEstado }}
                   {{  selectedTipo }} -->

@@ -1,13 +1,16 @@
 <template>
   <div class="page single-job">
-    <div class="job-image-header" style="background-image: url('https://static.pexels.com/photos/289704/pexels-photo-289704.jpeg');">
-
-
+    <!-- <div class="job-image-header a" :style="{backgroundImage: 'red', 'background-image': 'url(' + actual.imagen + ')'}" v-if="actual.imagen" :title="actual.imagen">
+        &nbsp;
+    </div> -->
+    <div class="job-image-header" style="background-image: url('https://static.pexels.com/photos/289704/pexels-photo-289704.jpeg');" >
+        &nbsp;
     </div>
 
-    <div class="container">
+
+    <div class="container" id="contenido-single">
       <div class="row">
-        <div class="col">
+        <div class="col-md-10 offset-md-1">
           <div class="card" >
             <div class="card-block">
               <div class="row">
@@ -39,49 +42,62 @@
                   </p>
                 </div>
                 <div class="col">
-                  <img src="https://static.pexels.com/photos/289704/pexels-photo-289704.jpeg"  class="img-fluid" alt="">
+                  <router-link to="/" class="btn btn-outline-info col margin-s-bottom">
+                    Ver más trabajos
+
+                  </router-link>
+                  <div class="" >
+                    <img  :src="actual.imagen" class="img-fluid img-thumbnail" alt="" v-if="actual.imagen">
+                    <img src="https://static.pexels.com/photos/289704/pexels-photo-289704.jpeg" alt="" class="img-thumbnail img-fluid" v-else>
+                  </div>
                   <div class="margin-s-top">
                     <b>Comparte este anuncio</b>
                   </div>
 
                   <div class="row text-center margin-s-top">
-                    <div class="col">
-                      <a href="">
-                        F
+                    <div class="col-3">
+                      <a href="" class="btn btn-outline-info">
+                        <i class="fa fa-facebook-square"></i>
                       </a>
                     </div>
-                    <div class="col">
-                      <a href="">
-                        F
+                    <div class="col-3">
+                      <a href="" class="btn btn-outline-info">
+                        <i class="fa fa-twitter"></i>
                       </a>
                     </div>
-                    <div class="col">
-                      <a href="">
-                        F
+                    <div class="col-3">
+                      <a href="" class="btn btn-outline-info">
+                        <i class="fa fa-facebook-square"></i>
                       </a>
                     </div>
-                    <div class="col">
-                      <a href="">
-                        F
-                      </a>
-                    </div>
-                    <div class="col">
-                      <a href="">
-                        F
+                    <div class="col-3">
+                      <a href="" class="btn btn-outline-info">
+                        <i class="fa fa-facebook-square"></i>
                       </a>
                     </div>
                   </div>
-                  <router-link to="/" class="btn btn-outline-info col margin-s-top">
-                    Regresar a la bolsa de trabajo
-                  </router-link>
-                  <div class="contact-data">
-                    <dl>
-                      <dt>Correo electrónico</dt>
-                      <dd>usuario@usuario.com</dd>
-                      <dt>Teléfono</dt>
-                      <dd>{{ actual.area_code }} -  {{ actual.phone_number }}</dd>
-                    </dl>
-                  </div>
+                  <button class="btn btn-info col margin-s-top" @click="datosContacto = !datosContacto">
+                    <span  v-if="datosContacto">
+                      Ocultar contacto
+                    </span>
+                    <span v-else>
+                      Ver contacto
+                    </span>
+                  </button>
+                  <transition name="fade">
+                    <div class="card margin-s-top" v-if="datosContacto">
+                      <div class="card-block">
+                        <dl>
+                          <dt>Correo electrónico</dt>
+                          <dd>usuario@usuario.com</dd>
+                          <dt>Teléfono</dt>
+                          <dd>{{ actual.area_code }} -  {{ actual.phone_number }}</dd>
+                        </dl>
+                      </div>
+
+                    </div>
+                  </transition>
+
                 </div>
               </div>
 
@@ -103,7 +119,8 @@ export default {
 			contenido: 'Hello',
       post: [],
       datas: null,
-      actual: null
+      actual: null,
+      datosContacto: false
 		}
 	},
   computed: {
@@ -118,6 +135,9 @@ export default {
     },
     getCurrentPay () {
       return this.getCurrentItem ('rel_tipopago','tipopago','titulo')
+    },
+    getImageUrl () {
+      return actual.imagen
     }
   },
   created () {
@@ -177,4 +197,8 @@ export default {
 .job-image-header {
   min-height: 300px;
 }
+#contenido-single {
+  margin-top:-200px;
+}
+
 </style>
