@@ -67,12 +67,12 @@
                     </div>
                     <div class="col-3">
                       <a href="" class="btn btn-outline-info">
-                        <i class="fa fa-facebook-square"></i>
+                        <i class="fa fa-youtube"></i>
                       </a>
                     </div>
                     <div class="col-3">
                       <a href="" class="btn btn-outline-info">
-                        <i class="fa fa-facebook-square"></i>
+                        <i class="fa fa-instagram"></i>
                       </a>
                     </div>
                   </div>

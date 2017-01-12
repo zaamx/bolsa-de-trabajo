@@ -8,7 +8,9 @@ const state = {
   search: {
     selectedEstado: null,
     selectedTipo: null,
-    selectedCategoria : null
+    selectedCategoria : null,
+    searchParams: {},
+    searchResults: []
   },
   nuevoanuncio: {
     anunciante: null,
@@ -23,6 +25,7 @@ const state = {
     titulo: null,
     imagen: null
   },
+
   categorias: [
     {
       "_id": "586d73e98d0b347e058a13b8",
@@ -488,11 +491,27 @@ const mutations = {
   ACTUALIZAESTADO (state, message) {
     state.search.selectedEstado = message
   },
+  DELETEESTADO (state) {
+    state.search.selectedEstado = null
+  },
   ACTUALIZATIPO (state, message) {
     state.search.selectedTipo = message
   },
+  DELETETIPO (state) {
+    state.search.selectedTipo = null
+  },
   ACTUALIZACATEGORIA (state, message) {
     state.search.selectedCategoria = message
+  },
+  DELETECATEGORIA (state) {
+    state.search.selectedCategoria = null
+  },
+  SETPARAMETROSBUSQUEDA (state, params) {
+    state.search.searchParams = params
+  },
+  DELETEPARAMETROSBUSQUEDA (state) {
+    state.search.searchParams = {}
+    console.log('ya se vacio', state.search.searchParams)
   }
 }
 
@@ -509,6 +528,12 @@ const getters = {
 }
 
 const actions = {
+  clearSearch({commit}) {
+    commit('DELETEPARAMETROSBUSQUEDA')
+    commit('DELETEESTADO')
+    commit('DELETETIPO')
+    commit('DELETECATEGORIA')
+  },
   incrementAsync({commit}) {
     setTimeout(() => {
       commit('INCREMENT')

@@ -57,15 +57,10 @@ export default {
   data() {
 		return{
       titulo: null,
-      where: null,
-      searchResults: []
+      where: null
 		}
 	},
   computed: {
-    // count() {
-    //   return this.$store.state.count
-    // }
-
     selectedCategoria () {
       return this.$store.state.search.selectedCategoria
     },
@@ -91,7 +86,6 @@ export default {
       }
 
       if (this.selectedCategoria) {
-        console.log("this.selectedCategoria",this.where.$or);
         this.where.$or.push({rel_categoria: {"$in": [this.selectedCategoria]}})
       }
       if (this.selectedEstado) {
@@ -103,37 +97,16 @@ export default {
 
       this.where = JSON.stringify(this.where)
 
-      console.log('las json', this.where)
+      this.$store.commit('SETPARAMETROSBUSQUEDA', this.where)
 
-      // GET /someUrl
-      this.$http.get('jobs',{ params: {where: this.where}}).then((response) => {
-        console.log('la respuesta', response)
-        this.searchResults = response.body.data;
-        console.log();
-
-        // this.loading = false
-        console.log('chambas', this.searchResults)
-      }, (response) => {
-        // error callback
-        console.log('el error -->', err.toString())
-        this.error = err.toString()
-      });
-
-
-
-
-
-      // "rel_categoria" : {
-      //         "$in" : "586d736906e9a48305c34a42"
-      //       },
-      //       "rel_estado" : {
-      //         "$in" : "586d736906e9a48305c34a42"
-      //       },
-      //       "rel_tipotrabajo" : {
-      //         "$in" : "586d736906e9a48305c34a42"
-      //       },
-
+      this.$router.push({path: 'buscar'})
+    },
+    clean () {
+      this.where = { $or : [] };
     }
+  },
+  beforeDestroy() {
+    this.clean()
   },
   components: {
     selectEstados,

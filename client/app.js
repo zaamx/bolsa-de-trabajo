@@ -14,6 +14,9 @@ Vue.use(VueResource)
 Vue.use(Vuelidate)
 Vue.use(BootstrapVue)
 
+Stamplay.init("hispanojobs");
+console.log(Stamplay);
+
 Vue.http.options.root = 'http://hispanojobs.stamplayapp.com/api/cobject/v1';
 // Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
 
