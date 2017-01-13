@@ -1,23 +1,25 @@
 <template>
   <div class="form---">
-    <pre>
-      form : {{ $v}}
-    </pre>
     <div class="card">
       <div class="card-block">
-        <form class="" action="index.html" method="post">
+        <form class="" @submit.prevent="validateForm">
+
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.rel_categoria.$error }">
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_categoria')}" >
                   <label class="form-control-label"  for="nuevoanuncio.rel_categoria">Categoría del aviso</label>
-                  <select class="form-control" name="nuevoanuncio.rel_categoria" v-model="nuevoanuncio.rel_categoria" @blur="$v.nuevoanuncio.rel_categoria.$touch()">
+                  <select class="form-control" name="nuevoanuncio.rel_categoria" v-model="nuevoanuncio.rel_categoria"  v-validate data-vv-rules="required" data-vv-as="Categoria">
                     <option disabled> -- select an option -- </option>
                     <option :value=" categoria._id "  v-for="categoria in this.catList">
                       {{ categoria.titulo }}
                     </option>
                   </select>
-                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.rel_categoria.required">El campo es requerido</span>
+                  <span v-show="errors.has('nuevoanuncio.rel_categoria')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.rel_categoria')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
                 </div>
 
 
@@ -25,59 +27,80 @@
               </div>
 
               <div class="col-md-6">
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.rel_tipotrabajo.$error }">
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_tipotrabajo')}" >
                   <label class="form-control-label"  for="nuevoanuncio.rel_tipotrabajo">Tipo del aviso</label>
-                  <select class="form-control" name="nuevoanuncio.rel_tipotrabajo" v-model="nuevoanuncio.rel_tipotrabajo" @blur="$v.nuevoanuncio.rel_tipotrabajo.$touch()">
+                  <select class="form-control" name="nuevoanuncio.rel_tipotrabajo" v-model="nuevoanuncio.rel_tipotrabajo"  v-validate data-vv-rules="required" data-vv-as="Tipo de trabajo">
                     <option disabled> -- select an option -- </option>
                     <option :value=" job._id "  v-for="job in this.jobsList">
                       {{ job.titulo }}
                     </option>
                   </select>
-                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.rel_tipotrabajo.required">El campo es requerido</span>
+                  <span v-show="errors.has('nuevoanuncio.rel_tipotrabajo')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.rel_tipotrabajo')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
                 </div>
 
               </div>
             </div>
 
-            <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.titulo.$error }">
+            <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.titulo')}" >
               <label class="form-control-label"  for="nuevoanuncio.titulo">Titulo del anuncio</label>
-              <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.titulo" name="nuevoanuncio.titulo" @blur="$v.nuevoanuncio.titulo.$touch()">
-              <span class="form-control-feedback" v-if="!$v.nuevoanuncio.titulo.required">El campo es requerido</span>
-              <!-- <span class="form-control-feedback" v-if="!$v.nuevoanuncio.titulo.minLength">Name must be longer than 3 let1ters.</span> -->
+              <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.titulo" name="nuevoanuncio.titulo"  v-validate data-vv-rules="required" data-vv-as="Titulo">
+              <span v-show="errors.has('nuevoanuncio.titulo')" >
+                <span v-for="error in errors.collect('nuevoanuncio.titulo')" class="form-control-feedback">
+                  {{ error }}
+                </span>
+              </span>
             </div>
 
             <div class="clearfix"></div>
 
-            <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.anunciante.$error }">
+            <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.anunciante')}" >
               <label class="form-control-label"  for="nuevoanuncio.anunciante">Nombre del anunciante</label>
-              <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.anunciante" name="nuevoanuncio.anunciante" @blur="$v.nuevoanuncio.anunciante.$touch()">
-              <span class="form-control-feedback" v-if="!$v.nuevoanuncio.anunciante.required">El campo es requerido</span>
-              <!-- <span class="form-control-feedback" v-if="!$v.nuevoanuncio.anunciante.minLength">Name must be longer than 8 let1ters.</span> -->
+              <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.anunciante" name="nuevoanuncio.anunciante"  v-validate data-vv-rules="required" data-vv-as="Nombre">
+              <span v-show="errors.has('nuevoanuncio.anunciante')" >
+                <span v-for="error in errors.collect('nuevoanuncio.anunciante')" class="form-control-feedback">
+                  {{ error }}
+                </span>
+              </span>
             </div>
 
-            <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.email.$error }">
+            <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.email')}" >
               <label class="form-control-label"  for="nuevoanuncio.email">Correo electrónico</label>
-              <input type="email" class="form-control" placeholder="5555 5555" v-model="nuevoanuncio.email" name="nuevoanuncio.email" @blur="$v.nuevoanuncio.email.$touch()">
-              <span class="form-control-feedback" v-if="!$v.nuevoanuncio.email.required">El campo es requerido</span>
-              <span class="form-control-feedback" v-if="!$v.nuevoanuncio.email.email">Ingresa un correo electrónico valido</span>
+              <input type="email" class="form-control" placeholder="5555 5555" v-model="nuevoanuncio.email" name="nuevoanuncio.email"  v-validate data-vv-rules="required|email" data-vv-as="Correo electrónico">
+              <span v-show="errors.has('nuevoanuncio.email')" >
+                <span v-for="error in errors.collect('nuevoanuncio.email')" class="form-control-feedback">
+                  {{ error }}
+                </span>
+              </span>
             </div>
 
             <div class="row">
               <div class="col-md-4">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.area_code.$error }">
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.area_code')}" >
                   <label class="form-control-label"  for="nuevoanuncio.area_code">Area code</label>
-                  <input type="number" class="form-control" placeholder="Ej. Juan Perez" v-model="nuevoanuncio.area_code" name="nuevoanuncio.area_code" @blur="$v.nuevoanuncio.area_code.$touch()">
-                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.area_code.required">El campo es requerido</span>
+                  <input type="number" class="form-control" placeholder="Ej. Juan Perez" v-model="nuevoanuncio.area_code" name="nuevoanuncio.area_code"  v-validate data-vv-rules="required|numeric" data-vv-as="Area Code">
+                  <span v-show="errors.has('nuevoanuncio.area_code')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.area_code')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
                 </div>
 
               </div>
               <div class="col-md-8">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.phone_number.$error }">
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.phone_number')}" >
                   <label class="form-control-label"  for="nuevoanuncio.phone_number">Teléfono</label>
-                  <input type="number" class="form-control" placeholder="5555 5555" v-model="nuevoanuncio.phone_number" name="nuevoanuncio.phone_number" @blur="$v.nuevoanuncio.phone_number.$touch()">
-                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.phone_number.required">El campo es requerido</span>
+                  <input type="number" class="form-control" placeholder="5555 5555" v-model="nuevoanuncio.phone_number" name="nuevoanuncio.phone_number"  v-validate data-vv-rules="required|numeric" data-vv-as="Telefóno">
+                  <span v-show="errors.has('nuevoanuncio.phone_number')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.phone_number')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
                 </div>
 
               </div>
@@ -85,24 +108,32 @@
             <div class="row">
               <div class="col-md-6">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.rel_estado.$error }">
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_estado')}" >
                   <label class="form-control-label"  for="nuevoanuncio.rel_estado">Estado</label>
-                  <select class="form-control" name="nuevoanuncio.rel_estado" v-model="nuevoanuncio.rel_estado" @blur="$v.nuevoanuncio.rel_estado.$touch()">
+                  <select class="form-control" name="nuevoanuncio.rel_estado" v-model="nuevoanuncio.rel_estado"  v-validate data-vv-rules="required" data-vv-as="Estado">
                     <option disabled> -- select an option -- </option>
                     <option :value=" state._id "  v-for="state in this.estList">
                       {{ state.codigo }} -  {{ state.nombre }}
                     </option>
                   </select>
-                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.rel_estado.required">El campo es requerido</span>
+                  <span v-show="errors.has('nuevoanuncio.rel_estado')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.rel_estado')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
                 </div>
 
               </div>
               <div class="col-md-6">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.ciudad.$error }">
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.ciudad')}" >
                   <label class="form-control-label"  for="nuevoanuncio.ciudad">Ciudad</label>
-                  <input type="text" class="form-control" placeholder="Ej. Houston" v-model="nuevoanuncio.ciudad" name="nuevoanuncio.ciudad" @blur="$v.nuevoanuncio.ciudad.$touch()">
-                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.ciudad.required">El campo es requerido</span>
+                  <input type="text" class="form-control" placeholder="Ej. Houston" v-model="nuevoanuncio.ciudad" name="nuevoanuncio.ciudad"  v-validate data-vv-rules="required" data-vv-as="Ciudad">
+                  <span v-show="errors.has('nuevoanuncio.ciudad')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.ciudad')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
                 </div>
 
               </div>
@@ -110,35 +141,47 @@
             <div class="row">
               <div class="col-md-6">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.monto.$error }">
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.monto')}" >
                   <label class="form-control-label"  for="">Monto ofrecido USD</label>
-                  <input type="number" class="form-control" placeholder="Ej. Houston" v-model="nuevoanuncio.monto" name="monto" @blur="$v.nuevoanuncio.monto.$touch()">
-                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.monto.required">El campo es requerido</span>
+                  <input type="number" class="form-control" placeholder="Ej. Houston" v-model="nuevoanuncio.monto" name="nuevoanuncio.monto"  v-validate data-vv-rules="required|numeric" data-vv-as="Monto">
+                  <span v-show="errors.has('nuevoanuncio.monto')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.monto')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
                 </div>
 
               </div>
               <div class="col-md-6">
 
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.rel_tipopago.$error }">
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_tipopago')}" >
                   <label class="form-control-label"  for="nuevoanuncio.rel_tipopago">Tipo de Pago</label>
-                  <select class="form-control" name="nuevoanuncio.rel_tipopago" v-model="nuevoanuncio.rel_tipopago" @blur="$v.nuevoanuncio.rel_tipopago.$touch()">
+                  <select class="form-control" name="nuevoanuncio.rel_tipopago" v-model="nuevoanuncio.rel_tipopago"  v-validate data-vv-rules="required" data-vv-as="Tipo de pago">
                     <option disabled> -- select an option -- </option>
                     <option :value=" payform._id "  v-for="payform in this.payList">
                       {{ payform.titulo }}
                     </option>
                   </select>
-                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.rel_tipopago.required">El campo es requerido</span>
+                  <span v-show="errors.has('nuevoanuncio.rel_tipopago')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.rel_tipopago')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
                 </div>
 
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.nuevoanuncio.descripcion.$error }">
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.descripcion')}" >
                   <label class="form-control-label"  for="nuevoanuncio.descripcion">Descripción</label>
-                  <textarea name="descripcion" rows="8" cols="80" placeholder="Descripcion del puesto" class="form-control" v-model="nuevoanuncio.descripcion" @blur="$v.nuevoanuncio.descripcion.$touch()"></textarea>
-
-                  <span class="form-control-feedback" v-if="!$v.nuevoanuncio.descripcion.required">El campo es requerido</span>
+                  <textarea name="nuevoanuncio.descripcion" rows="8" cols="80" placeholder="Descripcion del puesto" class="form-control" v-model="nuevoanuncio.descripcion"  v-validate data-vv-rules="required" data-vv-as="Descripción">
+                  </textarea>
+                    <span v-show="errors.has('nuevoanuncio.descripcion')" >
+                      <span v-for="error in errors.collect('nuevoanuncio.descripcion')" class="form-control-feedback">
+                        {{ error }}
+                      </span>
+                    </span>
                 </div>
               </div>
             </div>
@@ -149,26 +192,31 @@
               </div>
             </div>
 
-            <!-- <div class="row">
+            <div class="row">
               <div class="col-md-12">
-                <div class="form-group" v-bind:class="{ 'has-danger': $v.terminos.$error }">
+                <div :class="{'form-group': true, 'has-danger': errors.has('terminos')}" >
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="" v-model="terminos" @blur="$v.terminos.$touch()">
+                      <input type="checkbox" name="terminos" v-model="terminos"  v-validate data-vv-rules="required" data-vv-as="Terminos y condiciones">
                       Acepto los <a href="">Términos y condiciones</a> y <a href="">Política de privacidad</a>
                     </label>
                   </div>
-                  <span class="form-control-feedback" v-if="!$v.terminos.required">El campo es requerido</span>
+                  <span v-show="errors.has('terminos')" >
+                    <span v-for="error in errors.collect('terminos')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
+
                 </div>
               </div>
-            </div> -->
+            </div>
 
             <div class="row">
               <div class="col-md-12 text-right" >
                 <button type="button" name="button" class="btn btn-link">
                   Cancelar
                 </button>
-                <button type="button" :disabled="$v.nuevoanuncio.$invalid"  name="button" class="btn btn-outline-info" @click="validateForm">
+                <button type="submit"   name="button" class="btn btn-outline-info" >
                   Publicar anuncio
                 </button>
               </div>
@@ -184,10 +232,6 @@
 </template>
 
 <script>
-// import Vue from 'vue'import Vuelidate from 'vuelidate'
-
-import { required, minLength, between, maxLength, alpha, alphaNum, email } from 'vuelidate/lib/validators'
-// Vue.use(Vuelidate)
 
 
 export default {
@@ -215,60 +259,6 @@ export default {
       terminos: ''
 		}
 	},
-  validations: {
-    nuevoanuncio: {
-      anunciante: {
-        required
-        // ,
-        // minLength: minLength(5)
-      },
-      area_code: {
-        required
-        // ,
-        // between: between(0,99999)
-      },
-      descripcion: {
-        required
-      },
-      monto: {
-        required
-      },
-      phone_number: {
-        required
-      },
-      rel_categoria: {
-        required
-      },
-      rel_estado: {
-        required
-      },
-      rel_tipotrabajo: {
-        required
-      },
-      rel_tipopago: {
-        required
-      },
-      titulo: {
-        required
-        // ,
-        // minLength: minLength(4)
-      },
-      ciudad: {
-        required
-      },
-      email: {
-        required,
-        email
-      },
-      imagen: {
-        required
-      }
-    },
-
-    // terminos: {
-    //   required
-    // }
-  },
   watch: {
     // 'nuevoanuncio.rel_categoria': 'viewFormObject'
   },
@@ -284,13 +274,18 @@ export default {
       console.log('el form -->', this.nuevoanuncio.rel_categoria)
     },
     resetForm () {
-      this.$v.$reset()
+
     },
     validateForm () {
-      this.$v.$touch()
-
-      console.log('es valido ->', this.$v)
-      // this.publishForm();
+      console.log('tratando de escapar eh')
+      // Validate All returns a promise and provides the validation result.
+      this.$validator.validateAll().then(success => {
+        if (! success) {
+          // handle error
+          return;
+        }
+        this.publishForm()
+      });
     },
     getCategorias () {
       // Cambiar para

@@ -4,15 +4,18 @@ import App from './components/App'
 import router from './router'
 import store from './store'
 import VueResource from 'vue-resource'
-import Vuelidate from 'vuelidate'
 import BootstrapVue from 'bootstrap-vue'
+import VeeValidate from 'vee-validate';
 
+Vue.config.devtools = true
 
 sync(store, router)
-Vue.config.devtools = true
+
 Vue.use(VueResource)
-Vue.use(Vuelidate)
 Vue.use(BootstrapVue)
+Vue.use(VeeValidate, {
+  locale: 'es'
+});
 
 Stamplay.init("hispanojobs");
 console.log(Stamplay);
