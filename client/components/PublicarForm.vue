@@ -225,6 +225,7 @@
           </div>
         </form>
 
+          <file-upload title="Add upload files"></file-upload>
 
       </div>
     </div>
@@ -232,7 +233,7 @@
 </template>
 
 <script>
-
+import FileUpload from 'vue-upload-component'
 
 export default {
   data() {
@@ -328,6 +329,7 @@ export default {
     }
   },
   components: {
+    FileUpload:FileUpload,
   }
 }
 </script>
