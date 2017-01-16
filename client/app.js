@@ -5,7 +5,7 @@ import router from './router'
 import store from './store'
 import VueResource from 'vue-resource'
 import BootstrapVue from 'bootstrap-vue'
-import VeeValidate from 'vee-validate';
+import VeeValidate from 'vee-validate'
 
 Vue.config.devtools = true
 

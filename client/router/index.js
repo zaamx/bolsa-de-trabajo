@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home'
 import PublicarAnuncio from '../views/PublicarAnuncio'
+import Upload from '../views/Upload'
 import Trabajos from '../views/Trabajos'
 import Trabajo from '../views/Trabajo'
 import Buscar from '../views/Buscar'
@@ -20,6 +21,11 @@ export default new Router({
       path: '/publicar-anuncio',
       component: PublicarAnuncio,
       name: 'PublicarAnuncio'
+    },
+    {
+      path: '/upload',
+      component: Upload,
+      name: 'Upload'
     },
     {
       path: '/buscar',

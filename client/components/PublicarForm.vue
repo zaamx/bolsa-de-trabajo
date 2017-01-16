@@ -189,6 +189,24 @@
             <div class="row">
               <div class="col-md-12">
                 <label class="form-control-label"  for="">Imagen</label>
+                <div class="upload-compita card card-outline-primary margin-xl-bottom">
+                  :newUrl="urlSuccessPost"
+                  :url="urlSuccessPost"
+                  <DropVue
+                    id="imagen"
+
+                    ref="imagen"
+
+
+                    :useCustomDropzoneOptions="true"
+                    :dropzoneOptions="opcionesx"
+                    v-on:vdropzone-fileAdded="fileAddedImage"
+                    v-on:vdropzone-success="successImage"
+                    v-on:vdropzone-error="errorImage"
+                    v-on:vdropzone-removedFile="removedFileImage"
+                    v-on:vdropzone-sending="sendingImage"
+                    ></DropVue>
+                </div>
               </div>
             </div>
 
@@ -225,7 +243,6 @@
           </div>
         </form>
 
-          <file-upload title="Add upload files"></file-upload>
 
       </div>
     </div>
@@ -233,7 +250,7 @@
 </template>
 
 <script>
-import FileUpload from 'vue-upload-component'
+import DropVue from 'components/DropVue'
 
 export default {
   data() {
@@ -257,9 +274,46 @@ export default {
         ciudad: '',
         imagen: ''
       },
-      terminos: ''
+      terminos: '',
+      urlSuccessPost: '',
+      opcionesx: {
+        // init: function() {
+        //   var vm = this
+        //   this.on('processing', function(file) {
+        //     console.log('esto llego', vm.urlSuccessPost)
+        //     var url =  'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.urlSuccessPost;
+        //     console.log('opciones del drop', this)
+        //     this.url = url
+        //     console.log('la url de envio', this.url)
+        //   });
+        // },
+        method: "PUT",
+        url: function () {
+          return  'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + this.urlSuccessPost
+        },
+        // url: 'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs',
+        paramName: "imagen", // The name that will be used to transfer the file
+        maxFilesize: 1,
+        uploadMultiple: false,
+        acceptedFiles: 'image/*',
+        maxFiles: 1,
+        // thumbnailWidth:300,
+        addRemoveLinks:true,
+        headers: {
+          'Cache-Control': null,
+          'X-Requested-With': null
+        },
+        autoProcessQueue: false,
+        dictDefaultMessage: 'sube cosas rata'
+      }
 		}
 	},
+  computed: {
+
+  },
+  mounted () {
+
+  },
   watch: {
     // 'nuevoanuncio.rel_categoria': 'viewFormObject'
   },
@@ -314,22 +368,53 @@ export default {
     },
     publishForm () {
       // var query = JSON.stringify(this.nuevoanuncio)
-      var query = this.nuevoanuncio
-
-      console.log('el json para la pub ->', query)
+      var self = this
+      var query = self.nuevoanuncio
 
       Stamplay.Object('jobs').save(query).then(function(res) {
-        console.log('se publico ->', res)
+
+        // console.log('se publico ->', res)
+        self.urlSuccessPost = res._id
+        console.log('el id de success' , self.urlSuccessPost)
+        setTimeout(() => {
+          self.sendImage()
+        }, 200)
 
       }, function(err) {
         console.log('st error ->', err)
 
       })
 
+
+
+
+    },
+    // Metodos para subir la imagen
+    fileAddedImage (file) {
+      console.log('agregado', file)
+    },
+    successImage (file, response) {
+      console.log('que se envio', file)
+      console.log('respuesta', response)
+    },
+    errorImage (file) {
+      console.log(file)
+    },
+    removedFileImage (file, error, xhr) {
+      console.log('remover ',file)
+    },
+    sendingImage (file, xhr, formData) {
+      console.log('xhr -->', xhr)
+      console.log('data enviando -->', formData)
+    },
+    sendImage() {
+      console.log('se va en el succes', this.urlSuccessPost)
+      this.$refs.imagen.processQueue()
+      console.log('click en el boton')
     }
   },
   components: {
-    FileUpload:FileUpload,
+    DropVue
   }
 }
 </script>
