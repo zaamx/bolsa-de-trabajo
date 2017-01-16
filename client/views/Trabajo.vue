@@ -8,11 +8,11 @@
     </div>
 
 
-    <div class="container" id="contenido-single">
+    <div class="container" id="contenido-single" v-if="actual">
       <div class="row">
         <div class="col-md-10 offset-md-1">
           <div class="card" >
-            <div class="card-block">
+            <div class="card-block" >
               <div class="row">
                 <div class="col-8">
                   <h1 class="display-4 margin-l-bottom">{{ actual.titulo }}</h1>
@@ -89,7 +89,7 @@
                       <div class="card-block">
                         <dl>
                           <dt>Correo electrónico</dt>
-                          <dd>usuario@usuario.com</dd>
+                          <dd>{{ actual.email }}</dd>
                           <dt>Teléfono</dt>
                           <dd>{{ actual.area_code }} -  {{ actual.phone_number }}</dd>
                         </dl>
@@ -113,6 +113,7 @@
 </template>
 
 <script>
+import {IS_LOCAL} from 'config/Ambientes.js'
 export default {
 	data() {
 		return{
@@ -151,10 +152,41 @@ export default {
   },
   methods: {
     fetchData () {
-      this.post = this.$store.getters.currentJob
-      this.current()
+      if (IS_LOCAL) {
+        this.post = this.$store.getters.currentJob
+        this.current(this.post, this.actual)
+      }
+      else {
+        this.getFromSt()
+      }
     },
-    current () {
+    getFromSt() {
+      var self = this
+      var url = self.$store.state.route.params.id
+
+
+      Stamplay.Object('jobs').get({_id: url}).then(function(res) {
+
+        if (self.actual === null) {
+          console.log('voy a pedir', res)
+
+          var actualPost
+          res.data.forEach(function (element) {
+            actualPost = element
+          })
+          self.actual = actualPost
+
+          // self.loading = false
+          console.log('en actual ->', self.actual)
+
+        }
+      }, function(err) {
+        console.log('st error', err)
+        self.error = err.toString()
+      })
+
+    },
+    current (array, exit) {
       var actualPost
       this.post.forEach(function (element) {
         actualPost = element
@@ -169,9 +201,7 @@ export default {
         this.actual[rel].forEach(function (element) { // each de si, si tiene cat, etc.
           itemLocal = element
         })
-
         itemsStore = this.$store.state[stateItem].filter(item => item.id === itemLocal)
-
         if (itemsStore) { // si hay objetos que machen en el store
           itemsStore.forEach(function (item) {
             nameItem = item[key]
@@ -179,11 +209,9 @@ export default {
         } else {
           nameItem = 'No disponible'
         }
-
       } else { // si el item local no tiene cat, trabajo, etc
         nameItem = 'No disponible'
       }
-
       return nameItem
     }
 

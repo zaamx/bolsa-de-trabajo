@@ -2,7 +2,7 @@
   <div>
     <div class="upload-compita card card-outline-primary">
       <form class="dropzone">
-      <!-- Not displayed, just for Dropzone's `dictDefaultMessage` option -->
+
       <div id="dropzone-message" style="display: none">
         <span class="dropzone-title">Drop files here or click to select</span>
         <span class="dropzone-info">You can upload multiple files at once</span>
@@ -31,45 +31,17 @@ export default {
   mounted () {
     const vm = this
     let options = {
-      // The URL will be changed for each new file being processing
       url: '/',
-      // Since we're going to do a `PUT` upload to S3 directly
       method: 'patch',
-      // Hijack the xhr.send since Dropzone always upload file by using formData
-      // ref: https://github.com/danialfarid/ng-file-upload/issues/743
-      // sending (file, xhr) {
-      //   let _send = xhr.send
-      //   xhr.send = () => {
-      //     _send.call(xhr, file)
-      //   }
-      // },
       paramName: "imagen",
-      // Upload one file at a time since we're using the S3 pre-signed URL scenario
       parallelUploads: 1,
       uploadMultiple: false,
-      // Content-Type should be included, otherwise you'll get a signature
-      // mismatch error from S3. We're going to update this for each file.
       headers: {
         'Cache-Control': null,
         'X-Requested-With': null
       },
-      // Customize the wording
-      dictDefaultMessage: document.querySelector('#dropzone-message').innerHTML,
-      // We're going to process each file manually (see `accept` below)
-      autoProcessQueue: false,
-      // Here we request a signed upload URL when a file being accepted
-      // accept (file, done) {
-      //   lambda.getSignedURL(file)
-      //     .then((url) => {
-      //       file.uploadURL = url
-      //       done()
-      //       // Manually process each file
-      //       setTimeout(() => vm.dropzone.processFile(file))
-      //     })
-      //     .catch((err) => {
-      //       done('Failed to get an S3 signed upload URL', err)
-      //     })
-      // }
+      dictDefaultMessage: 'sube cosas rata',
+      autoProcessQueue: false
     }
     // Instantiate Dropzone
     this.dropzone = new Dropzone(this.$el, options)
@@ -115,5 +87,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../node_modules/dropzone/dist/dropzone.css'
+@import '../../node_modules/dropzone/dist/dropzone.css';
 </style>

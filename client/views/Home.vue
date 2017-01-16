@@ -10,6 +10,7 @@
 <script>
 import Search from 'components/Search'
 import indexFeed from 'components/indexFeed'
+import {IS_LOCAL} from 'config/Ambientes.js'
 export default {
 	data() {
 		return{
@@ -20,8 +21,14 @@ export default {
 		}
 	},
   created ()  {
-    this.getDefaultJobs()
-    // this.getStamplay()
+
+    if (IS_LOCAL) {
+      this.getDefaultJobs()
+    }
+    else {
+      this.getStamplay()
+    }
+
   },
   methods: {
     getDefaultJobs () {

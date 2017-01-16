@@ -190,22 +190,13 @@
               <div class="col-md-12">
                 <label class="form-control-label"  for="">Imagen</label>
                 <div class="upload-compita card card-outline-primary margin-xl-bottom">
-                  :newUrl="urlSuccessPost"
-                  :url="urlSuccessPost"
-                  <DropVue
-                    id="imagen"
+                  <form class="dropzone" id="uploaders">
 
-                    ref="imagen"
-
-
-                    :useCustomDropzoneOptions="true"
-                    :dropzoneOptions="opcionesx"
-                    v-on:vdropzone-fileAdded="fileAddedImage"
-                    v-on:vdropzone-success="successImage"
-                    v-on:vdropzone-error="errorImage"
-                    v-on:vdropzone-removedFile="removedFileImage"
-                    v-on:vdropzone-sending="sendingImage"
-                    ></DropVue>
+                  <div id="dropzone-message" style="display: none">
+                    <span class="dropzone-title">Drop files here or click to select</span>
+                    <span class="dropzone-info">You can upload multiple files at once</span>
+                  </div>
+                </form>
                 </div>
               </div>
             </div>
@@ -250,7 +241,8 @@
 </template>
 
 <script>
-import DropVue from 'components/DropVue'
+import Dropzone from 'dropzone'
+Dropzone.autoDiscover = false
 
 export default {
   data() {
@@ -275,44 +267,36 @@ export default {
         imagen: ''
       },
       terminos: '',
-      urlSuccessPost: '',
-      opcionesx: {
-        // init: function() {
-        //   var vm = this
-        //   this.on('processing', function(file) {
-        //     console.log('esto llego', vm.urlSuccessPost)
-        //     var url =  'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.urlSuccessPost;
-        //     console.log('opciones del drop', this)
-        //     this.url = url
-        //     console.log('la url de envio', this.url)
-        //   });
-        // },
-        method: "PUT",
-        url: function () {
-          return  'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + this.urlSuccessPost
-        },
-        // url: 'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs',
-        paramName: "imagen", // The name that will be used to transfer the file
-        maxFilesize: 1,
-        uploadMultiple: false,
-        acceptedFiles: 'image/*',
-        maxFiles: 1,
-        // thumbnailWidth:300,
-        addRemoveLinks:true,
-        headers: {
-          'Cache-Control': null,
-          'X-Requested-With': null
-        },
-        autoProcessQueue: false,
-        dictDefaultMessage: 'sube cosas rata'
-      }
+      urlSuccessPost: ''
 		}
 	},
   computed: {
 
   },
   mounted () {
-
+    const vm = this
+    let options = {
+      url: '/',
+      method: 'patch',
+      paramName: "imagen",
+      parallelUploads: 1,
+      uploadMultiple: false,
+      headers: {
+        'Cache-Control': null,
+        'X-Requested-With': null
+      },
+      dictDefaultMessage: 'sube cosas rata',
+      autoProcessQueue: false
+    }
+    // Instantiate Dropzone
+    this.dropzone = new Dropzone('#uploaders', options)
+    // Set signed upload URL for each file
+    vm.dropzone.on('processing', (file) => {
+      vm.dropzone.options.url = 'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.urlSuccessPost
+    })
+    vm.dropzone.on('success', function (file, response) {
+      vm.$router.push({ path: '/trabajos/'+ vm.urlSuccessPost })
+    })
   },
   watch: {
     // 'nuevoanuncio.rel_categoria': 'viewFormObject'
@@ -367,10 +351,8 @@ export default {
       }
     },
     publishForm () {
-      // var query = JSON.stringify(this.nuevoanuncio)
       var self = this
       var query = self.nuevoanuncio
-
       Stamplay.Object('jobs').save(query).then(function(res) {
 
         // console.log('se publico ->', res)
@@ -384,10 +366,6 @@ export default {
         console.log('st error ->', err)
 
       })
-
-
-
-
     },
     // Metodos para subir la imagen
     fileAddedImage (file) {
@@ -409,18 +387,19 @@ export default {
     },
     sendImage() {
       console.log('se va en el succes', this.urlSuccessPost)
-      this.$refs.imagen.processQueue()
+      this.dropzone.processQueue()
       console.log('click en el boton')
     }
   },
   components: {
-    DropVue
+
   }
 }
 </script>
 
-<style lang="scss">
-.form-group__message {
+<style >
+@import '../../node_modules/dropzone/dist/dropzone.css';
+/*.form-group__message {
   display: none;
 }
 .form-group--error {
@@ -438,5 +417,5 @@ export default {
       display: inline;
     }
   }
-}
+}*/
 </style>

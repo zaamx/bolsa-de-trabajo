@@ -19,7 +19,7 @@
 
               <div class="card-block">
                 <h4 class="card-title">{{ job.titulo }}</h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text">{{ job.descripcion }}</p>
                 <router-link :to=" '/trabajos/' + job.id" class="btn btn-outline-info">
                   Ver anuncio
                 </router-link>
@@ -58,5 +58,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+.card {
+  min-height: 90%;
+}
 </style>

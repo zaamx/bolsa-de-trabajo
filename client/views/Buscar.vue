@@ -4,8 +4,8 @@
       <div class="row">
         <div class="col-md-12">
           <h1 class="display-4">Buscando</h1>
-          <SearchForm>
-          </SearchForm>
+          <!-- <SearchForm>
+          </SearchForm> -->
           <hr>
           <indexFeed :items="searchResults" v-if="searchResults">
           </indexFeed>
