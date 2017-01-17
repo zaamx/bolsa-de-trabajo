@@ -222,10 +222,11 @@
 
             <div class="row">
               <div class="col-md-12 text-right" >
-                <button type="button" name="button" class="btn btn-link">
+                <router-link to="/" class="btn btn-link">
                   Cancelar
-                </button>
-                <button type="submit"   name="button" class="btn btn-outline-info" >
+                </router-link>
+
+                <button type="submit"  name="sendForm" id="sendForm" class="btn btn-outline-info" v-bind:disabled="disabledButton">
                   Publicar anuncio
                 </button>
               </div>
@@ -247,6 +248,8 @@ Dropzone.autoDiscover = false
 export default {
   data() {
 		return {
+      error : null,
+      loading: null,
       catList: null,
       jobsList: null,
       estList: null,
@@ -267,7 +270,8 @@ export default {
         imagen: ''
       },
       terminos: '',
-      urlSuccessPost: ''
+      urlSuccessPost: '',
+      disabledButton: false
 		}
 	},
   computed: {
@@ -285,12 +289,12 @@ export default {
         'Cache-Control': null,
         'X-Requested-With': null
       },
-      dictDefaultMessage: 'sube cosas rata',
+      dictDefaultMessage: '<p class="muted">Haz click para subir tus imagenes o arrastralos a esta zona, solo puedes subir una imagen de hasta 2 MB cada una<p>',
       autoProcessQueue: false
     }
     // Instantiate Dropzone
     this.dropzone = new Dropzone('#uploaders', options)
-    // Set signed upload URL for each file
+    // url cambia por el id de la nueva publicación
     vm.dropzone.on('processing', (file) => {
       vm.dropzone.options.url = 'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.urlSuccessPost
     })
@@ -299,7 +303,7 @@ export default {
     })
   },
   watch: {
-    // 'nuevoanuncio.rel_categoria': 'viewFormObject'
+
   },
   created () {
     this.getCategorias()
@@ -308,22 +312,21 @@ export default {
     this.getPayForm()
   },
   methods: {
-    viewFormObject () {
-      console.log('pelame')
-      console.log('el form -->', this.nuevoanuncio.rel_categoria)
-    },
     resetForm () {
 
     },
     validateForm () {
-      console.log('tratando de escapar eh')
+
       // Validate All returns a promise and provides the validation result.
       this.$validator.validateAll().then(success => {
         if (! success) {
           // handle error
           return;
         }
-        this.publishForm()
+        else {
+          this.disabledButton = true;
+          this.publishForm()
+        }
       });
     },
     getCategorias () {
@@ -354,41 +357,20 @@ export default {
       var self = this
       var query = self.nuevoanuncio
       Stamplay.Object('jobs').save(query).then(function(res) {
-
         // console.log('se publico ->', res)
         self.urlSuccessPost = res._id
-        console.log('el id de success' , self.urlSuccessPost)
+
         setTimeout(() => {
           self.sendImage()
         }, 200)
 
       }, function(err) {
-        console.log('st error ->', err)
-
+        self.disabledButton = true;
+        // console.log('st error ->', err)
       })
     },
-    // Metodos para subir la imagen
-    fileAddedImage (file) {
-      console.log('agregado', file)
-    },
-    successImage (file, response) {
-      console.log('que se envio', file)
-      console.log('respuesta', response)
-    },
-    errorImage (file) {
-      console.log(file)
-    },
-    removedFileImage (file, error, xhr) {
-      console.log('remover ',file)
-    },
-    sendingImage (file, xhr, formData) {
-      console.log('xhr -->', xhr)
-      console.log('data enviando -->', formData)
-    },
     sendImage() {
-      console.log('se va en el succes', this.urlSuccessPost)
       this.dropzone.processQueue()
-      console.log('click en el boton')
     }
   },
   components: {
@@ -399,23 +381,4 @@ export default {
 
 <style >
 @import '../../node_modules/dropzone/dist/dropzone.css';
-/*.form-group__message {
-  display: none;
-}
-.form-group--error {
-  & +  .form-group__message {
-    display: block;
-    color: red;
-  }
-}
-.form-group {
-  .form-control-feedback {
-    display: none;
-  }
-  &.has-danger {
-    .form-control-feedback {
-      display: inline;
-    }
-  }
-}*/
 </style>

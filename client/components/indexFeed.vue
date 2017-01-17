@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="feedResults">
     <div class="row">
       <div class="col-md-12">
         <!-- <div class="is-loading" v-if="loading">
@@ -58,7 +58,9 @@ export default {
 </script>
 
 <style lang="scss">
-.card {
-  min-height: 90%;
+#feedResults {
+  .card {
+    min-height: 90%;
+  }
 }
 </style>

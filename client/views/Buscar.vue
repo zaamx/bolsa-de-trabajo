@@ -3,7 +3,7 @@
     <div class="container margin-l-top">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="display-4">Buscando</h1>
+          <h1 class="display-4">Resultados de la busqueda</h1>
           <!-- <SearchForm>
           </SearchForm> -->
           <hr>

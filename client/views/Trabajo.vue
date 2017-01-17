@@ -18,7 +18,6 @@
                   <h1 class="display-4 margin-l-bottom">{{ actual.titulo }}</h1>
                   <dl class="row">
                     <dt class="col-xs-12 col-md-6 col-lg-4">Categoría del aviso</dt>
-
                     <!-- .rel_categoria -->
                     <dd class="col col-md-6 col-lg-8">
                       {{ getCurrentCat }}
@@ -47,34 +46,34 @@
 
                   </router-link>
                   <div class="" >
-                    <img  :src="actual.imagen" class="img-fluid img-thumbnail" alt="" v-if="actual.imagen">
-                    <img src="https://static.pexels.com/photos/289704/pexels-photo-289704.jpeg" alt="" class="img-thumbnail img-fluid" v-else>
+                    <carga :imagen="actual.imagen">
+                    </carga>
                   </div>
                   <div class="margin-s-top">
                     <b>Comparte este anuncio</b>
                   </div>
 
                   <div class="row text-center margin-s-top">
-                    <div class="col-3">
-                      <a href="" class="btn btn-outline-info">
-                        <i class="fa fa-facebook-square"></i>
-                      </a>
-                    </div>
-                    <div class="col-3">
-                      <a href="" class="btn btn-outline-info">
-                        <i class="fa fa-twitter"></i>
-                      </a>
-                    </div>
-                    <div class="col-3">
-                      <a href="" class="btn btn-outline-info">
-                        <i class="fa fa-youtube"></i>
-                      </a>
-                    </div>
-                    <div class="col-3">
-                      <a href="" class="btn btn-outline-info">
-                        <i class="fa fa-instagram"></i>
-                      </a>
-                    </div>
+
+                    <social-sharing :url="getCurrentUrl" inline-template>
+                      <div class=" col text-center">
+                          <facebook class="btn btn-outline-info">
+                            <i class="fa fa-facebook"></i>
+                          </facebook>
+
+                          <twitter  class="btn btn-outline-info">
+                            <i class="fa fa-twitter"></i>
+                          </twitter>
+
+                          <googleplus  class="btn btn-outline-info">
+                            <i class="fa fa-google-plus"></i>
+                          </googleplus>
+
+                          <pinterest  class="btn btn-outline-info">
+                            <i class="fa fa-pinterest"></i>
+                          </pinterest>
+                      </div>
+                    </social-sharing>
                   </div>
                   <button class="btn btn-info col margin-s-top" @click="datosContacto = !datosContacto">
                     <span  v-if="datosContacto">
@@ -87,11 +86,13 @@
                   <transition name="fade">
                     <div class="card margin-s-top" v-if="datosContacto">
                       <div class="card-block">
-                        <dl>
+                        <dl v-if="actual.email">
                           <dt>Correo electrónico</dt>
                           <dd>{{ actual.email }}</dd>
+                        </dl>
+                        <dl v-if="actual.phone_number">
                           <dt>Teléfono</dt>
-                          <dd>{{ actual.area_code }} -  {{ actual.phone_number }}</dd>
+                          <dd> ( {{ actual.area_code }} ) -  {{ actual.phone_number }}</dd>
                         </dl>
                       </div>
 
@@ -113,7 +114,9 @@
 </template>
 
 <script>
-import {IS_LOCAL} from 'config/Ambientes.js'
+import {IS_LOCAL, FULL_URL} from 'config/Ambientes.js'
+import socialSharing from 'vue-social-sharing'
+import carga from 'components/carga'
 export default {
 	data() {
 		return{
@@ -125,6 +128,10 @@ export default {
 		}
 	},
   computed: {
+    getCurrentUrl () {
+      var urlShare = FULL_URL + '/#' + this.$store.state.route.path
+      return urlShare
+    },
     getCurrentCat () {
       return this.getCurrentItem('rel_categoria', 'categorias', 'titulo')
     },
@@ -168,20 +175,17 @@ export default {
       Stamplay.Object('jobs').get({_id: url}).then(function(res) {
 
         if (self.actual === null) {
-          console.log('voy a pedir', res)
 
           var actualPost
           res.data.forEach(function (element) {
             actualPost = element
           })
           self.actual = actualPost
-
           // self.loading = false
           console.log('en actual ->', self.actual)
 
         }
       }, function(err) {
-        console.log('st error', err)
         self.error = err.toString()
       })
 
@@ -217,7 +221,8 @@ export default {
 
   },
   components: {
-    // indexFeed
+    socialSharing,
+    carga
   }
 }
 </script>
