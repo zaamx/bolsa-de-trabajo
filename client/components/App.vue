@@ -85,11 +85,28 @@ export default {
         this.cargaTipos = true
         console.log('tipos', this.cargaTipos)
       }, 4000)
+
+      // var self = this
+      // Stamplay.Object('tipo_trabajo').get({
+      //   per_page : 30
+      // }).then(function(res) {
+      //
+      //   this.$store.dispatch('clearSearch')
+      //
+      //   if (self.defaultJobs === null) {
+      //     self.defaultJobs = res.data
+      //     self.loading = false
+      //   }
+      // }, function(err) {
+      //   console.log('st error', err)
+      //   self.error = err.toString()
+      // })
     },
     removeLoading () {
       this.loading = false
       this.content = true
     }
+
   }
 }
 </script>
