@@ -1,5 +1,5 @@
 // const IS_LOCAL = process.env.NODE_ENV !== 'production'
-const IS_LOCAL = false
+const IS_LOCAL = true
 const FULL_URL = window.location.protocol + '//' + window.location.host
 
 const API_BASE_URL = IS_LOCAL

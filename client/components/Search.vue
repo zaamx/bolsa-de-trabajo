@@ -63,7 +63,7 @@ export default {
       width: 100%;
       height: 100%;
       opacity: 0.63;
-      background-image: linear-gradient(-266deg, #3023AE 0%, #53A0FD 47%, #B4EC51 99%);
+      background-image: linear-gradient(-266deg, #B4EC51 0%, #53A0FD 47%, #3023AE 99%);
       z-index: 0;
     }
 

@@ -12,7 +12,7 @@
   "author": "Alonso Avila <aavila@hispanocard.com>",
   "license": "MIT",
   "dependencies": {
-    "bootstrap-vue": "^0.4.1",
+    "bootstrap-vue": "^0.5.2",
     "dropzone": "^4.3.0",
     "promise-polyfill": "^6.0.2",
     "vee-validate": "^2.0.0-beta.18",

@@ -189,7 +189,7 @@
             <div class="row">
               <div class="col-md-12">
                 <label class="form-control-label"  for="">Imagen</label>
-                <div class="upload-compita card card-outline-primary margin-xl-bottom">
+                <div class="upload-compita  margin-xl-bottom">
                   <form class="dropzone" id="uploaders">
 
                   <div id="dropzone-message" style="display: none">

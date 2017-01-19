@@ -82,7 +82,7 @@ export default {
       this.where = { $or : [] };
 
       if(this.titulo) {
-        this.where.$or.push({ titulo: { "$regex" : "^"+ this.titulo, "$options" :"i" } } )
+        this.where.$or.push({ titulo: { "$regex" : this.titulo, "$options" :"i" } } )
       }
 
       if (this.selectedCategoria) {
@@ -98,6 +98,8 @@ export default {
       this.where = JSON.stringify(this.where)
 
       this.$store.commit('SETPARAMETROSBUSQUEDA', this.where)
+
+      console.log('parametros', this.$store.state.search.searchParams)
 
       this.$router.push({path: 'buscar'})
     },
