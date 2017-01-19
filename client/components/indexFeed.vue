@@ -19,7 +19,7 @@
 
               <div class="card-block">
                 <h4 class="card-title">{{ job.titulo }}</h4>
-                <p class="card-text">{{ job.descripcion }}</p>
+                <!-- <p class="card-text">{{ job.descripcion }}</p> -->
                 <router-link :to=" '/trabajos/' + job.id" class="btn btn-outline-info">
                   Ver anuncio
                 </router-link>

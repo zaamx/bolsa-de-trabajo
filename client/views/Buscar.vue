@@ -30,6 +30,7 @@ export default {
 	},
   computed: {
     searchLocalParams () {
+      console.log('recibi desde el estore', this.$store.state.search.searchParams)
       return this.$store.state.search.searchParams
     }
   },
@@ -43,8 +44,12 @@ export default {
     getFromService () {
       this.error = this.searchResults = null
 
+      console.log('voy a enviar esstos parametros', this.searchLocalParams)
       // GET /someUrl
       this.$http.get('jobs',{ params: {where: this.searchLocalParams}}).then((response) => {
+        console.log('respuesta de la peticion', response)
+
+
 
         if (this.searchResults === null) {
           this.searchResults = response.body.data;
