@@ -14,7 +14,7 @@
           </div>
           <div class="col-md-4">
             <div class="embed-responsive embed-responsive-16by9">
-              <!-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UxxvsZ6EDPo" allowfullscreen></iframe> -->
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UxxvsZ6EDPo" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@ export default {
     min-height: 200px;
     // background: silver;
     // opacity: 0.63;
-    background-image: url('https://static.pexels.com/photos/289704/pexels-photo-289704.jpeg');
+    background-image: url('../assets/contractor-checklist.jpg');
     background-size: cover;
     position: relative;
     // z-index: -1;
