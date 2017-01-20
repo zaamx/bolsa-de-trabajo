@@ -15,7 +15,7 @@
               <div class="img-container">
                 <router-link :to=" '/trabajos/' + job.id">
                   <img  :src="job.imagen" class="" alt="" v-if="job.imagen">
-                  <img src="http://placehold.it/450x400" alt="" class="" v-else>
+                  <img src="http://placehold.it/550x400" alt="" class="" v-else>
                 </router-link>
               </div>
               <div class="card-block">
