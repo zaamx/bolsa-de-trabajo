@@ -5,13 +5,13 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- <a class="navbar-brand" href="#">HispanoClub Jobs</a> -->
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="http://hispanoclub.com/" target="_blank">
         <img src="../assets/logo-sitio.png" alt="">
       </a>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <router-link class="nav-item nav-link" to="/" active-class="active">
-            Home
+            Buscar trabajos
           </router-link>
           <router-link class="nav-item nav-link" to="/trabajos" active-class="active">
             Ver todos los trabajos
