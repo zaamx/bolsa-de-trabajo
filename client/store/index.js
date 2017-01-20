@@ -1497,6 +1497,726 @@ const state = {
       "dt_create": "2017-01-19T16:39:02.698Z",
       "__v": 0,
       "id": "5880eba6506ad98d05a60de7"
+    },
+    {
+      "_id": "5882748b506ad98d05a61627",
+      "titulo": "Abogado",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T20:35:23.698Z",
+      "dt_create": "2017-01-20T20:35:23.698Z",
+      "__v": 0,
+      "id": "5882748b506ad98d05a61627"
+    },
+    {
+      "_id": "588274dc06e9a48305c3af03",
+      "titulo": "Arquitectos",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T20:36:44.561Z",
+      "dt_create": "2017-01-20T20:36:44.561Z",
+      "__v": 0,
+      "id": "588274dc06e9a48305c3af03"
+    },
+    {
+      "_id": "58827b5dcfaedb517e22d3e8",
+      "titulo": "Asesores",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T21:04:29.217Z",
+      "dt_create": "2017-01-20T21:04:29.217Z",
+      "__v": 0,
+      "id": "58827b5dcfaedb517e22d3e8"
+    },
+    {
+      "_id": "58829192506ad98d05a6168a",
+      "titulo": "Auxiliares",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:39:14.813Z",
+      "dt_create": "2017-01-20T22:39:14.813Z",
+      "__v": 0,
+      "id": "58829192506ad98d05a6168a"
+    },
+    {
+      "_id": "588291b48d0b347e058a78fa",
+      "titulo": "Capturistas",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:39:48.317Z",
+      "dt_create": "2017-01-20T22:39:48.317Z",
+      "__v": 0,
+      "id": "588291b48d0b347e058a78fa"
+    },
+    {
+      "_id": "588291bc06e9a48305c3af63",
+      "titulo": "Choferes",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:39:56.439Z",
+      "dt_create": "2017-01-20T22:39:56.439Z",
+      "__v": 0,
+      "id": "588291bc06e9a48305c3af63"
+    },
+    {
+      "_id": "588291c5506ad98d05a6168b",
+      "titulo": "Cobradores",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:40:05.131Z",
+      "dt_create": "2017-01-20T22:40:05.131Z",
+      "__v": 0,
+      "id": "588291c5506ad98d05a6168b"
+    },
+    {
+      "_id": "588291cd06e9a48305c3af64",
+      "titulo": "Cocineros y Taqueros",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:40:13.498Z",
+      "dt_create": "2017-01-20T22:40:13.498Z",
+      "__v": 0,
+      "id": "588291cd06e9a48305c3af64"
+    },
+    {
+      "_id": "588291d68d0b347e058a78fb",
+      "titulo": "Contadores",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:40:22.592Z",
+      "dt_create": "2017-01-20T22:40:22.592Z",
+      "__v": 0,
+      "id": "588291d68d0b347e058a78fb"
+    },
+    {
+      "_id": "588291e0506ad98d05a6168c",
+      "titulo": "Costureras",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:40:32.505Z",
+      "dt_create": "2017-01-20T22:40:32.505Z",
+      "__v": 0,
+      "id": "588291e0506ad98d05a6168c"
+    },
+    {
+      "_id": "588291e98d0b347e058a78fc",
+      "titulo": "Directivos",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:40:41.400Z",
+      "dt_create": "2017-01-20T22:40:41.400Z",
+      "__v": 0,
+      "id": "588291e98d0b347e058a78fc"
+    },
+    {
+      "_id": "588291f206e9a48305c3af66",
+      "titulo": "Diseñadores",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:40:50.385Z",
+      "dt_create": "2017-01-20T22:40:50.385Z",
+      "__v": 0,
+      "id": "588291f206e9a48305c3af66"
+    },
+    {
+      "_id": "588291facfaedb517e22d3ff",
+      "titulo": "Economistas",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:40:58.204Z",
+      "dt_create": "2017-01-20T22:40:58.204Z",
+      "__v": 0,
+      "id": "588291facfaedb517e22d3ff"
+    },
+    {
+      "_id": "5882920106e9a48305c3af67",
+      "titulo": "Encuestadores",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:41:05.735Z",
+      "dt_create": "2017-01-20T22:41:05.735Z",
+      "__v": 0,
+      "id": "5882920106e9a48305c3af67"
+    },
+    {
+      "_id": "58829208cfaedb517e22d400",
+      "titulo": "Estilistas",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:41:12.367Z",
+      "dt_create": "2017-01-20T22:41:12.367Z",
+      "__v": 0,
+      "id": "58829208cfaedb517e22d400"
+    },
+    {
+      "_id": "5882920f506ad98d05a6168d",
+      "titulo": "Gerentes",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:41:19.260Z",
+      "dt_create": "2017-01-20T22:41:19.260Z",
+      "__v": 0,
+      "id": "5882920f506ad98d05a6168d"
+    },
+    {
+      "_id": "588292178d0b347e058a78fd",
+      "titulo": "Guardias y Vigilantes",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:41:27.038Z",
+      "dt_create": "2017-01-20T22:41:27.038Z",
+      "__v": 0,
+      "id": "588292178d0b347e058a78fd"
+    },
+    {
+      "_id": "5882921f8d0b347e058a78fe",
+      "titulo": "Ingenieros",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:41:35.892Z",
+      "dt_create": "2017-01-20T22:41:35.892Z",
+      "__v": 0,
+      "id": "5882921f8d0b347e058a78fe"
+    },
+    {
+      "_id": "58829227506ad98d05a6168e",
+      "titulo": "Maestros",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:41:43.105Z",
+      "dt_create": "2017-01-20T22:41:43.105Z",
+      "__v": 0,
+      "id": "58829227506ad98d05a6168e"
+    },
+    {
+      "_id": "5882922dcfaedb517e22d401",
+      "titulo": "Médicos",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:41:49.816Z",
+      "dt_create": "2017-01-20T22:41:49.816Z",
+      "__v": 0,
+      "id": "5882922dcfaedb517e22d401"
+    },
+    {
+      "_id": "58829234506ad98d05a6168f",
+      "titulo": "Meseros",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:41:56.958Z",
+      "dt_create": "2017-01-20T22:41:56.958Z",
+      "__v": 0,
+      "id": "58829234506ad98d05a6168f"
+    },
+    {
+      "_id": "588292428d0b347e058a7900",
+      "titulo": "Oficios",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:42:10.129Z",
+      "dt_create": "2017-01-20T22:42:10.129Z",
+      "__v": 0,
+      "id": "588292428d0b347e058a7900"
+    },
+    {
+      "_id": "5882924b8d0b347e058a7901",
+      "titulo": "Operadores telefónicos",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:42:19.868Z",
+      "dt_create": "2017-01-20T22:42:19.868Z",
+      "__v": 0,
+      "id": "5882924b8d0b347e058a7901"
+    },
+    {
+      "_id": "5882926406e9a48305c3af68",
+      "titulo": "Otros",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:42:44.302Z",
+      "dt_create": "2017-01-20T22:42:44.302Z",
+      "__v": 0,
+      "id": "5882926406e9a48305c3af68"
+    },
+    {
+      "_id": "5882926b8d0b347e058a7902",
+      "titulo": "Personal Doméstico",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:42:51.767Z",
+      "dt_create": "2017-01-20T22:42:51.767Z",
+      "__v": 0,
+      "id": "5882926b8d0b347e058a7902"
+    },
+    {
+      "_id": "58829276506ad98d05a61690",
+      "titulo": "Promotores",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:43:02.334Z",
+      "dt_create": "2017-01-20T22:43:02.334Z",
+      "__v": 0,
+      "id": "58829276506ad98d05a61690"
+    },
+    {
+      "_id": "58829280cfaedb517e22d402",
+      "titulo": "Secretarias",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:43:12.336Z",
+      "dt_create": "2017-01-20T22:43:12.336Z",
+      "__v": 0,
+      "id": "58829280cfaedb517e22d402"
+    },
+    {
+      "_id": "58829287506ad98d05a61691",
+      "titulo": "Supervisores",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:43:19.342Z",
+      "dt_create": "2017-01-20T22:43:19.342Z",
+      "__v": 0,
+      "id": "58829287506ad98d05a61691"
+    },
+    {
+      "_id": "5882928e06e9a48305c3af69",
+      "titulo": "Técnicos",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:43:26.626Z",
+      "dt_create": "2017-01-20T22:43:26.626Z",
+      "__v": 0,
+      "id": "5882928e06e9a48305c3af69"
+    },
+    {
+      "_id": "58829295506ad98d05a61692",
+      "titulo": "Vendedores",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_trabajo",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-01-20T22:43:33.756Z",
+      "dt_create": "2017-01-20T22:43:33.756Z",
+      "__v": 0,
+      "id": "58829295506ad98d05a61692"
     }
   ],
   tipopago: [
