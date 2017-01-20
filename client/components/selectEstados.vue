@@ -10,7 +10,7 @@
     </div>
 
     <div class="form-group" v-if="estados">
-      <label for="cat-selector">Estados</label>
+      <label for="cat-selector">Estados:</label>
       <select class="form-control" name="cat-selector" v-model="selectedEdo">
         <option value="">
           Estado

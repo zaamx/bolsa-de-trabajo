@@ -10,7 +10,7 @@
     </div>
 
     <div class="form-group" v-if="tipoTrabajo">
-      <label for="cat-selector">Tipo de trabajo</label>
+      <label for="cat-selector">Tipo de trabajo:</label>
       <select class="form-control" name="cat-selector" v-model="selectedTipo">
         <option :value=" tipoTrabajo._id "  v-for="tipoTrabajo in this.tipoTrabajo">
           {{ tipoTrabajo.titulo }}

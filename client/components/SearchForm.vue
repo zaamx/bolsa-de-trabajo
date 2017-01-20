@@ -1,7 +1,7 @@
 <template>
-  <div class="col-md-12 margin-l-top">
+  <div class="margin-l-top">
     <!-- <div class="feed-jobs" v-if="comps"> -->
-    <div class="search-box padding-xs-bottom padding-xs-left padding-xs-right" >
+    <div class="search-box  padding-xs-left padding-xs-right" >
 
       <form action="" class="search-comp">
         <div class="container-fluid">
@@ -10,8 +10,8 @@
 
               <div class="col-12 col-sm-12 col-lg-4">
                 <div class="form-group">
-                  <label for="job-input">Palabra clave</label>
-                  <input type="text" name="job-input" value="" class="form-control" placeholder="Jardinero, ingeniero, etc." v-model="titulo">
+                  <label for="job-input">Palabra clave:</label>
+                  <input type="text" name="job-input" id="job-input" autofocus value="" class="form-control" placeholder="Jardinero, ingeniero, etc." v-model="titulo">
                   <!-- {{  selectedEstado }}
                   {{  selectedTipo }} -->
                 </div>
@@ -35,7 +35,7 @@
               <div class="col-12  col-sm-6 col-lg-2">
 
                 <div class="form-group">
-                  <b-button variant="outline-success margin-l-top col-12" @click="searchFn">
+                  <b-button variant="outline-success" style="width:100%;margin-top:2px;" @click="searchFn">
                     Buscar
                   </b-button>
                 </div>
@@ -125,12 +125,25 @@ export default {
   // color:silver;
   overflow: hidden;
   height: 100%;
+  border-radius: 2px;
+  box-shadow: 4px silver;
+box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.50);
+
+  .col-12 {
+    border-right:1px solid silver ;
+    &:last-child {
+      border-right: none;
+    }
+  }
   .form-group {
     margin: 0 !important;
     label {
       color: silver;
       font-size: 0.7rem;
       margin:0;
+    }
+    .form-control {
+      border:none;
     }
   }
 }

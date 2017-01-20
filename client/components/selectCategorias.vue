@@ -10,7 +10,7 @@
     </div>
 
     <div class="form-group" v-if="categorias">
-      <label for="cat-selector">Categorias</label>
+      <label for="cat-selector">Categorias:</label>
       <select class="form-control" name="cat-selector" v-model="selectedCat">
         <option value="">Categoria</option>
         <option :value=" categoria.id "  v-for="categoria in this.categorias">

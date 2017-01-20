@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+    <nav class="navbar navbar-toggleable-md navbar-light">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -113,12 +113,25 @@ export default {
 <style lang="scss">
 @import '../stylesheets/mixins/_resetText.scss';
 @import '../stylesheets/mixins/_spacing.scss';
+.text-uppercase {
+  text-transform: uppercase;
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .2s
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0
 }
+.navbar {
+  /* Rectangle 5: */
+  box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.19);
+  z-index: 1;
+}
+.btn {
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
 .loader,
 .loader:after {
   border-radius: 50%;

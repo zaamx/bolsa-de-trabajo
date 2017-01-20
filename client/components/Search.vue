@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <h1 class="display-4 text-white">Bolsa de trabajo</h1>
+            <h1 class="display-4 text-white text-uppercase">Bolsa de trabajo</h1>
             <p class="lead text-white">
               La mejor manera de encontrar u ofrecer trabajo a la comunidad hispana
             </p>
@@ -44,7 +44,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+.embed-responsive {
+  box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.50);
+}
 .search-wrapper {
     display: block;
     width: 100%;
