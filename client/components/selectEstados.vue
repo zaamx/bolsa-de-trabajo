@@ -16,7 +16,7 @@
           Estado
         </option>
         <option :value=" estado._id "  v-for="estado in this.estados">
-          {{ estado.codigo }} -  {{ estado.nombre }}
+          {{ estado.codigo }} 
         </option>
       </select>
     </div>

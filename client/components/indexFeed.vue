@@ -12,11 +12,12 @@
         <div class="row" v-if="this.items">
           <div class="col-12 col-sm-6 col-md-4  col-lg-3" v-for="job in this.items">
             <div class="card margin-s-top">
-              <router-link :to=" '/trabajos/' + job.id">
-                <img  :src="job.imagen" class="img-fluid img-thumbnail" alt="" v-if="job.imagen">
-                <img src="http://placehold.it/400x400" alt="" class="card-img-top img-fluid" v-else>
-              </router-link>
-
+              <div class="img-container">
+                <router-link :to=" '/trabajos/' + job.id">
+                  <img  :src="job.imagen" class="" alt="" v-if="job.imagen">
+                  <img src="http://placehold.it/450x400" alt="" class="" v-else>
+                </router-link>
+              </div>
               <div class="card-block">
                 <h4 class="card-title">{{ job.titulo }}</h4>
                 <!-- <p class="card-text">{{ job.descripcion }}</p> -->
@@ -60,7 +61,16 @@ export default {
 <style lang="scss">
 #feedResults {
   .card {
-    min-height: 90%;
+    min-height: 100%;
+    position: relative;
+    .img-container {
+      position: relative;
+      overflow: auto;
+      img {
+        height: 200px;
+
+      }
+    }
   }
 }
 </style>
