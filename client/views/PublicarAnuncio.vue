@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 offset-md-1">
-          <h1 class="display-4 text-center">Publicar anuncio</h1>
+          <h1 class="display-4 text-center margin-xl-top">Publicar anuncio</h1>
           <PublicarForm class="padding-m margin-xl-top">
           </PublicarForm>
         </div>
