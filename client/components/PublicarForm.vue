@@ -59,7 +59,7 @@
 
             <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.anunciante')}" >
               <label class="form-control-label"  for="nuevoanuncio.anunciante">Nombre del anunciante</label>
-              <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.anunciante" name="nuevoanuncio.anunciante"  v-validate data-vv-rules="required" data-vv-as="Nombre">
+              <input type="text" class="form-control" placeholder="Tu nombre" v-model="nuevoanuncio.anunciante" name="nuevoanuncio.anunciante"  v-validate data-vv-rules="required" data-vv-as="Nombre">
               <span v-show="errors.has('nuevoanuncio.anunciante')" >
                 <span v-for="error in errors.collect('nuevoanuncio.anunciante')" class="form-control-feedback">
                   {{ error }}
@@ -69,7 +69,7 @@
 
             <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.email')}" >
               <label class="form-control-label"  for="nuevoanuncio.email">Correo electrónico</label>
-              <input type="email" class="form-control" placeholder="5555 5555" v-model="nuevoanuncio.email" name="nuevoanuncio.email"  v-validate data-vv-rules="required|email" data-vv-as="Correo electrónico">
+              <input type="email" class="form-control" placeholder="tumail@dominio.com" v-model="nuevoanuncio.email" name="nuevoanuncio.email"  v-validate data-vv-rules="required|email" data-vv-as="Correo electrónico">
               <span v-show="errors.has('nuevoanuncio.email')" >
                 <span v-for="error in errors.collect('nuevoanuncio.email')" class="form-control-feedback">
                   {{ error }}
@@ -82,7 +82,7 @@
 
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.area_code')}" >
                   <label class="form-control-label"  for="nuevoanuncio.area_code">Area code</label>
-                  <input type="number" class="form-control" placeholder="Ej. Juan Perez" v-model="nuevoanuncio.area_code" name="nuevoanuncio.area_code"  v-validate data-vv-rules="required|numeric" data-vv-as="Area Code">
+                  <input type="number" class="form-control" placeholder="555" v-model="nuevoanuncio.area_code" name="nuevoanuncio.area_code"  v-validate data-vv-rules="required|numeric" data-vv-as="Area Code">
                   <span v-show="errors.has('nuevoanuncio.area_code')" >
                     <span v-for="error in errors.collect('nuevoanuncio.area_code')" class="form-control-feedback">
                       {{ error }}
@@ -143,7 +143,7 @@
 
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.monto')}" >
                   <label class="form-control-label"  for="">Monto ofrecido USD</label>
-                  <input type="number" class="form-control" placeholder="Ej. Houston" v-model="nuevoanuncio.monto" name="nuevoanuncio.monto"  v-validate data-vv-rules="required|numeric" data-vv-as="Monto">
+                  <input type="number" class="form-control" placeholder="1999" v-model="nuevoanuncio.monto" name="nuevoanuncio.monto"  v-validate data-vv-rules="required|numeric" data-vv-as="Monto">
                   <span v-show="errors.has('nuevoanuncio.monto')" >
                     <span v-for="error in errors.collect('nuevoanuncio.monto')" class="form-control-feedback">
                       {{ error }}
@@ -360,9 +360,23 @@ export default {
         // console.log('se publico ->', res)
         self.urlSuccessPost = res._id
 
-        setTimeout(() => {
-          self.sendImage()
-        }, 200)
+
+        // validar si el dropzone tiene algo en espera,
+        // si tiene algo, se processa.
+        // Si no tiene nada se redirecciona
+
+        var popo = self.dropzone.getQueuedFiles().length
+
+        console.log('la ->', popo)
+        
+        if(self.dropzone.getQueuedFiles().length > 0){
+            setTimeout(() => {
+                self.sendImage()
+            }, 200)
+        } else {
+          self.$router.push({ path: '/trabajos/'+ self.urlSuccessPost })
+        }
+            
 
       }, function(err) {
         self.disabledButton = true;
