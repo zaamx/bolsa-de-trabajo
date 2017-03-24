@@ -8,7 +8,7 @@
               La mejor manera de encontrar u ofrecer trabajo a la comunidad hispana
             </p>
 
-            <router-link to="/publicar-anuncio" class="btn btn-primary btn-lg margin-xs">
+            <router-link to="/publicar-anuncio-publico" class="btn btn-primary btn-lg margin-xs">
               Ofrece tus servicios aquí
             </router-link>
           </div>
