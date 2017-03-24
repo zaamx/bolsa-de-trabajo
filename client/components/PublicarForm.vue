@@ -357,6 +357,9 @@ export default {
     this.getEstados()
     this.getPayForm()
   },
+  beforeDestroy () {
+    this.dropzone.destroy();
+  }, 
   methods: {
     resetForm () {
 
