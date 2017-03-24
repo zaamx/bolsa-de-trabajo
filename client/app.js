@@ -5,6 +5,8 @@ import router from './router'
 import store from './store'
 import VueResource from 'vue-resource'
 
+import $ from 'jquery'
+
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
