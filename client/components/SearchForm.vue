@@ -35,7 +35,7 @@
               <div class="col-12  col-sm-6 col-lg-2">
 
                 <div class="form-group">
-                  <b-button variant="outline-success" style="width:100%;margin-top:2px;" @click="searchFn">
+                  <b-button variant="success" style="width:100%;margin-top:2px;" @click="searchFn">
                     Buscar
                   </b-button>
                 </div>

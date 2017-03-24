@@ -9,25 +9,21 @@
             {{ error }}
         </div> -->
 
-        <div class="row" v-if="this.items">
-          <div class="col-12 col-sm-6 col-md-4  col-lg-3" v-for="job in this.items">
-            <div class="card margin-s-top">
-              <div class="img-container">
-                <router-link :to=" '/trabajos/' + job.id">
-                  <img  :src="job.imagen" class="" alt="" v-if="job.imagen">
-                  <img src="http://placehold.it/550x400" alt="" class="" v-else>
-                </router-link>
-              </div>
+        <div class="card-columns" v-if="this.items">
+            <div class="card" v-for="job in this.items">
+              <!-- <img class="card-img-top" src="..." alt="card image cap"> -->
+              <router-link :to=" '/trabajos/' + job.id">
+                <img class="card-img-top" :src="job.imagen" alt="" v-if="job.imagen">
+                <img class="card-img-top" src="../assets/default-img.jpg" alt="" v-else>
+              </router-link>
               <div class="card-block">
-                <h4 class="card-title">{{ job.titulo }}</h4>
-                <!-- <p class="card-text">{{ job.descripcion }}</p> -->
-                <router-link :to=" '/trabajos/' + job.id" class="btn btn-outline-info">
+                <h5 class="card-title">{{ job.titulo }}</h5>
+                <router-link :to=" '/trabajos/' + job.id" class="btn btn-primary">
                   Ver anuncio
                 </router-link>
               </div>
-
             </div>
-          </div>
+
         </div>
 
       </div>
@@ -59,10 +55,16 @@ export default {
 </script>
 
 <style lang="scss">
+//@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
 #feedResults {
   .card {
     min-height: 100%;
     position: relative;
+    img {
+      width:100%;
+      height:auto;
+    }
     .img-container {
       position: relative;
       overflow: auto;
@@ -73,4 +75,16 @@ export default {
     }
   }
 }
+
+// .card-columns {
+//   @include media-breakpoint-only(sm) {
+//     column-count: 4 !important;
+//   }
+//   @include media-breakpoint-only(lg) {
+//     column-count: 5 !important;
+//   }
+//   @include media-breakpoint-only(xl) {
+//     column-count: 6 !important;
+//   }
+// }
 </style>

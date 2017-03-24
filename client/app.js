@@ -4,20 +4,33 @@ import App from './components/App'
 import router from './router'
 import store from './store'
 import VueResource from 'vue-resource'
-import BootstrapVue from 'bootstrap-vue'
-import VeeValidate from 'vee-validate'
+
+import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import VeeValidate, { Validator } from 'vee-validate'
+import messages from 'vee-validate/dist/locale/es'
+
+import VueMask from 'v-mask'
 
 Vue.config.devtools = true
 
 sync(store, router)
 
+Validator.addLocale(messages)
+const config = {
+    locale: 'es'
+};
+Vue.use(VeeValidate, config)
+
+
+Vue.use(VueMask)
 Vue.use(VueResource)
 Vue.use(BootstrapVue)
-Vue.use(VeeValidate, {
-  locale: 'es'
-});
 
-Stamplay.init("hispanojobs");
+
+Stamplay.init("hispanojobs")
 // console.log(Stamplay);
 
 Vue.http.options.root = 'http://hispanojobs.stamplayapp.com/api/cobject/v1';

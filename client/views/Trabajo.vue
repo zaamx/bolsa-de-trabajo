@@ -40,8 +40,8 @@
                     {{ actual.descripcion }}
                   </p>
                 </div>
-                <div class="col">
-                  <router-link to="/" class="btn btn-outline-info col margin-s-bottom">
+                <div class="col-4">
+                  <router-link to="/" class="btn btn-secondary col margin-s-bottom">
                     Ver más trabajos
 
                   </router-link>
@@ -57,25 +57,25 @@
 
                     <social-sharing :url="getCurrentUrl" inline-template>
                       <div class=" col text-center">
-                          <facebook class="btn btn-outline-info">
+                          <facebook class="btn btn-secondary">
                             <i class="fa fa-facebook"></i>
                           </facebook>
 
-                          <twitter  class="btn btn-outline-info">
+                          <twitter  class="btn btn-secondary">
                             <i class="fa fa-twitter"></i>
                           </twitter>
 
-                          <googleplus  class="btn btn-outline-info">
+                          <googleplus  class="btn btn-secondary">
                             <i class="fa fa-google-plus"></i>
                           </googleplus>
 
-                          <pinterest  class="btn btn-outline-info">
+                          <pinterest  class="btn btn-secondary">
                             <i class="fa fa-pinterest"></i>
                           </pinterest>
                       </div>
                     </social-sharing>
                   </div>
-                  <button class="btn btn-info col margin-s-top" @click="datosContacto = !datosContacto">
+                  <button class="btn btn-primary col margin-s-top" @click="datosContacto = !datosContacto">
                     <span  v-if="datosContacto">
                       Ocultar contacto
                     </span>

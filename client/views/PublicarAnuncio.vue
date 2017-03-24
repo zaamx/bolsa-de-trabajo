@@ -1,9 +1,12 @@
 <template>
-  <div class="page">
+  <div class="page publicar-empresa">
     <div class="container">
       <div class="row">
         <div class="col-md-10 offset-md-1">
-          <h1 class="display-4 text-center margin-xl-top">Publicar anuncio</h1>
+          <h1 class="h2 text-center margin-xl-top text-white">Si eres empresa publica aquí tus ofertas de empleo</h1>
+          <!-- <p class="lead">
+            Publica tus ofertas de empleo aquí  
+          </p> -->
           <PublicarForm class="padding-m margin-xl-top">
           </PublicarForm>
         </div>
@@ -26,3 +29,8 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.publicar-empresa  {
+  background:#222228;
+}
+</style>

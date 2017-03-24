@@ -7,7 +7,9 @@
     </div>
     <div class="is-image" v-if="placeImg">
       <img  :src="imagen" class="img-fluid img-thumbnail" :alt="alt" v-if="imagen">
-      <img src="http://placehold.it/400x400" alt="" class="card-img-top img-fluid" v-else>
+      <img class="img-fluid img-thumbnail" src="../assets/default-img.jpg" alt="" v-else>
+
+      <!-- <img src="http://placehold.it/400x400" alt="" class="card-img-top img-fluid" v-else> -->
     </div>
   </div>
 </template>

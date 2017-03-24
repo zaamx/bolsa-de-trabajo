@@ -21,9 +21,6 @@
                     </span>
                   </span>
                 </div>
-
-
-
               </div>
 
               <div class="col-md-6">
@@ -67,7 +64,11 @@
               </span>
             </div>
 
-            <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.email')}" >
+            
+
+            <div class="row">
+              <div class="col-md-6">
+              <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.email')}" >
               <label class="form-control-label"  for="nuevoanuncio.email">Correo electrónico</label>
               <input type="email" class="form-control" placeholder="tumail@dominio.com" v-model="nuevoanuncio.email" name="nuevoanuncio.email"  v-validate data-vv-rules="required|email" data-vv-as="Correo electrónico">
               <span v-show="errors.has('nuevoanuncio.email')" >
@@ -76,10 +77,7 @@
                 </span>
               </span>
             </div>
-
-            <div class="row">
-              <div class="col-md-4">
-
+<!-- 
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.area_code')}" >
                   <label class="form-control-label"  for="nuevoanuncio.area_code">Area code</label>
                   <input type="number" class="form-control" placeholder="555" v-model="nuevoanuncio.area_code" name="nuevoanuncio.area_code"  v-validate data-vv-rules="required|numeric" data-vv-as="Area Code">
@@ -88,20 +86,24 @@
                       {{ error }}
                     </span>
                   </span>
-                </div>
+                </div> -->
 
               </div>
-              <div class="col-md-8">
+              <div class="col-md-6">
 
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.phone_number')}" >
                   <label class="form-control-label"  for="nuevoanuncio.phone_number">Teléfono</label>
-                  <input type="number" class="form-control" placeholder="5555 5555" v-model="nuevoanuncio.phone_number" name="nuevoanuncio.phone_number"  v-validate data-vv-rules="required|numeric" data-vv-as="Telefóno">
+
+                  <input  class="form-control" v-model="nuevoanuncio.phone_number" placeholder="(999)-999-9999" v-mask="'(###) ###-####'" name="nuevoanuncio.phone_number"  v-validate data-vv-rules="required" data-vv-as="Telefóno">
+
                   <span v-show="errors.has('nuevoanuncio.phone_number')" >
                     <span v-for="error in errors.collect('nuevoanuncio.phone_number')" class="form-control-feedback">
                       {{ error }}
                     </span>
                   </span>
                 </div>
+
+                
 
               </div>
             </div>
@@ -138,19 +140,58 @@
 
               </div>
             </div>
+            
+            <!--
+            -
+            - zip y extra zip
+            -
+            -->
             <div class="row">
               <div class="col-md-6">
 
-                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.monto')}" >
-                  <label class="form-control-label"  for="">Monto ofrecido USD</label>
-                  <input type="number" class="form-control" placeholder="1999" v-model="nuevoanuncio.monto" name="nuevoanuncio.monto"  v-validate data-vv-rules="required|numeric" data-vv-as="Monto">
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.zip')}" >
+                  <label class="form-control-label"  for="nuevoanuncio.zip">Código postal</label>
+                  <input type="text" class="form-control" placeholder="06030" v-model="nuevoanuncio.zip" name="nuevoanuncio.zip"  v-validate data-vv-rules="required" data-vv-as="Código Postal">
+                  <span v-show="errors.has('nuevoanuncio.zip')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.zip')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
+                </div>
+
+              </div>
+              <div class="col-md-6">
+
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.extra_zip')}" >
+                  <label class="form-control-label"  for="nuevoanuncio.extra_zip">Extra código postal</label>
+                  <input type="text" class="form-control" placeholder="0000" v-model="nuevoanuncio.extra_zip" name="nuevoanuncio.extra_zip"  v-validate data-vv-rules="required" data-vv-as="Extra zip">
+                  <span v-show="errors.has('nuevoanuncio.extra_zip')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.extra_zip')" class="form-control-feedback">
+                      {{ error }}
+                    </span>
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label"  for="">Monto ofrecido en dolares</label>
+                  <div :class="{'input-group': true, 'has-danger': errors.has('nuevoanuncio.monto')}" >
+                    <span class="input-group-addon">$</span>
+                    <input type="number" class="form-control" placeholder="1999" v-model="nuevoanuncio.monto" name="nuevoanuncio.monto"  v-validate data-vv-rules="required|numeric" data-vv-as="Monto">
+                    <span class="input-group-addon">.00</span>
+
+                  </div>
                   <span v-show="errors.has('nuevoanuncio.monto')" >
                     <span v-for="error in errors.collect('nuevoanuncio.monto')" class="form-control-feedback">
                       {{ error }}
                     </span>
                   </span>
                 </div>
-
               </div>
               <div class="col-md-6">
 
@@ -226,7 +267,7 @@
                   Cancelar
                 </router-link>
 
-                <button type="submit"  name="sendForm" id="sendForm" class="btn btn-outline-info" v-bind:disabled="disabledButton">
+                <button type="submit"  name="sendForm" id="sendForm" class="btn btn-primary" v-bind:disabled="disabledButton">
                   Publicar anuncio
                 </button>
               </div>
@@ -242,6 +283,8 @@
 </template>
 
 <script>
+
+
 import Dropzone from 'dropzone'
 Dropzone.autoDiscover = false
 
@@ -254,6 +297,7 @@ export default {
       jobsList: null,
       estList: null,
       payList: null,
+      phone: '',
       nuevoanuncio: {
         anunciante: '',
         area_code: '',
@@ -267,7 +311,9 @@ export default {
         titulo: '',
         email: '',
         ciudad: '',
-        imagen: ''
+        imagen: '',
+        zip:'',
+        extra_zip: ''
       },
       terminos: '',
       urlSuccessPost: '',
@@ -318,16 +364,25 @@ export default {
     validateForm () {
 
       // Validate All returns a promise and provides the validation result.
-      this.$validator.validateAll().then(success => {
-        if (! success) {
-          // handle error
-          return;
-        }
-        else {
-          this.disabledButton = true;
-          this.publishForm()
-        }
-      });
+      // this.$validator.validateAll().then(success => {
+      //   if (!success) {
+      //     // handle error
+      //     return;
+      //   }
+      //   else {
+      //     this.disabledButton = true;
+      //     this.publishForm()
+      //   }
+      // });
+      this.$validator.validateAll().then(() => {
+                // eslint-disable-next-line
+                    this.disabledButton = true;
+                    this.publishForm()
+            }).catch(() => {
+                // eslint-disable-next-line
+                    return;
+                // alert('Correct them errors!');
+            });
     },
     getCategorias () {
       // Cambiar para
@@ -387,8 +442,8 @@ export default {
       this.dropzone.processQueue()
     }
   },
-  components: {
-
+  components: { 
+    
   }
 }
 </script>

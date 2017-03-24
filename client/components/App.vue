@@ -1,27 +1,48 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-toggleable-md navbar-light">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- <a class="navbar-brand" href="#">HispanoClub Jobs</a> -->
-      <a class="navbar-brand" href="http://hispanoclub.com/" target="_blank">
-        <img src="../assets/logo-sitio.png" alt="">
-      </a>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <router-link class="nav-item nav-link" to="/" active-class="active">
-            Buscar trabajos
-          </router-link>
-          <router-link class="nav-item nav-link" to="/trabajos" active-class="active">
-            Ver todos los trabajos
-          </router-link>
-          <router-link class="nav-item nav-link" to="/publicar-anuncio" active-class="active">
-            Publicar nuevo trabajo
-          </router-link>
-        </div>
-      </div>
-    </nav>
+    <header>
+      <b-navbar toggleable >
+
+    <b-nav-toggle target="nav_collapse"></b-nav-toggle>
+    <a class="navbar-brand" href="http://hispanoclub.com/" target="_blank">
+      <img src="../assets/logo-sitio.png" alt="">
+    </a>
+
+    <b-collapse is-nav id="nav_collapse">
+      
+      <b-nav is-nav-bar>
+        <b-nav-item to="/">Buscar trabajos</b-nav-item>
+        <b-nav-item to="/trabajos">Ver todos los trabajos</b-nav-item>
+        
+      </b-nav>
+      
+      <b-nav is-nav-bar class="ml-auto">
+        
+        <!-- Navbar dropdowns -->
+        <router-link class="nav-item btn btn-outline-primary" to="/publicar-anuncio" active-class="active">
+          Publicaciones de empresas
+        </router-link>
+
+        <!-- <b-nav-item to="/publicar-anuncio">Publicar trabajo</b-nav-item> -->
+        
+        <b-nav-item-dropdown right-alignment>
+          
+          <!-- Using text slot -->
+          <template slot="text">
+            <span style="font-weight: bold;">
+              <i class="fa fa-th" aria-hidden="true"></i>
+            </span>
+          </template>
+          <b-nav-item>Contact Us</b-nav-item>
+          
+          <!-- <b-dropdown-item to="lorem">Profile</b-dropdown-item> -->
+          <!-- <b-dropdown-item to="#">Signout</b-dropdown-item> -->
+        </b-nav-item-dropdown>
+       
+      </b-nav>
+    </b-collapse>
+  </b-navbar>
+    </header>
     <div class="loader" v-if="loading">Loading...</div>
     <div class="paginasApp" v-if="content">
       <transition name="fade">
@@ -87,7 +108,7 @@ export default {
       setTimeout(() => {
         this.cargaTipos = true
         console.log('tipos', this.cargaTipos)
-      }, 4000)
+      }, 400)
 
       // var self = this
       // Stamplay.Object('tipo_trabajo').get({
@@ -116,6 +137,11 @@ export default {
 <style lang="scss">
 @import '../stylesheets/mixins/_resetText.scss';
 @import '../stylesheets/mixins/_spacing.scss';
+body {
+  background:#fbfbfb !important;
+  // padding-bottom:100px;
+}
+
 .text-uppercase {
   text-transform: uppercase;
 }
@@ -175,6 +201,9 @@ export default {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+.page {
+  padding-bottom:100px;
 }
 
 </style>
