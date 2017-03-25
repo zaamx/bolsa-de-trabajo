@@ -3,8 +3,7 @@
     <!-- <div class="card"> -->
       <!-- <div class="card-block"> -->
         <form class="" @submit.prevent="validateForm">
-
-          <slick ref="slick" :options="slickOptions">
+          <slick ref="slick" :options="slickOptions" v-on:afterChange="checa">
             <div class="field-slide">
               <div class="container-fluid">
                 <div class="row align-items-center">
@@ -22,12 +21,20 @@
                           {{ categoria.titulo }}
                         </option>
                       </select>
+
                       <span v-show="errors.has('nuevoanuncio.rel_categoria')" >
                         <span v-for="error in errors.collect('nuevoanuncio.rel_categoria')" class="form-control-feedback">
                           {{ error }}
                         </span>
                       </span>
+                      
                     </div>
+                      
+                      <div v-if="nuevoanuncio.rel_categoria">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -51,6 +58,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.rel_tipotrabajo">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -61,13 +73,18 @@
                   <div class="col-md-12">
                     <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.titulo')}" >
                       <label class="form-control-label"  for="nuevoanuncio.titulo">Titulo del anuncio</label>
-                      <input type="text" class="form-control form-control-lg" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.titulo" name="nuevoanuncio.titulo"  v-validate data-vv-rules="required" data-vv-as="Titulo">
+                      <input type="text" class="form-control form-control-lg"  v-model="nuevoanuncio.titulo" name="nuevoanuncio.titulo"  v-validate data-vv-rules="required" data-vv-as="Titulo">
                       <span v-show="errors.has('nuevoanuncio.titulo')" >
                         <span v-for="error in errors.collect('nuevoanuncio.titulo')" class="form-control-feedback">
                           {{ error }}
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.titulo">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -85,6 +102,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.anunciante">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -102,6 +124,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.email">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -121,6 +148,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.phone_number">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -143,6 +175,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.rel_estado">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -160,6 +197,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.ciudad">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -177,6 +219,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.zip">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -194,6 +241,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.extra_zip">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -216,6 +268,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.monto">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -238,6 +295,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.rel_tipopago">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -256,6 +318,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="nuevoanuncio.descripcion">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -274,6 +341,11 @@
                         </div>
                       </form>
                     </div>
+                    <div >
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -295,6 +367,11 @@
                         </span>
                       </span>
                     </div>
+                    <div v-if="terminos">
+                        <button type="button" class="btn btn-primary" @click="next">
+                          Siguiente 
+                        </button>
+                      </div>
 
 
                   </div>
@@ -339,6 +416,8 @@ export default {
       slickOptions: {
         slidesToShow: 1,
         infinite: false,
+        touchMove: false,
+        draggable: false,
         arrows:false,
         vertical:true
       },
@@ -355,10 +434,10 @@ export default {
         descripcion: '',
         monto: '',
         phone_number: '',
-        rel_categoria: [],
-        rel_estado: [],
-        rel_tipotrabajo: [],
-        rel_tipopago: [],
+        rel_categoria: '',
+        rel_estado: '',
+        rel_tipotrabajo: '',
+        rel_tipopago: '',
         titulo: '',
         email: '',
         ciudad: '',
@@ -400,6 +479,9 @@ export default {
     })
   },
   watch: {
+    nuevoanuncio (value) {
+      console.log(value)
+    }
 
   },
   created () {
@@ -414,6 +496,11 @@ export default {
   methods: {
     resetForm () {
 
+    },
+    checa (event, slick, currentSlide) {
+      console.log('ya paso')
+      // console.log('el id', arguments)
+      console.log('el id', currentSlide)
     },
     validateForm () {
 
@@ -529,6 +616,9 @@ export default {
           color:#fff;
           &:placeholder {
             color:red;
+          }
+          option {
+            color:black;
           } 
         }
 
