@@ -13,24 +13,24 @@
                       Anuncia tus servicios, profesión u oferta para conseguir más trabajo. 
                     </p>
                     <hr>
-                    <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_categoria')}" >
-                      <label class="form-control-label"  for="nuevoanuncio.rel_categoria">Categoría del aviso</label>
-                      <select class="form-control form-control-lg" name="nuevoanuncio.rel_categoria" v-model="nuevoanuncio.rel_categoria"  v-validate data-vv-rules="required" data-vv-as="Categoria">
+                    <div :class="{'form-group': true, 'has-danger': errors.has('pre_rel_categoria')}" >
+                      <label class="form-control-label"  for="pre_rel_categoria">Categoría del aviso</label>
+                      <select class="form-control form-control-lg" name="pre_rel_categoria" v-model="pre_rel_categoria"  v-validate data-vv-rules="required" data-vv-as="Categoria">
                         <option disabled> -- select an option -- </option>
                         <option :value=" categoria._id "  v-for="categoria in this.catList">
                           {{ categoria.titulo }}
                         </option>
                       </select>
 
-                      <span v-show="errors.has('nuevoanuncio.rel_categoria')" >
-                        <span v-for="error in errors.collect('nuevoanuncio.rel_categoria')" class="form-control-feedback">
+                      <span v-show="errors.has('pre_rel_categoria')" >
+                        <span v-for="error in errors.collect('pre_rel_categoria')" class="form-control-feedback">
                           {{ error }}
                         </span>
                       </span>
                       
                     </div>
                       
-                      <div v-if="nuevoanuncio.rel_categoria">
+                      <div v-if="pre_rel_categoria">
                         <button type="button" class="btn btn-primary" @click="next">
                           Siguiente 
                         </button>
@@ -44,21 +44,21 @@
               <div class="container-fluid">
                 <div class="row align-items-center">
                   <div class="col-md-12">
-                    <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_tipotrabajo')}" >
-                      <label class="form-control-label"  for="nuevoanuncio.rel_tipotrabajo">Tipo del aviso</label>
-                      <select class="form-control form-control-lg" name="nuevoanuncio.rel_tipotrabajo" v-model="nuevoanuncio.rel_tipotrabajo"  v-validate data-vv-rules="required" data-vv-as="Tipo de trabajo">
+                    <div :class="{'form-group': true, 'has-danger': errors.has('pre_rel_tipotrabajo')}" >
+                      <label class="form-control-label"  for="pre_rel_tipotrabajo">Tipo del aviso</label>
+                      <select class="form-control form-control-lg" name="pre_rel_tipotrabajo" v-model="pre_rel_tipotrabajo"  v-validate data-vv-rules="required" data-vv-as="Tipo de trabajo">
                         <option disabled> -- select an option -- </option>
                         <option :value=" job._id "  v-for="job in this.jobsList">
                           {{ job.titulo }}
                         </option>
                       </select>
-                      <span v-show="errors.has('nuevoanuncio.rel_tipotrabajo')" >
-                        <span v-for="error in errors.collect('nuevoanuncio.rel_tipotrabajo')" class="form-control-feedback">
+                      <span v-show="errors.has('pre_rel_tipotrabajo')" >
+                        <span v-for="error in errors.collect('pre_rel_tipotrabajo')" class="form-control-feedback">
                           {{ error }}
                         </span>
                       </span>
                     </div>
-                    <div v-if="nuevoanuncio.rel_tipotrabajo">
+                    <div v-if="pre_rel_tipotrabajo">
                         <button type="button" class="btn btn-primary" @click="next">
                           Siguiente 
                         </button>
@@ -161,21 +161,21 @@
               <div class="container-fluid">
                 <div class="row align-items-center">
                   <div class="col-md-12">
-                    <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_estado')}" >
-                      <label class="form-control-label"  for="nuevoanuncio.rel_estado">Estado</label>
-                      <select class="form-control form-control-lg" name="nuevoanuncio.rel_estado" v-model="nuevoanuncio.rel_estado"  v-validate data-vv-rules="required" data-vv-as="Estado">
+                    <div :class="{'form-group': true, 'has-danger': errors.has('pre_rel_estado')}" >
+                      <label class="form-control-label"  for="pre_rel_estado">Estado</label>
+                      <select class="form-control form-control-lg" name="pre_rel_estado" v-model="pre_rel_estado"  v-validate data-vv-rules="required" data-vv-as="Estado">
                         <option disabled> -- select an option -- </option>
                         <option :value=" state._id "  v-for="state in this.estList">
                           {{ state.codigo }} -  {{ state.nombre }}
                         </option>
                       </select>
-                      <span v-show="errors.has('nuevoanuncio.rel_estado')" >
-                        <span v-for="error in errors.collect('nuevoanuncio.rel_estado')" class="form-control-feedback">
+                      <span v-show="errors.has('pre_rel_estado')" >
+                        <span v-for="error in errors.collect('pre_rel_estado')" class="form-control-feedback">
                           {{ error }}
                         </span>
                       </span>
                     </div>
-                    <div v-if="nuevoanuncio.rel_estado">
+                    <div v-if="pre_rel_estado">
                         <button type="button" class="btn btn-primary" @click="next">
                           Siguiente 
                         </button>
@@ -281,21 +281,21 @@
               <div class="container-fluid">
                 <div class="row align-items-center">
                   <div class="col-md-12">
-                    <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_tipopago')}" >
-                      <label class="form-control-label"  for="nuevoanuncio.rel_tipopago">Tipo de Pago</label>
-                      <select class="form-control form-control-lg" name="nuevoanuncio.rel_tipopago" v-model="nuevoanuncio.rel_tipopago"  v-validate data-vv-rules="required" data-vv-as="Tipo de pago">
+                    <div :class="{'form-group': true, 'has-danger': errors.has('pre_rel_tipopago')}" >
+                      <label class="form-control-label"  for="pre_rel_tipopago">Tipo de Pago</label>
+                      <select class="form-control form-control-lg" name="pre_rel_tipopago" v-model="pre_rel_tipopago"  v-validate data-vv-rules="required" data-vv-as="Tipo de pago">
                         <option disabled> -- select an option -- </option>
                         <option :value=" payform._id "  v-for="payform in this.payList">
                           {{ payform.titulo }}
                         </option>
                       </select>
-                      <span v-show="errors.has('nuevoanuncio.rel_tipopago')" >
-                        <span v-for="error in errors.collect('nuevoanuncio.rel_tipopago')" class="form-control-feedback">
+                      <span v-show="errors.has('pre_rel_tipopago')" >
+                        <span v-for="error in errors.collect('pre_rel_tipopago')" class="form-control-feedback">
                           {{ error }}
                         </span>
                       </span>
                     </div>
-                    <div v-if="nuevoanuncio.rel_tipopago">
+                    <div v-if="pre_rel_tipopago">
                         <button type="button" class="btn btn-primary" @click="next">
                           Siguiente 
                         </button>
@@ -428,16 +428,20 @@ export default {
       estList: null,
       payList: null,
       phone: '',
+      pre_rel_categoria: '',
+      pre_rel_estado: '',
+      pre_rel_tipotrabajo: '',
+      pre_rel_tipopago: '',
       nuevoanuncio: {
         anunciante: '',
         area_code: '',
         descripcion: '',
         monto: '',
         phone_number: '',
-        rel_categoria: '',
-        rel_estado: '',
-        rel_tipotrabajo: '',
-        rel_tipopago: '',
+        rel_categoria: [],
+        rel_estado: [],
+        rel_tipotrabajo: [],
+        rel_tipopago: [],
         titulo: '',
         email: '',
         ciudad: '',
@@ -479,10 +483,7 @@ export default {
     })
   },
   watch: {
-    nuevoanuncio (value) {
-      console.log(value)
-    }
-
+    // pre_rel_categoria:  'fn_rel_cat',
   },
   created () {
     this.getCategorias()
@@ -496,6 +497,11 @@ export default {
   methods: {
     resetForm () {
 
+    },
+    fn_rel_cat () {
+      console.log('pre -> ',this.pre_rel_categoria)
+      this.anuncio.rel_categoria.push(this.pre_rel_categoria);
+      console.log('post -> ',this.anuncio.rel_categoria)
     },
     checa (event, slick, currentSlide) {
       console.log('ya paso')
