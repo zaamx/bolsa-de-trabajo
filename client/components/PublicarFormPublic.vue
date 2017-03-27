@@ -31,7 +31,7 @@
                     </div>
                       
                       <div v-if="pre_rel_categoria">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -59,7 +59,7 @@
                       </span>
                     </div>
                     <div v-if="pre_rel_tipotrabajo">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -81,7 +81,7 @@
                       </span>
                     </div>
                     <div v-if="nuevoanuncio.titulo">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -103,7 +103,7 @@
                       </span>
                     </div>
                     <div v-if="nuevoanuncio.anunciante">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -125,7 +125,7 @@
                       </span>
                     </div>
                     <div v-if="nuevoanuncio.email">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -148,8 +148,9 @@
                         </span>
                       </span>
                     </div>
+                    {{nuevoanuncio.phone_number}}
                     <div v-if="nuevoanuncio.phone_number">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -176,7 +177,7 @@
                       </span>
                     </div>
                     <div v-if="pre_rel_estado">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -198,7 +199,7 @@
                       </span>
                     </div>
                     <div v-if="nuevoanuncio.ciudad">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -220,7 +221,7 @@
                       </span>
                     </div>
                     <div v-if="nuevoanuncio.zip">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -242,7 +243,7 @@
                       </span>
                     </div>
                     <div v-if="nuevoanuncio.extra_zip">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -269,7 +270,7 @@
                       </span>
                     </div>
                     <div v-if="nuevoanuncio.monto">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -296,7 +297,7 @@
                       </span>
                     </div>
                     <div v-if="pre_rel_tipopago">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -319,7 +320,7 @@
                       </span>
                     </div>
                     <div v-if="nuevoanuncio.descripcion">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -342,7 +343,7 @@
                       </form>
                     </div>
                     <div >
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -368,7 +369,7 @@
                       </span>
                     </div>
                     <div v-if="terminos">
-                        <button type="button" class="btn btn-primary" @click="next">
+                        <button type="button" class="btn btn-warning" @click="next">
                           Siguiente 
                         </button>
                       </div>
@@ -382,6 +383,8 @@
               <div class="container-fluid">
                 <div class="row align-items-center">
                   <div class="col-md-12 text-right" >
+
+
                     <router-link to="/" class="btn btn-link btn-lg">
                       Cancelar
                     </router-link>
@@ -432,6 +435,7 @@ export default {
       pre_rel_estado: '',
       pre_rel_tipotrabajo: '',
       pre_rel_tipopago: '',
+      pre_phone_number: '',
       nuevoanuncio: {
         anunciante: '',
         area_code: '',
@@ -483,7 +487,11 @@ export default {
     })
   },
   watch: {
-    // pre_rel_categoria:  'fn_rel_cat',
+    pre_phone_number: 'fn_phone_number',
+    pre_rel_categoria:  'fn_rel_cat',
+    pre_rel_estado: 'fn_rel_edo',
+    pre_rel_tipotrabajo:'fn_rel_tipotrab',
+    pre_rel_tipopago:'fn_rel_tipopago'
   },
   created () {
     this.getCategorias()
@@ -499,9 +507,21 @@ export default {
 
     },
     fn_rel_cat () {
-      console.log('pre -> ',this.pre_rel_categoria)
-      this.anuncio.rel_categoria.push(this.pre_rel_categoria);
-      console.log('post -> ',this.anuncio.rel_categoria)
+      this.nuevoanuncio.rel_categoria.push(this.pre_rel_categoria)
+    },
+    fn_rel_edo () {
+      this.nuevoanuncio.rel_estado.push(this.pre_rel_estado)
+    },
+    fn_rel_tipotrab () {
+      this.nuevoanuncio.rel_tipotrabajo.push(this.pre_rel_tipotrabajo)
+    },
+    fn_rel_tipopago () {
+      this.nuevoanuncio.rel_tipopago.push(this.pre_rel_tipotrabajo)
+    },
+    fn_phone_number () {
+      //this.pre_phone_number
+
+      // var desired = stringToReplace.replace(/[^\w\s]/gi, '')
     },
     checa (event, slick, currentSlide) {
       console.log('ya paso')
