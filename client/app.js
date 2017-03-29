@@ -16,6 +16,10 @@ import messages from 'vee-validate/dist/locale/es'
 
 import VueMask from 'v-mask'
 
+// import IntroJs from 'intro.js'
+window.introJs = introJs();
+
+
 Vue.config.devtools = true
 
 sync(store, router)

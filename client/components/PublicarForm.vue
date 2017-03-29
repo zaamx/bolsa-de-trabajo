@@ -7,7 +7,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6">
-                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_categoria')}" >
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_categoria')}" data-step="1" data-intro="Inicia... ">
                   <label class="form-control-label"  for="nuevoanuncio.rel_categoria">Categoría del aviso</label>
                   <select class="form-control" name="nuevoanuncio.rel_categoria" v-model="nuevoanuncio.rel_categoria"  v-validate data-vv-rules="required" data-vv-as="Categoria">
                     <option disabled> -- select an option -- </option>
@@ -24,7 +24,7 @@
               </div>
 
               <div class="col-md-6">
-                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_tipotrabajo')}" >
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_tipotrabajo')}" data-step="2" data-intro="Selecciona ">
                   <label class="form-control-label"  for="nuevoanuncio.rel_tipotrabajo">Tipo del aviso</label>
                   <select class="form-control" name="nuevoanuncio.rel_tipotrabajo" v-model="nuevoanuncio.rel_tipotrabajo"  v-validate data-vv-rules="required" data-vv-as="Tipo de trabajo">
                     <option disabled> -- select an option -- </option>
@@ -42,7 +42,7 @@
               </div>
             </div>
 
-            <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.titulo')}" >
+            <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.titulo')}" data-step="3" data-intro="Titulo ">
               <label class="form-control-label"  for="nuevoanuncio.titulo">Titulo del anuncio</label>
               <input type="text" class="form-control" placeholder="Ej. Solicito jardinero" v-model="nuevoanuncio.titulo" name="nuevoanuncio.titulo"  v-validate data-vv-rules="required" data-vv-as="Titulo">
               <span v-show="errors.has('nuevoanuncio.titulo')" >
@@ -286,6 +286,7 @@
 
 
 import Dropzone from 'dropzone'
+
 Dropzone.autoDiscover = false
 
 export default {
@@ -347,6 +348,8 @@ export default {
     vm.dropzone.on('success', function (file, response) {
       vm.$router.push({ path: '/trabajos/'+ vm.urlSuccessPost })
     })
+
+    window.introJs.setOption('showProgress', true).start()
   },
   watch: {
 
@@ -451,6 +454,7 @@ export default {
 }
 </script>
 
-<style >
+<style lang="scss">
 @import '../../node_modules/dropzone/dist/dropzone.css';
+// @import '../../node_modules/intro.js/minified/introjs.min.css';
 </style>
