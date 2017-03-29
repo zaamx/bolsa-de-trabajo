@@ -6,6 +6,13 @@
 
           <div class="container-fluid">
             <div class="row">
+              <div class="col-12 text-right">
+                  <a href="" class="btn btn-sm btn-info" @click.prevent="assitantStart()">
+                    Si necesitas ayuda haz click aquí <i class="fa fa-question-circle" aria-hidden="true"></i>
+                  </a>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-md-6">
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_categoria')}" data-step="1" data-intro="Inicia... ">
                   <label class="form-control-label"  for="nuevoanuncio.rel_categoria">Categoría del aviso</label>
@@ -349,7 +356,19 @@ export default {
       vm.$router.push({ path: '/trabajos/'+ vm.urlSuccessPost })
     })
 
-    window.introJs.setOption('showProgress', true).start()
+    vm.intro = window.introJs.setOption('showProgress', true)
+
+    setTimeout(function(){
+      vm.intro.start() 
+    }, 800)
+    
+
+    vm.intro.onchange(function () {
+      console.log(this);
+      // you'll notice the object's properties have _currentStep - use that :)
+    });
+
+    
   },
   watch: {
 
@@ -362,6 +381,7 @@ export default {
   },
   beforeDestroy () {
     this.dropzone.destroy();
+    this.assitantStop();
   }, 
   methods: {
     resetForm () {
@@ -446,7 +466,14 @@ export default {
     },
     sendImage() {
       this.dropzone.processQueue()
+    },
+    assitantStart() {
+      this.intro.start() 
+    },
+    assitantStop() {
+      this.intro.exit()
     }
+
   },
   components: { 
     

@@ -32,5 +32,6 @@ export default {
 <style lang="scss">
 .publicar-empresa  {
   background:#222228;
+  padding-bottom: 100px;
 }
 </style>
