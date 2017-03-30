@@ -9,7 +9,7 @@
             </p>
 
             <router-link to="/publicar-anuncio-publico" class="btn btn-primary btn-lg margin-xs">
-              Ofrece tus servicios aquí
+              Ofrece tus servicios
             </router-link>
           </div>
           <!-- <div class="col-md-4">
@@ -20,9 +20,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <p class="text-muted text-center">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, nam?
-            </p>
+          <br>
             <SearchForm>
             </SearchForm>
           </div>

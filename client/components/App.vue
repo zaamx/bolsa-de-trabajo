@@ -20,7 +20,7 @@
         
         <!-- Navbar dropdowns -->
         <router-link class="nav-item btn btn-outline-primary" to="/publicar-anuncio" active-class="active">
-          Publicaciones de empresas
+          Empresa / Publicar empleos
         </router-link>
 
         <!-- <b-nav-item to="/publicar-anuncio">Publicar trabajo</b-nav-item> -->
