@@ -235,7 +235,7 @@
             </div>
 
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12 text-right">
                 <div :class="{'form-group': true, 'has-danger': errors.has('terminos')}"  data-step="14" data-intro="Acepta los terminso y condiciones para publicar tu oferta.">
                   <div class="checkbox">
                     <label>
