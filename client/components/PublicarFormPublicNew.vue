@@ -14,20 +14,7 @@
             </div>
             <div class="row">
               <div class="col-md-6 sr-only">
-                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_categoria')}" >
-                  <label class="form-control-label"  for="nuevoanuncio.rel_categoria">Categoría del aviso</label>
-                  <select class="form-control" name="nuevoanuncio.rel_categoria" v-model="nuevoanuncio.rel_categoria"  v-validate data-vv-rules="required" data-vv-as="Categoria">
-                    <option disabled> -- select an option -- </option>
-                    <option :value=" categoria._id "  v-for="categoria in this.catList">
-                      {{ categoria.titulo }}
-                    </option>
-                  </select>
-                  <span v-show="errors.has('nuevoanuncio.rel_categoria')" >
-                    <span v-for="error in errors.collect('nuevoanuncio.rel_categoria')" class="form-control-feedback">
-                      {{ error }}
-                    </span>
-                  </span>
-                </div>
+
               </div>
 
               <div class="col-md-12">
@@ -312,7 +299,7 @@ export default {
         descripcion: '',
         monto: '',
         phone_number: '',
-        rel_categoria: [],
+        rel_categoria: ['586d741f06e9a48305c34a43'],
         rel_estado: [],
         rel_tipotrabajo: [],
         rel_tipopago: [],
