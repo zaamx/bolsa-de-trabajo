@@ -1,12 +1,10 @@
 <template>
   <div class="page publicar-publico">
-    
-
     <div class="container">
       <div class="row">
-        <div class="col">
+        <div class="col-md-10 offset-md-1">
           <h1 class="h2 text-center margin-xl-top text-white">Rellena este breve formulario para publicar tu oferta de servicios</h1>
-          <PublicarFormPublicNew >
+          <PublicarFormPublicNew class="padding-m margin-xl-top">
           </PublicarFormPublicNew>
           <!-- <h1 class="h2 text-center margin-xl-top text-white">Contesta las siguientes preguntas para anunciarte </h1>
           <p class="lead text-white text-center">

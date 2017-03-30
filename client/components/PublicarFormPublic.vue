@@ -117,7 +117,7 @@
                   <div class="col-md-12">
                     <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.email')}" >
                       <label class="form-control-label"  for="nuevoanuncio.email">Correo electrónico</label>
-                      <input type="email" class="form-control form-control-lg" placeholder="tumail@dominio.com" v-model="nuevoanuncio.email" name="nuevoanuncio.email"  v-validate data-vv-rules="required|email" data-vv-as="Correo electrónico">
+                      <input type="email" class="form-control form-control-lg" placeholder="tumail@dominio.com" v-model="nuevoanuncio.email" name="nuevoanuncio.email"  v-validate data-vv-rules="email" data-vv-as="Correo electrónico">
                       <span v-show="errors.has('nuevoanuncio.email')" >
                         <span v-for="error in errors.collect('nuevoanuncio.email')" class="form-control-feedback">
                           {{ error }}
