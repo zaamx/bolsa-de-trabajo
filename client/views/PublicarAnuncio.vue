@@ -2,7 +2,7 @@
   <div class="page publicar-empresa">
     <div class="container">
       <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md-12">
           <h1 class="h2 text-center margin-xl-top text-white">Si eres empresa publica aquí tus ofertas de empleo</h1>
           <!-- <p class="lead">
             Publica tus ofertas de empleo aquí  

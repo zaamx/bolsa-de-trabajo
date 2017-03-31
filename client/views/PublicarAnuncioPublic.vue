@@ -2,7 +2,7 @@
   <div class="page publicar-publico">
     <div class="container">
       <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md-12">
           <h1 class="h2 text-center margin-xl-top text-white">Rellena este breve formulario para publicar tu oferta de servicios</h1>
           <PublicarFormPublicNew class="padding-m margin-xl-top">
           </PublicarFormPublicNew>
