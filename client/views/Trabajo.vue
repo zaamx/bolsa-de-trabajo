@@ -26,6 +26,10 @@
                     <dd class="col col-md-6 col-lg-8">{{ getCurrentJobKind }}</dd>
                     <dt class="col-xs-12 col-md-6 col-lg-4">Nombre del anunciante</dt>
                     <dd class="col col-md-6 col-lg-8">{{ actual.anunciante }}</dd>
+
+                    <dt class="col-xs-12 col-md-6 col-lg-4">Persona de contacto</dt>
+                    <dd class="col col-md-6 col-lg-8">{{ actual.persona_contacto }}</dd>
+
                     <dt class="col-xs-12 col-md-6 col-lg-4">Estado</dt>
                     <dd class="col col-md-6 col-lg-8">{{ getCurrentEdo }}</dd>
                     <dt class="col-xs-12 col-md-6 col-lg-4">Ciudad</dt>
@@ -90,9 +94,9 @@
                           <dt>Correo electrónico</dt>
                           <dd>{{ actual.email }}</dd>
                         </dl>
-                        <dl v-if="actual.phone_number">
+                        <dl v-if="actual.phone_number_string">
                           <dt>Teléfono</dt>
-                          <dd> ( {{ actual.area_code }} ) -  {{ actual.phone_number }}</dd>
+                          <dd>{{ actual.phone_number_string }}</dd>
                         </dl>
                       </div>
 

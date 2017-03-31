@@ -9,8 +9,9 @@
             {{ error }}
         </div> -->
 
-        <div class="card-columns" v-if="this.items">
-            <div class="card" v-for="job in this.items">
+        <div class="masonry-layout" v-if="this.items">
+          <div class="masonry-layout-panel" v-for="job in this.items">
+            <div class="card" >
               <!-- <img class="card-img-top" src="..." alt="card image cap"> -->
               <router-link :to=" '/trabajos/' + job.id">
                 <img class="card-img-top" :src="job.imagen" alt="" v-if="job.imagen">
@@ -22,6 +23,7 @@
                   Ver anuncio
                 </router-link>
               </div>
+            </div>
             </div>
 
         </div>
@@ -56,6 +58,7 @@ export default {
 
 <style lang="scss">
 //@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../stylesheets/mixins/_breakpoints.scss';
 
 #feedResults {
   .card {
@@ -74,6 +77,28 @@ export default {
       }
     }
   }
+}
+
+.masonry-layout {
+  column-count: 1;
+  column-gap: 0;
+  @include breakpoint(sm) {
+    column-count: 3 ;
+  }
+  @include breakpoint(md) {
+    column-count: 4;
+  }
+  // @include breakpoint(md) {
+  //   column-count: 4;
+  // }
+}
+.masonry-layout-panel {
+  break-inside: avoid;
+  padding: 5px;
+}
+.masonry-layout-panel__content {
+  padding: 10px;
+  border-radius: 10px;
 }
 
 // .card-columns {
