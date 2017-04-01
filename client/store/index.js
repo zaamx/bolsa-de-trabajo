@@ -2239,9 +2239,10 @@ const state = {
           "total": 0
         }
       },
-      "dt_update": "2017-01-04T22:16:25.721Z",
+      "dt_update": "2017-03-31T19:04:15.066Z",
       "dt_create": "2017-01-04T22:16:25.721Z",
       "__v": 0,
+      "priority": 4,
       "id": "586d743906e9a48305c34a44"
     },
     {
@@ -2263,9 +2264,10 @@ const state = {
           "total": 0
         }
       },
-      "dt_update": "2017-01-04T22:16:35.641Z",
+      "dt_update": "2017-03-31T19:03:47.273Z",
       "dt_create": "2017-01-04T22:16:35.641Z",
       "__v": 0,
+      "priority": 3,
       "id": "586d744306e9a48305c34a45"
     },
     {
@@ -2287,10 +2289,36 @@ const state = {
           "total": 0
         }
       },
-      "dt_update": "2017-01-04T22:16:49.356Z",
+      "dt_update": "2017-03-31T19:02:28.961Z",
       "dt_create": "2017-01-04T22:16:49.356Z",
       "__v": 0,
+      "priority": 1,
       "id": "586d7451bcfaa18805361cf3"
+    },
+    {
+      "_id": "58dea590c06d630417b34dac",
+      "titulo": "Por servicio",
+      "appId": "hispanojobs",
+      "cobjectId": "tipo_pago",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-03-31T19:03:07.111Z",
+      "dt_create": "2017-03-31T18:53:04.412Z",
+      "__v": 0,
+      "priority": 2,
+      "id": "58dea590c06d630417b34dac"
     }
   ],
   jobs: [

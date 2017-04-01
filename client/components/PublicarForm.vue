@@ -17,7 +17,7 @@
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_tipotrabajo')}">
                   <label class="form-control-label"  for="nuevoanuncio.rel_tipotrabajo">Categoría del trabajo</label>
                   <select class="form-control" name="nuevoanuncio.rel_tipotrabajo" v-model="nuevoanuncio.rel_tipotrabajo"  v-validate data-vv-rules="required" data-vv-as="Tipo de trabajo">
-                    <option disabled> -- select an option -- </option>
+                    <option disabled > -- Selecciona una opción -- </option>
                     <option :value=" job._id "  v-for="job in this.jobsList">
                       {{ job.titulo }}
                     </option>
@@ -104,7 +104,7 @@
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_estado')}" >
                   <label class="form-control-label"  for="nuevoanuncio.rel_estado">Estado</label>
                   <select class="form-control" name="nuevoanuncio.rel_estado" v-model="nuevoanuncio.rel_estado"  v-validate data-vv-rules="required" data-vv-as="Estado">
-                    <option disabled> -- select an option -- </option>
+                    <option disabled > -- Selecciona una opción -- </option>
                     <option :value=" state._id "  v-for="state in this.estList">
                       {{ state.codigo }} -  {{ state.nombre }}
                     </option>
@@ -145,7 +145,7 @@
                   </span>
                 </div>
               </div>
-              <div class="col-md-4" data-step="10" data-intro="Sí los conoces, anota los 4 dígitos adicionales de tu código postal">
+              <div class="col-md-4" data-step="10" data-intro="Sí lo conoces, anota los 4 dígitos adicionales de tu código postal">
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.extra_zip')}">
                   <label class="form-control-label"  for="nuevoanuncio.extra_zip">&nbsp;</label>
                   <input type="text" class="form-control"  v-model="nuevoanuncio.extra_zip" name="nuevoanuncio.extra_zip"  v-validate data-vv-rules="numeric" data-vv-as="Extra zip">
@@ -185,8 +185,9 @@
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_tipopago')}" >
                   <label class="form-control-label"  for="nuevoanuncio.rel_tipopago">Periodo de pago</label>
                   <select class="form-control" name="nuevoanuncio.rel_tipopago" v-model="nuevoanuncio.rel_tipopago"  v-validate data-vv-rules="required" data-vv-as="Tipo de pago">
-                    <option disabled> -- select an option -- </option>
-                    <option :value=" payform._id "  v-for="payform in this.payList">
+                    <option disabled > -- Selecciona una opción -- </option>
+                    <option :value=" payform._id "  v-for="payform in this.tipoSorted">
+
                       {{ payform.titulo }}
                     </option>
                   </select>
@@ -272,7 +273,7 @@
 
 <script>
 
-
+import orderBy from 'vue-orderby-mixin'
 import Dropzone from 'dropzone'
 
 Dropzone.autoDiscover = false
@@ -310,8 +311,11 @@ export default {
       disabledButton: false
 		}
 	},
+  mixins: { orderBy },
   computed: {
-
+    tipoSorted() {
+      return this.orderBy(this.payList, 'priority', 'ASC')
+    }
   },
   mounted () {
     const vm = this
@@ -338,18 +342,25 @@ export default {
       vm.$router.push({ path: '/trabajos/'+ vm.urlSuccessPost })
     })
 
-    vm.intro = window.introJs.setOption('showProgress', true)
 
-    setTimeout(function(){
-      vm.intro.start() 
-    }, 800)
+    vm.intro = window.introJs.setOptions({ 
+      'showProgress': 'true',
+      'nextLabel': 'Siguiente',
+      'prevLabel': 'Anterior',
+      'skipLabel': 'Omitir',
+      'doneLabel': 'Finalizar',
+    });
+    // vm.intro = window.introJs.setOption('showProgress', true)
+
+    // setTimeout(function(){
+    //   vm.intro.start() 
+    // }, 800)
     
 
     vm.intro.onchange(function () {
       
       $(arguments).find(":input").focus();
 
-      // you'll notice the object's properties have _currentStep - use that :)
     });
 
     
@@ -371,19 +382,19 @@ export default {
     resetForm () {
 
     },
+    sortResults(json,prop, asc) {
+      json = json.sort(function(a, b) {
+        if (asc) {
+          return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        } else {
+          return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+        }
+      });
+
+      return
+    },
     validateForm () {
 
-      // Validate All returns a promise and provides the validation result.
-      // this.$validator.validateAll().then(success => {
-      //   if (!success) {
-      //     // handle error
-      //     return;
-      //   }
-      //   else {
-      //     this.disabledButton = true;
-      //     this.publishForm()
-      //   }
-      // });
       this.$validator.validateAll().then(() => {
                 // eslint-disable-next-line
                     this.disabledButton = true;
