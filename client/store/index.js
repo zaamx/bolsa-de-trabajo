@@ -76,7 +76,7 @@ const state = {
       "id": "586d741f06e9a48305c34a43"
     }
   ],
-  estados:[
+  estados:[    
     {
       "_id": "586d736906e9a48305c34a42",
       "codigo": "Alabama",
@@ -1351,6 +1351,31 @@ const state = {
       "dt_create": "2017-01-19T16:22:56.478Z",
       "__v": 0,
       "id": "5880e7e006e9a48305c3a6dd"
+    },
+    {
+      "_id": "58e257a9086791fe1683c291",
+      "codigo": "NAL",
+      "nombre": "Nacional",
+      "appId": "hispanojobs",
+      "cobjectId": "estado",
+      "actions": {
+        "comments": [],
+        "ratings": {
+          "users": [],
+          "avg": 0,
+          "total": 0
+        },
+        "votes": {
+          "users_downvote": [],
+          "users_upvote": [],
+          "users": [],
+          "total": 0
+        }
+      },
+      "dt_update": "2017-04-03T14:09:45.003Z",
+      "dt_create": "2017-04-03T14:09:45.003Z",
+      "__v": 0,
+      "id": "58e257a9086791fe1683c291"
     }
   ],
   tipotrabajo: [

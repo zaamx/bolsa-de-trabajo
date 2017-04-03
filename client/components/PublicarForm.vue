@@ -86,7 +86,7 @@
               <div class="col-md-4" data-step="6" data-intro="Proporciona un número de celular para qué te contacten, por ejemplo: (555) 555 5555">
 
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.phone_number_string')}" >
-                  <label class="form-control-label"  for="nuevoanuncio.phone_number_string">Teléfono celular</label>
+                  <label class="form-control-label"  for="nuevoanuncio.phone_number_string">Teléfono de contacto</label>
 
                   <input  class="form-control" v-model="nuevoanuncio.phone_number_string" v-mask="'(###) ###-####'" name="nuevoanuncio.phone_number_string"  v-validate data-vv-rules="required" data-vv-as="Telefóno">
 
@@ -186,7 +186,7 @@
                   <label class="form-control-label"  for="nuevoanuncio.rel_tipopago">Periodo de pago</label>
                   <select class="form-control" name="nuevoanuncio.rel_tipopago" v-model="nuevoanuncio.rel_tipopago"  v-validate data-vv-rules="required" data-vv-as="Tipo de pago">
                     <option disabled > -- Selecciona una opción -- </option>
-                    <option :value=" payform._id "  v-for="payform in this.tipoSorted">
+                    <option :value=" payform._id "  v-for="payform in this.payList">
 
                       {{ payform.titulo }}
                     </option>
@@ -329,7 +329,7 @@ export default {
         'Cache-Control': null,
         'X-Requested-With': null
       },
-      dictDefaultMessage: '<p class="muted">Haz click para subir tus imagenes o arrastralos a esta zona, solo puedes subir una imagen de hasta 2 MB cada una<p>',
+      dictDefaultMessage: '<p class="muted">Haz click para subir tus imagenes o arrastralos a esta zona, solo puedes subir una imagen de hasta 2 MB. Una imagen vale más que mil palabras.<p>',
       autoProcessQueue: false
     }
     // Instantiate Dropzone
