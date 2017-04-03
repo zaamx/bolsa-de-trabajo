@@ -1,5 +1,5 @@
 <template>
-  <div class="form---">
+  <div class="form---priv">
     <div class="card">
       <div class="card-block">
         <form class="" @submit.prevent="validateForm">
@@ -85,13 +85,13 @@
               </div>
               <div class="col-md-6">
 
-                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.phone_number')}" data-step="5" data-intro="Proporciona un número de celular para qué te contacten, por ejemplo: (555) 555 5555">
-                  <label class="form-control-label"  for="nuevoanuncio.phone_number">¿A qué número de celular te van a llamar?</label>
+                <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.phone_number_string')}" data-step="5" data-intro="Proporciona un número de celular para qué te contacten, por ejemplo: (555) 555 5555">
+                  <label class="form-control-label"  for="nuevoanuncio.phone_number_string">¿A qué número de celular te van a llamar?</label>
 
-                  <input  class="form-control" v-model="nuevoanuncio.phone_number" v-mask="'(###) ###-####'" name="nuevoanuncio.phone_number"  v-validate data-vv-rules="required" data-vv-as="Telefóno">
+                  <input  class="form-control" v-model="nuevoanuncio.phone_number_string" v-mask="'(###) ###-####'" name="nuevoanuncio.phone_number_string"  v-validate data-vv-rules="required" data-vv-as="Telefóno">
 
-                  <span v-show="errors.has('nuevoanuncio.phone_number')" >
-                    <span v-for="error in errors.collect('nuevoanuncio.phone_number')" class="form-control-feedback">
+                  <span v-show="errors.has('nuevoanuncio.phone_number_string')" >
+                    <span v-for="error in errors.collect('nuevoanuncio.phone_number_string')" class="form-control-feedback">
                       {{ error }}
                     </span>
                   </span>
@@ -273,6 +273,7 @@
 
       </div>
     </div>
+    <div class="loader-ss" v-if="loading"></div>
   </div>
 </template>
 
@@ -299,6 +300,7 @@ export default {
         descripcion: '',
         monto: '',
         phone_number: '',
+        phone_number_string: '',
         rel_categoria: ['586d741f06e9a48305c34a43'],
         rel_estado: [],
         rel_tipotrabajo: [],
@@ -343,18 +345,22 @@ export default {
       vm.$router.push({ path: '/trabajos/'+ vm.urlSuccessPost })
     })
 
-    vm.intro = window.introJs.setOption('showProgress', true)
+    vm.intro = window.introJs.setOptions({ 
+      'showProgress': 'true',
+      'nextLabel': 'Siguiente',
+      'prevLabel': 'Anterior',
+      'skipLabel': 'Omitir',
+      'doneLabel': 'Finalizar',
+    });
+    // vm.intro = window.introJs.setOption('showProgress', true)
 
     setTimeout(function(){
       vm.intro.start() 
     }, 800)
     
-
-    vm.intro.onchange(function () {
-      console.log(this);
-      // you'll notice the object's properties have _currentStep - use that :)
+    vm.intro.onchange(function () {      
+      $(arguments).find(":input").focus();
     });
-
     
   },
   watch: {
@@ -392,9 +398,7 @@ export default {
                     this.disabledButton = true;
                     this.publishForm()
             }).catch(() => {
-                // eslint-disable-next-line
-                    return;
-                // alert('Correct them errors!');
+                $(document).scrollTop( 0 )
             });
     },
     getCategorias () {
@@ -470,5 +474,19 @@ export default {
 
 <style lang="scss">
 @import '../../node_modules/dropzone/dist/dropzone.css';
+.form---priv {
+  .form-group {
+    min-height:94px;
+  }
+}
+.loader-ss  {
+  position:fixed;
+  background: rgba(#000, 0.8);
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:9999;
+}
 // @import '../../node_modules/intro.js/minified/introjs.min.css';
 </style>
