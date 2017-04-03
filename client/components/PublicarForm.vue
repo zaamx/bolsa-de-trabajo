@@ -164,9 +164,9 @@
 
 
             <div class="row">
-              <div class="col-md-6"  data-step="11" data-intro="Escribe el monto que ofreces en dolares, por ejemplo: $100">
+              <div class="col-md-6"  data-step="11" data-intro="Escribe el monto que ofreces en dólares, por ejemplo: $100">
                 <div class="form-group" >
-                  <label class="form-control-label"  for="">Monto ofrecido en dolares</label>
+                  <label class="form-control-label"  for="">Monto ofrecido en dólares</label>
                   <div :class="{'input-group': true, 'has-danger': errors.has('nuevoanuncio.monto')}">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control"  v-model="nuevoanuncio.monto" name="nuevoanuncio.monto"  v-validate data-vv-rules="required|numeric" data-vv-as="Monto">
@@ -329,7 +329,7 @@ export default {
         'Cache-Control': null,
         'X-Requested-With': null
       },
-      dictDefaultMessage: '<p class="muted">Haz click para subir tus imagenes o arrastralos a esta zona, solo puedes subir una imagen de hasta 2 MB. Una imagen vale más que mil palabras.<p>',
+      dictDefaultMessage: '<p class="muted">Haz click para subir tu imagen o arrástrala a esta zona, solo puedes subir una imagen de hasta 2 MB. Una imagen vale más que mil palabras.<p>',
       autoProcessQueue: false
     }
     // Instantiate Dropzone

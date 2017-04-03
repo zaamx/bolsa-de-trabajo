@@ -18,7 +18,7 @@
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_tipotrabajo')}" >
                   <label class="form-control-label"  for="nuevoanuncio.rel_tipotrabajo">¿Qué tipo de servicio ofreces?</label>
                   <select class="form-control" name="nuevoanuncio.rel_tipotrabajo" v-model="nuevoanuncio.rel_tipotrabajo"  v-validate data-vv-rules="required" data-vv-as="Tipo de trabajo">
-                    <option disabled> -- select an option -- </option>
+                    <option disabled> -- Selecciona una opción -- </option>
                     <option :value=" job._id "  v-for="job in this.jobsList">
                       {{ job.titulo }}
                     </option>
@@ -50,7 +50,7 @@
             <div class="row">
               <div class="col-12" data-step="3" data-intro="Las personas necesitarán saber tu nombre, por ejemplo: John Doe o Juan Perez ">
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.anunciante')}"  >
-                  <label class="form-control-label"  for="nuevoanuncio.anunciante">¿Cual es tu nombre?</label>
+                  <label class="form-control-label"  for="nuevoanuncio.anunciante">¿Cuál es tu nombre?</label>
                   <input type="text" class="form-control" v-model="nuevoanuncio.anunciante" name="nuevoanuncio.anunciante"  v-validate data-vv-rules="required" data-vv-as="Nombre">
                   <span v-show="errors.has('nuevoanuncio.anunciante')" >
                     <span v-for="error in errors.collect('nuevoanuncio.anunciante')" class="form-control-feedback">
@@ -64,7 +64,7 @@
             <div class="row">
               <div class="col-md-6" data-step="4" data-intro="Se necesita tu correo electrónico para qué te puedan contactar, por ejemplo: juan@google.com, o bender@yahoo.com">
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.email')}" >
-                  <label class="form-control-label"  for="nuevoanuncio.email">¿Tienes email/correo electrónico?</label>
+                  <label class="form-control-label"  for="nuevoanuncio.email">¿Cuál es tu email/correo electrónico?</label>
                   <input type="email" class="form-control" v-model="nuevoanuncio.email" name="nuevoanuncio.email"  v-validate data-vv-rules="email" data-vv-as="Correo electrónico">
                   <span v-show="errors.has('nuevoanuncio.email')" >
                     <span v-for="error in errors.collect('nuevoanuncio.email')" class="form-control-feedback">
@@ -90,7 +90,7 @@
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_estado')}" >
                   <label class="form-control-label"  for="nuevoanuncio.rel_estado">¿En qué estado ofreces tus servicios?</label>
                   <select class="form-control" name="nuevoanuncio.rel_estado" v-model="nuevoanuncio.rel_estado"  v-validate data-vv-rules="required" data-vv-as="Estado">
-                    <option disabled> -- select an option -- </option>
+                    <option disabled> -- Selecciona una opción -- </option>
                     <option :value=" state._id "  v-for="state in this.estList">
                       {{ state.codigo }} -  {{ state.nombre }}
                     </option>
@@ -124,7 +124,7 @@
             <div class="row">
               <div class="col-md-6" data-step="8" data-intro="Escribe el código postal donde ofreces tus servicios, por ejemplo: 06030">
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.zip')}" >
-                  <label class="form-control-label"  for="nuevoanuncio.zip">¿En que código postal?</label>
+                  <label class="form-control-label"  for="nuevoanuncio.zip">¿En qué código postal?</label>
                   <input type="text" class="form-control" v-model="nuevoanuncio.zip" name="nuevoanuncio.zip"  v-validate data-vv-rules="required" data-vv-as="Código Postal">
                   <span v-show="errors.has('nuevoanuncio.zip')" >
                     <span v-for="error in errors.collect('nuevoanuncio.zip')" class="form-control-feedback">
@@ -133,7 +133,7 @@
                   </span>
                 </div>
               </div>
-              <div class="col-md-6" data-step="9" data-intro="Sí los conoces, anota los 4 dígitos adicionales de tu código postal">
+              <div class="col-md-6" data-step="9" data-intro="Sí lo conoces, anota los 4 dígitos adicionales de tu código postal">
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.extra_zip')}" >
                   <label class="form-control-label"  for="nuevoanuncio.extra_zip">&nbsp;</label>
                   <input type="text" class="form-control"  v-model="nuevoanuncio.extra_zip" name="nuevoanuncio.extra_zip"  v-validate data-vv-rules="" data-vv-as="Extra zip">
@@ -148,9 +148,9 @@
 
 
             <div class="row">
-              <div class="col-md-6" data-step="10" data-intro="Escribe el monto que solicitas en dolares, por ejemplo: $100">
+              <div class="col-md-6" data-step="10" data-intro="Escribe el monto que solicitas en dólares, por ejemplo: $100">
                 <div class="form-group" >
-                  <label class="form-control-label"  for="">¿Cuanto solicitas?</label>
+                  <label class="form-control-label"  for="">¿Cuánto solicitas?</label>
                   <div :class="{'input-group': true, 'has-danger': errors.has('nuevoanuncio.monto')}">
                     <span class="input-group-addon">$</span>
                     <input type="number" class="form-control"  v-model="nuevoanuncio.monto" name="nuevoanuncio.monto"  v-validate data-vv-rules="required|numeric" data-vv-as="Monto">
@@ -165,9 +165,9 @@
               </div>
               <div class="col-md-6"  data-step="11" data-intro="¿Selecciona como deseas ganar la cantidad anterior por hora, semanal o mensual?">
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.rel_tipopago')}" >
-                  <label class="form-control-label"  for="nuevoanuncio.rel_tipopago">¿Cada cuanto tiempo quieres cobrar?</label>
+                  <label class="form-control-label"  for="nuevoanuncio.rel_tipopago">¿Cada cuánto tiempo quieres cobrar?</label>
                   <select class="form-control" name="nuevoanuncio.rel_tipopago" v-model="nuevoanuncio.rel_tipopago"  v-validate data-vv-rules="required" data-vv-as="Tipo de pago">
-                    <option disabled> -- select an option -- </option>
+                    <option disabled> -- Selecciona una opción -- </option>
                     <option :value=" payform._id "  v-for="payform in this.payList">
                       {{ payform.titulo }}
                     </option>
@@ -307,7 +307,7 @@ export default {
         'Cache-Control': null,
         'X-Requested-With': null
       },
-      dictDefaultMessage: '<p class="muted">Haz click para subir tus imagenes o arrastralos a esta zona, solo puedes subir una imagen de hasta 2 MB. Una imagen vale más que mil palabras.<p>',
+      dictDefaultMessage: '<p class="muted">Haz click para subir tu imagen o arrástrala a esta zona, solo puedes subir una imagen de hasta 2 MB. Una imagen vale más que mil palabras.<p>',
       autoProcessQueue: false
     }
     // Instantiate Dropzone
