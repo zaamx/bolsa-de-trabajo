@@ -33,7 +33,11 @@
               <i class="fa fa-th" aria-hidden="true"></i>
             </span>
           </template>
-          <b-nav-item>Contact Us</b-nav-item>
+          <b-nav-item>Grupo Hispano Club:</b-nav-item>
+          <b-nav-item>Membresía</b-nav-item>
+          <b-nav-item>Bolsa de trabajo</b-nav-item>
+          <b-nav-item>Noticias</b-nav-item>
+          
           
           <!-- <b-dropdown-item to="lorem">Profile</b-dropdown-item> -->
           <!-- <b-dropdown-item to="#">Signout</b-dropdown-item> -->
@@ -205,5 +209,15 @@ body {
 .page {
   padding-bottom:100px;
 }
-
+.dropdown {
+  a {
+    font-size:0.8rem;
+  }
+}
+.navbar-brand {
+  img {
+    height:50px;
+    width:auto;
+  }
+}
 </style>

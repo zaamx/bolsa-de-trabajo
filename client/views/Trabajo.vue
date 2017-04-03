@@ -58,24 +58,20 @@
                   </div>
 
                   <div class="row text-center margin-s-top">
-
                     <social-sharing :url="getCurrentUrl" inline-template>
-                      <div class=" col text-center">
-                          <facebook class="btn btn-secondary">
-                            <i class="fa fa-facebook"></i>
-                          </facebook>
-
-                          <twitter  class="btn btn-secondary">
-                            <i class="fa fa-twitter"></i>
-                          </twitter>
-
-                          <googleplus  class="btn btn-secondary">
-                            <i class="fa fa-google-plus"></i>
-                          </googleplus>
-
-                          <pinterest  class="btn btn-secondary">
-                            <i class="fa fa-pinterest"></i>
-                          </pinterest>
+                      <div>
+                        <network network="facebook" class="btn btn-secondary">
+                          <i class="fa fa-facebook"></i>  
+                        </network>
+                        <network network="twitter" class="btn btn-secondary">
+                          <i class="fa fa-twitter"></i>
+                        </network>
+                        <network network="googleplus" class="btn btn-secondary">  
+                          <i class="fa fa-google-plus"></i>
+                        </network>
+                        <network network="pinterest" class="btn btn-secondary">
+                          <i class="fa fa-pinterest"></i>
+                        </network>
                       </div>
                     </social-sharing>
                   </div>
@@ -119,7 +115,7 @@
 
 <script>
 import {IS_LOCAL, FULL_URL} from 'config/Ambientes.js'
-import socialSharing from 'vue-social-sharing'
+// import socialSharing from 'vue-social-sharing'
 import carga from 'components/carga'
 export default {
 	data() {
@@ -225,7 +221,6 @@ export default {
 
   },
   components: {
-    socialSharing,
     carga
   }
 }

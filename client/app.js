@@ -15,9 +15,11 @@ import VeeValidate, { Validator } from 'vee-validate'
 import messages from 'vee-validate/dist/locale/es'
 
 import VueMask from 'v-mask'
+import SocialSharing from 'vue-social-sharing'
+ 
 
 // import IntroJs from 'intro.js'
-window.introJs = introJs();
+window.introJs = introJs()
 
 
 Vue.config.devtools = true
@@ -34,7 +36,7 @@ Vue.use(VeeValidate, config)
 Vue.use(VueMask)
 Vue.use(VueResource)
 Vue.use(BootstrapVue)
-
+Vue.use(SocialSharing)
 
 Stamplay.init("hispanojobs")
 // console.log(Stamplay);
