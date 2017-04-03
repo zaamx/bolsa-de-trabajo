@@ -59,17 +59,17 @@
 
                   <div class="row text-center margin-s-top">
                     <social-sharing :url="getCurrentUrl" inline-template>
-                      <div>
-                        <network network="facebook" class="btn btn-secondary">
+                      <div class="lorem" name="test">
+                        <network network="facebook" class="btn btn-secondary"  name="test">
                           <i class="fa fa-facebook"></i>  
                         </network>
-                        <network network="twitter" class="btn btn-secondary">
+                        <network network="twitter" class="btn btn-secondary"  name="test">
                           <i class="fa fa-twitter"></i>
                         </network>
-                        <network network="googleplus" class="btn btn-secondary">  
+                        <network network="googleplus" class="btn btn-secondary"  name="test">  
                           <i class="fa fa-google-plus"></i>
                         </network>
-                        <network network="pinterest" class="btn btn-secondary">
+                        <network network="pinterest" class="btn btn-secondary"  name="test">
                           <i class="fa fa-pinterest"></i>
                         </network>
                       </div>

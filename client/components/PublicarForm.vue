@@ -88,7 +88,7 @@
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.phone_number_string')}" >
                   <label class="form-control-label"  for="nuevoanuncio.phone_number_string">Teléfono de contacto</label>
 
-                  <input  class="form-control" v-model="nuevoanuncio.phone_number_string" v-mask="'(###) ###-####'" name="nuevoanuncio.phone_number_string"  v-validate data-vv-rules="required" data-vv-as="Telefóno">
+                  <input id="maskPhone" class="form-control" v-model="nuevoanuncio.phone_number_string"  name="nuevoanuncio.phone_number_string"  v-validate data-vv-rules="required" data-vv-as="Telefóno">
 
                   <span v-show="errors.has('nuevoanuncio.phone_number_string')" >
                     <span v-for="error in errors.collect('nuevoanuncio.phone_number_string')" class="form-control-feedback">
@@ -96,7 +96,6 @@
                     </span>
                   </span>
                 </div>
-
               </div>
 
               <div class="col-md-4" data-step="7" data-intro="Selecciona un estado para saber en donde se aplica tu oferta, por ejemplo: Texas">
@@ -273,7 +272,6 @@
 
 <script>
 
-import orderBy from 'vue-orderby-mixin'
 import Dropzone from 'dropzone'
 
 Dropzone.autoDiscover = false
@@ -311,11 +309,7 @@ export default {
       disabledButton: false
 		}
 	},
-  mixins: { orderBy },
   computed: {
-    tipoSorted() {
-      return this.orderBy(this.payList, 'priority', 'ASC')
-    }
   },
   mounted () {
     const vm = this
@@ -362,7 +356,7 @@ export default {
       $(arguments).find(":input").focus();
 
     });
-
+    $('#maskPhone').mask('(00) 0000-0000');
     
   },
   watch: {

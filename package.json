@@ -19,7 +19,6 @@
     "v-mask": "^1.0.4",
     "vee-validate": "^2.0.0-beta.25",
     "vue": "^2.1.0",
-    "vue-orderby-mixin": "^1.0.0",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.0",
     "vue-slick": "^1.1.0",

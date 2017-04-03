@@ -140,7 +140,7 @@
                     <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.phone_number')}" >
                       <label class="form-control-label"  for="nuevoanuncio.phone_number">Teléfono</label>
 
-                      <input  class="form-control form-control-lg" v-model="nuevoanuncio.phone_number" placeholder="(999)-999-9999" v-mask="'(###) ###-####'" name="nuevoanuncio.phone_number"  v-validate data-vv-rules="required" data-vv-as="Telefóno">
+                      <input  class="form-control form-control-lg" v-model="nuevoanuncio.phone_number" placeholder="(999)-999-9999"  name="nuevoanuncio.phone_number"  v-validate data-vv-rules="required" data-vv-as="Telefóno">
 
                       <span v-show="errors.has('nuevoanuncio.phone_number')" >
                         <span v-for="error in errors.collect('nuevoanuncio.phone_number')" class="form-control-feedback">
