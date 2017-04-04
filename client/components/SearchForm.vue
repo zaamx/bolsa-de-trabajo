@@ -35,7 +35,7 @@
               <div class="col-12  col-sm-6 col-lg-2">
 
                 <div class="form-group">
-                  <b-button variant="success" style="width:100%;margin-top:2px;" @click="searchFn">
+                  <b-button variant="success" style="width:100%;margin-top:2px;" @click.prevent="searchFn">
                     Buscar
                   </b-button>
                 </div>
@@ -91,17 +91,20 @@ export default {
       if (this.selectedEstado) {
         this.where.$or.push({rel_estado: {"$in": [this.selectedEstado]} })
       }
-      if (this.selectedTipo) {
+      if (this.selectedTipo) { 
         this.where.$or.push({rel_tipotrabajo: {"$in": [this.selectedTipo]} })
       }
 
-      this.where = JSON.stringify(this.where)
+      if(this.where.$or.length > 0 ){
+        this.where = JSON.stringify(this.where)
+        this.$store.commit('SETPARAMETROSBUSQUEDA', this.where)
+        console.log('parametros', this.$store.state.search.searchParams)
+        this.$router.push({path: 'buscar'})   
+      } else {
 
-      this.$store.commit('SETPARAMETROSBUSQUEDA', this.where)
-
-      console.log('parametros', this.$store.state.search.searchParams)
-
-      this.$router.push({path: 'buscar'})
+        alert("Ingresa un termino de busqueda o selecciona una categoría");
+      }
+       
     },
     clean () {
       this.where = { $or : [] };

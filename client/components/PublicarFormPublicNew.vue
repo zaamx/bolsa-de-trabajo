@@ -76,7 +76,7 @@
               <div class="col-md-6" data-step="5" data-intro="Proporciona un número de celular para qué te contacten, por ejemplo: (555) 555 5555">
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.phone_number_string')}" >
                   <label class="form-control-label"  for="nuevoanuncio.phone_number_string">¿A qué número de celular te van a llamar?</label>
-                  <input  class="form-control" v-model="nuevoanuncio.phone_number_string" v-mask="'(###) ###-####'" name="nuevoanuncio.phone_number_string"  v-validate data-vv-rules="required" data-vv-as="Telefóno">
+                  <input id="maskPhone" class="form-control" v-model="nuevoanuncio.phone_number_string"  name="nuevoanuncio.phone_number_string"  v-validate data-vv-rules="required" data-vv-as="Telefóno">
                   <span v-show="errors.has('nuevoanuncio.phone_number_string')" >
                     <span v-for="error in errors.collect('nuevoanuncio.phone_number_string')" class="form-control-feedback">
                       {{ error }}
@@ -336,6 +336,8 @@ export default {
     vm.intro.onchange(function () {      
       $(arguments).find(":input").focus();
     });
+
+    $('#maskPhone').mask('(00) 0000-0000');
     
   },
   watch: {
