@@ -224,4 +224,7 @@ body {
   border: 2px dotted rgba(0, 0, 0, 0.3) !important;
   background:#fbfbfb !important;
 }
+.only-print {
+  display:none;
+}
 </style>

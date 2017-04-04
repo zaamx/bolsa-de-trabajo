@@ -1,5 +1,5 @@
 <template>
-  <div class="page single-job">
+  <div class="page single-job" id="trabajo-single">
     <!-- <div class="job-image-header a" :style="{backgroundImage: 'red', 'background-image': 'url(' + actual.imagen + ')'}" v-if="actual.imagen" :title="actual.imagen">
         &nbsp;
     </div> -->
@@ -10,12 +10,21 @@
 
     <div class="container" id="contenido-single" v-if="actual">
       <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+          <div class="only-print">
+            <img :src="logoPrint" alt="" class="img-fluid">  
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-10 offset-md-1">
           <div class="card" >
             <div class="card-block" >
               <div class="row">
-                <div class="col-8">
-                  <h1 class="display-4 margin-l-bottom">{{ actual.titulo }}</h1>
+                <div class="col-sm-8 col-md-8">
+                  <h1 class="margin-l-bottom">{{ actual.titulo }}</h1>
                   <dl class="row">
                     <dt class="col-xs-12 col-md-6 col-lg-4">Categoría del aviso</dt>
                     <!-- .rel_categoria -->
@@ -44,8 +53,8 @@
                     {{ actual.descripcion }}
                   </p>
                 </div>
-                <div class="col-4">
-                  <router-link to="/" class="btn btn-secondary col margin-s-bottom">
+                <div class="col-sm-4 col-md-4 ">
+                  <router-link to="/" class="btn btn-secondary col margin-s-bottom no-print">
                     Ver más trabajos
 
                   </router-link>
@@ -53,36 +62,42 @@
                     <carga :imagen="actual.imagen">
                     </carga>
                   </div>
-                  <div class="margin-s-top">
-                    <b>Comparte este anuncio</b>
-                  </div>
+                  <div class="no-print">
+                    <div class="margin-s-top ">
+                      <b>Comparte este anuncio</b>
+                    </div>
 
-                  <div class="row text-center margin-s-top">
-                    <social-sharing :url="getCurrentUrl" inline-template>
-                      <div class="lorem" name="test">
-                        <network network="facebook" class="btn btn-secondary"  name="test">
-                          <i class="fa fa-facebook"></i>  
-                        </network>
-                        <network network="twitter" class="btn btn-secondary"  name="test">
-                          <i class="fa fa-twitter"></i>
-                        </network>
-                        <network network="googleplus" class="btn btn-secondary"  name="test">  
-                          <i class="fa fa-google-plus"></i>
-                        </network>
-                        <network network="pinterest" class="btn btn-secondary"  name="test">
-                          <i class="fa fa-pinterest"></i>
-                        </network>
-                      </div>
-                    </social-sharing>
+                    <div class="row text-center margin-s-top">
+                      <social-sharing :url="getCurrentUrl" inline-template name="test">
+                        <div class="lorem" >
+                          <network network="facebook" class="btn btn-secondary"  >
+                            <i class="fa fa-facebook"></i>  
+                          </network>
+                          <network network="twitter" class="btn btn-secondary" >
+                            <i class="fa fa-twitter"></i>
+                          </network>
+                          <network network="googleplus" class="btn btn-secondary" >  
+                            <i class="fa fa-google-plus"></i>
+                          </network>
+                          <network network="pinterest" class="btn btn-secondary" >
+                            <i class="fa fa-pinterest"></i>
+                          </network>
+                        </div>
+                      </social-sharing>
+                      <button class="btn btn btn-secondary" @click.prevent="printhisShit" style="margin-left: 5px;">
+                        <i class="fa fa-print" aria-hidden="true"></i>
+                      </button>
+                    </div>
+
+                    <button class="btn btn-primary col margin-s-top" @click="datosContacto = !datosContacto">
+                      <span  v-if="datosContacto">
+                        Ocultar contacto
+                      </span>
+                      <span v-else>
+                        Ver contacto
+                      </span>
+                    </button>
                   </div>
-                  <button class="btn btn-primary col margin-s-top" @click="datosContacto = !datosContacto">
-                    <span  v-if="datosContacto">
-                      Ocultar contacto
-                    </span>
-                    <span v-else>
-                      Ver contacto
-                    </span>
-                  </button>
                   <transition name="fade">
                     <div class="card margin-s-top" v-if="datosContacto">
                       <div class="card-block">
@@ -114,17 +129,25 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import SocialSharing from 'vue-social-sharing'
+Vue.use(SocialSharing)
+
+import logo from '../assets/logo-200.png'
+
 import {IS_LOCAL, FULL_URL} from 'config/Ambientes.js'
 // import socialSharing from 'vue-social-sharing'
 import carga from 'components/carga'
 export default {
+  name: 'Trabajo',
 	data() {
 		return{
 			contenido: 'Hello',
       post: [],
       datas: null,
       actual: null,
-      datosContacto: false
+      datosContacto: false,
+      logoPrint: logo
 		}
 	},
   computed: {
@@ -166,6 +189,13 @@ export default {
       else {
         this.getFromSt()
       }
+    },
+    printhisShit () {
+      this.datosContacto = true
+      setTimeout(() => {
+        $("#contenido-single").print()
+      }, 500)
+      
     },
     getFromSt() {
       var self = this
@@ -229,8 +259,33 @@ export default {
 .job-image-header {
   min-height: 300px;
 }
+
 #contenido-single {
   margin-top:-200px;
 }
+@media print {
+  html {
+    font-size:14px;
+    // content:url('../assets/default-img.jpg');
+    // background-image: ;
 
+  }
+  #contenido-single {
+      margin-top: 0 !important;
+  }
+  h1 {
+    font-size:2rem !important;
+  }
+  .col-sm-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  .col-sm-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .only-print {
+    display:block;
+  }
+}
 </style>
