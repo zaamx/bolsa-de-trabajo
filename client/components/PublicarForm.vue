@@ -318,13 +318,27 @@ export default {
       method: 'patch',
       paramName: "imagen",
       parallelUploads: 1,
+      maxFilesize: 2, // MB
+      addRemoveLinks: true,
       uploadMultiple: false,
+      acceptedFiles: 'image/*',
+      maxFiles: 1,
       headers: {
         'Cache-Control': null,
         'X-Requested-With': null
       },
       dictDefaultMessage: '<p class="muted">Haz click para subir tu imagen o arrástrala a esta zona, solo puedes subir una imagen de hasta 2 MB. Una imagen vale más que mil palabras.<p>',
-      autoProcessQueue: false
+      autoProcessQueue: false,
+      init: function(){
+        // this.on("addedfile", handleFileAdded);
+        // this.on("removedfile", handleFileRemoved);
+        this.on("error", function(file){
+          if (!file.accepted)
+            this.removeFile(file);
+            alert("El archivo es muy grande o no es una imagen, por favor intenta con otro archivo");
+          })
+
+      }
     }
     // Instantiate Dropzone
     this.dropzone = new Dropzone('#uploaders', options)

@@ -220,4 +220,8 @@ body {
     width:auto;
   }
 }
+.dropzone {
+  border: 2px dotted rgba(0, 0, 0, 0.3) !important;
+  background:#fbfbfb !important;
+}
 </style>
