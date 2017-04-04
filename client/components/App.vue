@@ -25,9 +25,7 @@
 
         <!-- <b-nav-item to="/publicar-anuncio">Publicar trabajo</b-nav-item> -->
         
-        <b-nav-item-dropdown right-alignment>
-          
-          <!-- Using text slot -->
+        <!-- <b-nav-item-dropdown right-alignment>
           <template slot="text">
             <span style="font-weight: bold;">
               <i class="fa fa-th" aria-hidden="true"></i>
@@ -37,11 +35,7 @@
           <b-nav-item>Membresía</b-nav-item>
           <b-nav-item>Bolsa de trabajo</b-nav-item>
           <b-nav-item>Noticias</b-nav-item>
-          
-          
-          <!-- <b-dropdown-item to="lorem">Profile</b-dropdown-item> -->
-          <!-- <b-dropdown-item to="#">Signout</b-dropdown-item> -->
-        </b-nav-item-dropdown>
+        </b-nav-item-dropdown> -->
        
       </b-nav>
     </b-collapse>
