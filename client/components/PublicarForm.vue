@@ -344,7 +344,9 @@ export default {
     this.dropzone = new Dropzone('#uploaders', options)
     // url cambia por el id de la nueva publicación
     vm.dropzone.on('processing', (file) => {
-      vm.dropzone.options.url = 'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.urlSuccessPost
+      vm.dropzone.options.url = 'https://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.urlSuccessPost
+      console.log('la url de envio', vm.dropzone.options.url)
+
     })
     vm.dropzone.on('success', function (file, response) {
       vm.$router.push({ path: '/trabajos/'+ vm.urlSuccessPost })
@@ -405,14 +407,11 @@ export default {
 
       this.$validator.validateAll().then(() => {
                 // eslint-disable-next-line
-                    this.disabledButton = true;
-                    this.loading = true;
+                    this.disabledButton = true
+                    this.loading = true
                     this.publishForm()
             }).catch(() => {
-                // eslint-disable-next-line
                 $(document).scrollTop( 0 )
-                // return;
-                // alert('Correct them errors!');
             });
     },
     getCategorias () {

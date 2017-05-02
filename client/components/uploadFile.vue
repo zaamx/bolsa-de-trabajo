@@ -47,7 +47,7 @@ export default {
     this.dropzone = new Dropzone(this.$el, options)
     // Set signed upload URL for each file
     vm.dropzone.on('processing', (file) => {
-      vm.dropzone.options.url = 'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.urlSuccessPost
+      vm.dropzone.options.url = 'https://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.urlSuccessPost
     })
   },
   computed : {

@@ -121,7 +121,7 @@
       })
 
       // this.dropzone.on("processing", function(file) {
-      //   var url =  'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.newUrl
+      //   var url =  'https://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.newUrl
       //   console.log('opciones del drop', this)
       //   this.url = url
       //   console.log('la url de envio', this.url)

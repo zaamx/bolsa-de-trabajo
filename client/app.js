@@ -22,7 +22,7 @@ import VueMask from 'v-mask'
 window.introJs = introJs()
 
 
-Vue.config.devtools = true
+// Vue.config.devtools = true
 
 sync(store, router)
 
@@ -41,7 +41,7 @@ Vue.use(BootstrapVue)
 Stamplay.init("hispanojobs")
 // console.log(Stamplay);
 
-Vue.http.options.root = 'http://hispanojobs.stamplayapp.com/api/cobject/v1';
+Vue.http.options.root = 'https://hispanojobs.stamplayapp.com/api/cobject/v1';
 // Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
 
 const app = new Vue({

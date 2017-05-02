@@ -125,7 +125,7 @@
               <div class="col-md-6" data-step="8" data-intro="Escribe el código postal donde ofreces tus servicios, por ejemplo: 06030">
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.zip')}" >
                   <label class="form-control-label"  for="nuevoanuncio.zip">¿En qué código postal?</label>
-                  <input type="text" class="form-control" v-model="nuevoanuncio.zip" name="nuevoanuncio.zip"  v-validate data-vv-rules="required" data-vv-as="Código Postal">
+                  <input type="text" class="form-control" v-model="nuevoanuncio.zip" name="nuevoanuncio.zip"  v-validate data-vv-rules="required|numeric" data-vv-as="Código Postal">
                   <span v-show="errors.has('nuevoanuncio.zip')" >
                     <span v-for="error in errors.collect('nuevoanuncio.zip')" class="form-control-feedback">
                       {{ error }}
@@ -136,7 +136,7 @@
               <div class="col-md-6" data-step="9" data-intro="Sí lo conoces, anota los 4 dígitos adicionales de tu código postal">
                 <div :class="{'form-group': true, 'has-danger': errors.has('nuevoanuncio.extra_zip')}" >
                   <label class="form-control-label"  for="nuevoanuncio.extra_zip">&nbsp;</label>
-                  <input type="text" class="form-control"  v-model="nuevoanuncio.extra_zip" name="nuevoanuncio.extra_zip"  v-validate data-vv-rules="" data-vv-as="Extra zip">
+                  <input type="text" class="form-control"  v-model="nuevoanuncio.extra_zip" name="nuevoanuncio.extra_zip"  v-validate data-vv-rules="numeric" data-vv-as="Extra zip">
                   <span v-show="errors.has('nuevoanuncio.extra_zip')" >
                     <span v-for="error in errors.collect('nuevoanuncio.extra_zip')" class="form-control-feedback">
                       {{ error }}
@@ -328,7 +328,8 @@ export default {
     this.dropzone = new Dropzone('#uploaders', options)
     // url cambia por el id de la nueva publicación
     vm.dropzone.on('processing', (file) => {
-      vm.dropzone.options.url = 'http://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.urlSuccessPost
+      vm.dropzone.options.url = 'https://hispanojobs.stamplayapp.com/api/cobject/v1/jobs/' + vm.urlSuccessPost
+      console.log('la url de envio', vm.dropzone.options.url)
     })
     vm.dropzone.on('success', function (file, response) {
       vm.$router.push({ path: '/trabajos/'+ vm.urlSuccessPost })
@@ -373,20 +374,10 @@ export default {
     },
     validateForm () {
 
-      // Validate All returns a promise and provides the validation result.
-      // this.$validator.validateAll().then(success => {
-      //   if (!success) {
-      //     // handle error
-      //     return;
-      //   }
-      //   else {
-      //     this.disabledButton = true;
-      //     this.publishForm()
-      //   }
-      // });
       this.$validator.validateAll().then(() => {
                 // eslint-disable-next-line
-                    this.disabledButton = true;
+                    this.disabledButton = true
+                    this.loading = true
                     this.publishForm()
             }).catch(() => {
                 $(document).scrollTop( 0 )
@@ -443,6 +434,7 @@ export default {
 
       }, function(err) {
         self.disabledButton = true;
+        self.loading = false;
         // console.log('st error ->', err)
       })
     },
