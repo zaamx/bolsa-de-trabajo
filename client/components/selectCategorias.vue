@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="padding-s-bottom">
 
     <div class="is-loading" v-if="loading">
       cargando buscador

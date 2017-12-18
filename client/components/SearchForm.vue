@@ -9,11 +9,13 @@
 
 
               <div class="col-12 col-sm-12 col-lg-4">
+                <div class="padding-s-bottom">
                 <div class="form-group">
                   <label for="job-input">Palabra clave:</label>
                   <input type="text" name="job-input" id="job-input" autofocus value="" class="form-control" placeholder="Jardinero, ingeniero, etc." v-model="titulo">
                   <!-- {{  selectedEstado }}
                   {{  selectedTipo }} -->
+                  </div>
                 </div>
               </div>
 

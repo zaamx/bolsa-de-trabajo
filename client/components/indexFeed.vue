@@ -9,24 +9,28 @@
             {{ error }}
         </div> -->
 
-        <div class="masonry-layout" v-if="this.items">
-          <div class="masonry-layout-panel" v-for="job in this.items">
-            <div class="card" >
-              <!-- <img class="card-img-top" src="..." alt="card image cap"> -->
-              <router-link :to=" '/trabajos/' + job.id">
-                <img class="card-img-top" :src="job.imagen" alt="" v-if="job.imagen">
-                <img class="card-img-top" src="../assets/default-img.jpg" alt="" v-else>
-              </router-link>
-              <div class="card-block">
-                <h5 class="card-title">{{ job.titulo }}</h5>
-                <router-link :to=" '/trabajos/' + job.id" class="btn btn-primary">
-                  Ver anuncio
+        <div class="lorem">
+             <div class="masonry-layout" v-if="this.items">
+            <div class="masonry-layout-panel" v-for="job in this.items">
+              <div class="card" >
+                <!-- <img class="card-img-top" src="..." alt="card image cap"> -->
+                <router-link :to=" '/trabajos/' + job.id">
+                  <img class="card-img-top" :src="job.imagen" alt="" v-if="job.imagen">
+                  <img class="card-img-top" src="../assets/default-img.jpg" alt="" v-else>
                 </router-link>
+                <div class="card-block">
+                  <h5 class="card-title">{{ job.titulo }}</h5>
+                  <router-link :to=" '/trabajos/' + job.id" class="btn btn-primary">
+                    Ver anuncio
+                  </router-link>
+                </div>
               </div>
-            </div>
-            </div>
+              </div>
 
+          </div>
         </div>
+
+       
 
       </div>
     </div>
@@ -34,6 +38,8 @@
 </template>
 
 <script>
+import bowser from 'bowser'
+
 export default {
   props: {
     items: null
@@ -48,7 +54,14 @@ export default {
 	},
   computed: {
   },
+  mounted () {
+    console.log(' bowser ', bowser)
+    if (bowser.safari) {
+      $('.masonry-layout-panel').addClass('d-inline-block')
+    }
+  },
   created () {
+    
   },
   methods: {
   }
@@ -95,6 +108,7 @@ export default {
 .masonry-layout-panel {
   break-inside: avoid;
   padding: 5px;
+  // display: inline-block;
 }
 .masonry-layout-panel__content {
   padding: 10px;
