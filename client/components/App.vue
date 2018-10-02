@@ -1,13 +1,24 @@
 <template>
   <div id="app">
     <header>
+      <div class="test">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col">
+              <a class="navbar-brand" href="http://hispanoclub.com/" target="_blank">
+                <img src="../assets/logo-sitio.png" alt="">
+              </a>
+            </div>
+            <div class="col"><a href="" class="btn">lorem</a></div>
+            <div class="col"><a href="" class="btn">lorem</a></div>
+            <div class="col"><a href="" class="btn">lorem</a></div>
+            <div class="col"><a href="" class="btn">lorem</a></div>
+          </div>
+        </div>
+      </div>
       <b-navbar toggleable >
 
     <b-nav-toggle target="nav_collapse"></b-nav-toggle>
-    <a class="navbar-brand" href="http://hispanoclub.com/" target="_blank">
-      <img src="../assets/logo-sitio.png" alt="">
-    </a>
-
     <b-collapse is-nav id="nav_collapse">
       
       <b-nav is-nav-bar>
